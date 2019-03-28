@@ -10,7 +10,7 @@
 #import "LBCustemPresentTransitions.h"
 
 @implementation LBAlertActionButton
-- (instancetype)initWithFrame:(CGRect)frame action:(void (^)(UIButton * _Nonnull))action
+- (instancetype)initWithFrame:(CGRect)frame action:(void (^)(LBAlertActionButton * _Nonnull))action
 {
     self = [super initWithFrame:frame];
     if (self) {

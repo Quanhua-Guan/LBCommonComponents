@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface LBAlertActionButton : UIButton
-@property (nonatomic,copy,nullable)void (^action)(UIButton *_Nonnull sender);
-- (instancetype _Nonnull)initWithFrame:(CGRect)frame action:(void (^_Nullable)(UIButton *_Nonnull sender))action;
+@property (nonatomic,copy,nullable)void (^action)(LBAlertActionButton *_Nonnull sender);
+- (instancetype _Nonnull)initWithFrame:(CGRect)frame action:(void (^_Nullable)(LBAlertActionButton *_Nonnull sender))action;
 @end
 
 @interface LBAlertController : UIViewController
