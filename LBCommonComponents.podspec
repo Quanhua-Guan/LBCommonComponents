@@ -67,7 +67,7 @@ TODO: Add long description of the pod here.
   
     ss.subspec 'LBWebViewController' do |sss|
        sss.source_files = 'LBCommonComponents/UIViewControllers/LBWebViewController/**/*.{h,m}'
-       sss.resource = 'CommonComponents/UIViewControllers/LBWebViewController/**/*.png'
+       sss.resource = 'LBCommonComponents/UIViewControllers/LBWebViewController/**/*.png'
     end
 
     ss.subspec 'LBAlertController' do |sss|
@@ -77,7 +77,7 @@ TODO: Add long description of the pod here.
 
 
   s.subspec 'UIViews' do |ss|
-    ss.dependency 'CommonComponents/Macros'
+    ss.dependency 'LBCommonComponents/Macros'
 
     ss.subspec 'UIViewInit' do |sss|
       sss.source_files = 'LBCommonComponents/UIViews/UIViewInit/**/*'
