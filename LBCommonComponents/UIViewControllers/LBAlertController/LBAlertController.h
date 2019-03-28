@@ -8,27 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol LBAlertUserViewProtocol <NSObject>
-@optional
-@property (nonatomic,strong,nullable)NSDictionary *userInfo;
-@end
-
 @interface LBAlertActionButton : UIButton
-@property (nonatomic,copy)void (^_Nullable action)(UIButton *_Nonnull sender);
+@property (nonatomic,copy,nullable)void (^action)(UIButton *_Nonnull sender);
 - (instancetype _Nonnull)initWithFrame:(CGRect)frame action:(void (^_Nullable)(UIButton *_Nonnull sender))action;
 @end
 
 @interface LBAlertController : UIViewController
 @property (nonatomic,strong,readonly,nonnull)UILabel *alertTitleLabel;
 @property (nonatomic,strong,readonly,nonnull)UILabel *alertMessageLabel;
-@property (nonatomic,strong,nullable)UIView<LBAlertUserViewProtocol> *userView;
 @property (nonatomic,assign)NSTextAlignment messageTextAlignment;
-
+@property (nonatomic,strong,nullable)UIView *userView;
 @property (nonatomic,copy,nullable) NSString *alertTitle;
 @property (nonatomic,copy,nullable) NSString *alertMessage;
-
 @property (nonatomic,strong,readonly,nullable)NSMutableArray<LBAlertActionButton *> *buttonArray;
-
 
 - (nonnull instancetype)initWithAlertTitle:(nullable NSString*)title message:(nullable NSString *)message;
 

@@ -10,8 +10,7 @@
 #import "LBCustemPresentTransitions.h"
 
 @implementation LBAlertActionButton
-
-- (instancetype)initWithFrame:(CGRect)frame action:(void (^)(UIButton *))action
+- (instancetype)initWithFrame:(CGRect)frame action:(void (^)(UIButton * _Nonnull))action
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -27,14 +26,9 @@
 
 @end
 
-@interface LBAlertController ()
-@property (nonatomic,strong)UILabel *alertTitleLabel;
-@property (nonatomic,strong)UILabel *alertMessageLabel;
-@end
-
 @implementation LBAlertController
 
-- (nonnull instancetype)initWithAlertTitle:(nullable NSString*)title message:(nullable NSString *)message
+- (instancetype)initWithAlertTitle:(NSString *)title message:(NSString *)message
 {
     self = [super init];
     if (self) {
@@ -114,12 +108,13 @@
     contentViewFrame.size.height = CGRectGetMaxY((_buttonArray.count?_buttonArray.lastObject:(_userView?_userView:_alertMessageLabel)).frame);
     self.view.frame = contentViewFrame;
 }
+
 -(void)setMessageTextAlignment:(NSTextAlignment)messageTextAlignment{
     _messageTextAlignment = messageTextAlignment;
     _alertMessageLabel.textAlignment = messageTextAlignment;
 }
 
--(void)setUserView:(UIView<LBAlertUserViewProtocol> *)userView{
+- (void)setUserView:(UIView *)userView{
     _userView = userView;
     [self loadView];
 }
@@ -145,15 +140,5 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 @end
