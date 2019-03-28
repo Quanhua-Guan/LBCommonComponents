@@ -1,0 +1,16 @@
+//
+//  PrefixHeader.pch
+//  CommonComponentsTestProject
+//
+//  Created by 刘彬 on 2019/2/22.
+//  Copyright © 2019 BIN. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "LBUIMacro.h"
+#import "LBSystemMacro.h"
+#import "LBFunctionMacro.h"
+
+#endif /* PrefixHeader_pch */
