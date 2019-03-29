@@ -84,5 +84,11 @@
 
 @end
 
-@implementation LBItems
+@implementation LBItem
++ (instancetype)itemWithTitle:(NSString *)title
+{
+    LBItem *item = [[super alloc] init];
+    item.title = title;
+    return item;
+}
 @end

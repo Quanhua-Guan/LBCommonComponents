@@ -24,7 +24,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @end
 
-@interface LBItems : NSObject <LBSelectItemsProtocol>
+@interface LBItem : NSObject <LBSelectItemsProtocol>
 @property (nonatomic,strong)NSString *title;
++ (instancetype)itemWithTitle:(NSString *)title;
 @end
 NS_ASSUME_NONNULL_END
