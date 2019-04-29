@@ -30,6 +30,7 @@
 		40BEB3E7221E4469005A8481 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BEB3E3221E4469005A8481 /* AppDelegate.m */; };
 		40BEB3E8221E4469005A8481 /* LBCommonComponentsTestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BEB3E5221E4469005A8481 /* LBCommonComponentsTestVC.m */; };
 		40E061B2221FCB5D00DB89E3 /* LBCommonComponents.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 40E061B1221FCB5D00DB89E3 /* LBCommonComponents.podspec */; };
+		40F82ECE2276BE4E000259A3 /* LBPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F82ECD2276BE4E000259A3 /* LBPlaceholderTextView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +81,8 @@
 		40BEB3E5221E4469005A8481 /* LBCommonComponentsTestVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBCommonComponentsTestVC.m; sourceTree = "<group>"; };
 		40E061B1221FCB5D00DB89E3 /* LBCommonComponents.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LBCommonComponents.podspec; sourceTree = "<group>"; };
 		40E061B7221FD36E00DB89E3 /* LBCommonComponentsTestProject.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBCommonComponentsTestProject.pch; sourceTree = "<group>"; };
+		40F82ECC2276BE4E000259A3 /* LBPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBPlaceholderTextView.h; sourceTree = "<group>"; };
+		40F82ECD2276BE4E000259A3 /* LBPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBPlaceholderTextView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +99,7 @@
 		4012EBEA22202D22006510F3 /* UIViews */ = {
 			isa = PBXGroup;
 			children = (
+				40F82ECB2276BE4E000259A3 /* LBPlaceholderTextView */,
 				4012EBEB22202D22006510F3 /* LBFunctionalTextField */,
 				4012EBEE22202D22006510F3 /* LBTitleAndInputCell */,
 				4012EBF122202D22006510F3 /* LBCodeGetButton */,
@@ -346,6 +350,15 @@
 			path = LBCommonComponents;
 			sourceTree = SOURCE_ROOT;
 		};
+		40F82ECB2276BE4E000259A3 /* LBPlaceholderTextView */ = {
+			isa = PBXGroup;
+			children = (
+				40F82ECC2276BE4E000259A3 /* LBPlaceholderTextView.h */,
+				40F82ECD2276BE4E000259A3 /* LBPlaceholderTextView.m */,
+			);
+			path = LBPlaceholderTextView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -420,6 +433,7 @@
 				4012EC1B22202D22006510F3 /* UIView+LBInit.m in Sources */,
 				4012EC1822202D22006510F3 /* LBFunctionalTextField.m in Sources */,
 				406DAFE5222E2DCD000A7BE9 /* NSDate+LBToString.m in Sources */,
+				40F82ECE2276BE4E000259A3 /* LBPlaceholderTextView.m in Sources */,
 				4012EC1A22202D22006510F3 /* LBCodeGetButton.m in Sources */,
 				406DAFEC222E31B8000A7BE9 /* NSNull+LBInternalNullExtention.m in Sources */,
 				4012EC2722202D23006510F3 /* LBAlertController.m in Sources */,

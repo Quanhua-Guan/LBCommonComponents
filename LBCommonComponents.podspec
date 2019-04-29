@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'LBCommonComponents'
-  s.version          = '0.0.4'
+  s.version          = '0.0.5'
   s.summary          = 'CommonComponents of my project.'
   s.description      = <<-DESC
 TODO: Add long description of the pod here.
@@ -94,7 +94,11 @@ TODO: Add long description of the pod here.
    ss.subspec 'LBTitleAndInputCell' do |sss|
       sss.dependency 'LBCommonComponents/UIViews/LBFunctionalTextField'
       sss.source_files = 'LBCommonComponents/UIViews/LBTitleAndInputCell/**/*'
-   end  
+   end
+
+   ss.subspec 'LBPlaceholderTextView' do |sss|
+      sss.source_files = 'LBCommonComponents/UIViews/LBPlaceholderTextView/**/*'
+   end
   end
 
 end
