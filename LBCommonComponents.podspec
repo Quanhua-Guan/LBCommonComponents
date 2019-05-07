@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'LBCommonComponents'
-  s.version          = '0.0.5'
+  s.version          = '0.0.6'
   s.summary          = 'CommonComponents of my project.'
   s.description      = <<-DESC
 TODO: Add long description of the pod here.
@@ -99,6 +99,11 @@ TODO: Add long description of the pod here.
    ss.subspec 'LBPlaceholderTextView' do |sss|
       sss.source_files = 'LBCommonComponents/UIViews/LBPlaceholderTextView/**/*'
    end
+
+   ss.subspec 'LBCodeView' do |sss|
+      sss.source_files = 'LBCommonComponents/UIViews/LBCodeView/**/*'
+   end
+
   end
 
 end

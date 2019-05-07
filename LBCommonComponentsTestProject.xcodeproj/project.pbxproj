@@ -26,6 +26,7 @@
 		406DAFE5222E2DCD000A7BE9 /* NSDate+LBToString.m in Sources */ = {isa = PBXBuildFile; fileRef = 406DAFE4222E2DCD000A7BE9 /* NSDate+LBToString.m */; };
 		406DAFE8222E2DE1000A7BE9 /* NSString+LBToDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 406DAFE7222E2DE1000A7BE9 /* NSString+LBToDate.m */; };
 		406DAFEC222E31B8000A7BE9 /* NSNull+LBInternalNullExtention.m in Sources */ = {isa = PBXBuildFile; fileRef = 406DAFEA222E31B8000A7BE9 /* NSNull+LBInternalNullExtention.m */; };
+		4091C17422816CAF00C09FE6 /* LBCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4091C17222816CAF00C09FE6 /* LBCodeView.m */; };
 		40BEB3DB221E43BF005A8481 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BEB3DA221E43BF005A8481 /* main.m */; };
 		40BEB3E7221E4469005A8481 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BEB3E3221E4469005A8481 /* AppDelegate.m */; };
 		40BEB3E8221E4469005A8481 /* LBCommonComponentsTestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BEB3E5221E4469005A8481 /* LBCommonComponentsTestVC.m */; };
@@ -72,6 +73,8 @@
 		406DAFE7222E2DE1000A7BE9 /* NSString+LBToDate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+LBToDate.m"; sourceTree = "<group>"; };
 		406DAFEA222E31B8000A7BE9 /* NSNull+LBInternalNullExtention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNull+LBInternalNullExtention.m"; sourceTree = "<group>"; };
 		406DAFEB222E31B8000A7BE9 /* NSNull+LBInternalNullExtention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNull+LBInternalNullExtention.h"; sourceTree = "<group>"; };
+		4091C17222816CAF00C09FE6 /* LBCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBCodeView.m; sourceTree = "<group>"; };
+		4091C17322816CAF00C09FE6 /* LBCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBCodeView.h; sourceTree = "<group>"; };
 		40AEA9EE224C6B0B0063FCE0 /* LBCommonComponentsTestVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBCommonComponentsTestVC.h; sourceTree = "<group>"; };
 		40BEB3C8221E43BE005A8481 /* LBCommonComponentsTestProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LBCommonComponentsTestProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40BEB3D9221E43BF005A8481 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -99,6 +102,7 @@
 		4012EBEA22202D22006510F3 /* UIViews */ = {
 			isa = PBXGroup;
 			children = (
+				4091C17122816CAF00C09FE6 /* LBCodeView */,
 				40F82ECB2276BE4E000259A3 /* LBPlaceholderTextView */,
 				4012EBEB22202D22006510F3 /* LBFunctionalTextField */,
 				4012EBEE22202D22006510F3 /* LBTitleAndInputCell */,
@@ -289,6 +293,15 @@
 			path = "NSNull+InternalNullExtention";
 			sourceTree = "<group>";
 		};
+		4091C17122816CAF00C09FE6 /* LBCodeView */ = {
+			isa = PBXGroup;
+			children = (
+				4091C17222816CAF00C09FE6 /* LBCodeView.m */,
+				4091C17322816CAF00C09FE6 /* LBCodeView.h */,
+			);
+			path = LBCodeView;
+			sourceTree = "<group>";
+		};
 		40BEB3BF221E43BE005A8481 = {
 			isa = PBXGroup;
 			children = (
@@ -431,6 +444,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4012EC1B22202D22006510F3 /* UIView+LBInit.m in Sources */,
+				4091C17422816CAF00C09FE6 /* LBCodeView.m in Sources */,
 				4012EC1822202D22006510F3 /* LBFunctionalTextField.m in Sources */,
 				406DAFE5222E2DCD000A7BE9 /* NSDate+LBToString.m in Sources */,
 				40F82ECE2276BE4E000259A3 /* LBPlaceholderTextView.m in Sources */,
