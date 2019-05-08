@@ -15,7 +15,7 @@
 
 @implementation LBCodeView
 
-- (instancetype)initWithFrame:(CGRect)frame numbersCount:(NSUInteger)count
+- (instancetype)initWithFrame:(CGRect)frame numbersCount:(NSUInteger)count space:(CGFloat)space
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -29,8 +29,8 @@
         [self addSubview:_hiddenTextField];
         
         for (NSUInteger i = 0; i < count; i ++) {
-            CGFloat leftOffSet = (CGRectGetWidth(frame)-50*count-15*(count-1))/2;
-            UIButton *codeShowButton = [[UIButton alloc] initWithFrame:CGRectMake(leftOffSet+i*(50+15), (CGRectGetHeight(frame)-50)/2, 50, 50)];
+            CGFloat showButtonSide = (CGRectGetWidth(frame)-space*(count-1))/count;
+            UIButton *codeShowButton = [[UIButton alloc] initWithFrame:CGRectMake(i*(showButtonSide+space), (CGRectGetHeight(frame)-showButtonSide)/2, showButtonSide, showButtonSide)];
             codeShowButton.titleLabel.font = [UIFont boldSystemFontOfSize:20];
             [codeShowButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             [codeShowButton addTarget:self action:@selector(editBegain) forControlEvents:UIControlEventTouchUpInside];

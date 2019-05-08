@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong,readonly)NSArray<UIButton *> *codeShowButtons;
 @property(nonatomic,copy)void(^codeInputFinish)(NSString *code);
 
-- (instancetype)initWithFrame:(CGRect)frame numbersCount:(NSUInteger)count;
+- (instancetype)initWithFrame:(CGRect)frame numbersCount:(NSUInteger)count space:(CGFloat)space;
 @end
 
 NS_ASSUME_NONNULL_END
