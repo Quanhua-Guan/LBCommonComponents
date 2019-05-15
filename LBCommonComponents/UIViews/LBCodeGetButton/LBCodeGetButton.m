@@ -20,12 +20,7 @@
     if (self) {
         _action = action;
         self.waiting = NO;
-        
-        self.layer.cornerRadius = 5;
-        [self setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        self.titleLabel.font = [UIFont systemFontOfSize:14];
         [self addTarget:self action:@selector(getCodeButtonAction) forControlEvents:UIControlEventTouchUpInside];
-        
     }
     return self;
 }
@@ -38,7 +33,6 @@
     _waiting = waiting;
     if (waiting) {
         self.enabled = NO;
-        self.backgroundColor = [UIColor lightGrayColor];
         
         [self setTitle:@"60s" forState:UIControlStateNormal];
         
@@ -46,7 +40,6 @@
         _taskIdentifier = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:nil];
     }else{
         self.enabled = YES;
-        self.backgroundColor = UIColorRGBHex(0x10c6bf);
         [self setTitle:@"验证码" forState:UIControlStateNormal];
         [[UIApplication sharedApplication] endBackgroundTask:_taskIdentifier];
     }
@@ -61,13 +54,5 @@
         [timer invalidate];
     }
 }
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 @end
