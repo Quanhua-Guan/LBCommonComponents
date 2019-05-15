@@ -9,6 +9,8 @@
 #import "LBCodeGetButton.h"
 
 @interface LBCodeGetButton()
+@property (nonatomic,strong)NSString *secondsString;
+@property (nonatomic,assign)NSRange secondsRange;
 @property (nonatomic,copy)void (^action)(LBCodeGetButton *sender);
 @property (nonatomic,assign)UIBackgroundTaskIdentifier taskIdentifier;
 @end
@@ -33,26 +35,44 @@
     _waiting = waiting;
     if (waiting) {
         self.enabled = NO;
-        
-        [self setTitle:@"60s" forState:UIControlStateNormal];
-        
         [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(wait:) userInfo:self repeats:YES];
         _taskIdentifier = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:nil];
     }else{
+        [super setTitle:[[self currentTitle] stringByReplacingCharactersInRange:_secondsRange withString:_secondsString] forState:UIControlStateDisabled];
         self.enabled = YES;
-        [self setTitle:@"验证码" forState:UIControlStateNormal];
         [[UIApplication sharedApplication] endBackgroundTask:_taskIdentifier];
     }
 }
 
+
 -(void)wait:(NSTimer *)timer{
-    NSInteger seconds = [[self titleForState:UIControlStateNormal] integerValue];
+    NSInteger seconds = [[[self currentTitle] substringWithRange:_secondsRange] integerValue];
     seconds --;
-    [self setTitle:[NSString stringWithFormat:@"%lds",(long)seconds] forState:UIControlStateNormal];
+    [super setTitle:[[self currentTitle] stringByReplacingCharactersInRange:_secondsRange withString:[NSString stringWithFormat:@"%0*d",(int)_secondsString.length,(int)seconds]] forState:UIControlStateDisabled];
     if (seconds == 0) {
         self.waiting = NO;
         [timer invalidate];
     }
 }
 
+-(void)setTitle:(NSString *)title forState:(UIControlState)state{
+    [super setTitle:title forState:state];
+    if (state == UIControlStateDisabled) {
+        // Intermediate
+        NSMutableString *numberString = [[NSMutableString alloc] init];
+        NSScanner *scanner = [NSScanner scannerWithString:[self titleForState:UIControlStateDisabled]];
+        NSCharacterSet *numbers = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
+        NSString *tempStr;
+        while (![scanner isAtEnd]) {
+            // Throw away characters before the first number.
+            [scanner scanUpToCharactersFromSet:numbers intoString:NULL];
+            // Collect numbers.
+            [scanner scanCharactersFromSet:numbers intoString:&tempStr];
+            [numberString appendString:tempStr];
+            tempStr = @"";
+        }
+        _secondsString = numberString;
+        _secondsRange = [title rangeOfString:_secondsString];
+    }
+}
 @end
