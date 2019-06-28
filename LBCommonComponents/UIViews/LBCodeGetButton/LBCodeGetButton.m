@@ -61,13 +61,13 @@
         // Intermediate
         NSMutableString *numberString = [[NSMutableString alloc] init];
         NSScanner *scanner = [NSScanner scannerWithString:[self titleForState:UIControlStateDisabled]];
-        NSCharacterSet *numbers = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
+        NSCharacterSet *characterSet = [NSCharacterSet decimalDigitCharacterSet];
         NSString *tempStr;
         while (![scanner isAtEnd]) {
             // Throw away characters before the first number.
-            [scanner scanUpToCharactersFromSet:numbers intoString:NULL];
+            [scanner scanUpToCharactersFromSet:characterSet intoString:NULL];
             // Collect numbers.
-            [scanner scanCharactersFromSet:numbers intoString:&tempStr];
+            [scanner scanCharactersFromSet:characterSet intoString:&tempStr];
             [numberString appendString:tempStr];
             tempStr = @"";
         }

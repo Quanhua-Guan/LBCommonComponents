@@ -40,11 +40,11 @@
     _loadingProgressView.trackTintColor = [UIColor whiteColor];
     //导航栏自定义的话UIScrollView内容将不实用系统的自动向下偏移
     if ([self.navigationController.navigationBar backgroundImageForBarMetrics:UIBarMetricsDefault]) {
-        _webView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds)-64);
+        _webView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds)-CGRectGetMaxY(self.navigationController.navigationBar.frame));
         _loadingProgressView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), 8);
     }else{
         _webView.frame = self.view.bounds;
-        _loadingProgressView.frame = CGRectMake(0, 64, CGRectGetWidth(self.view.bounds), 8);
+        _loadingProgressView.frame = CGRectMake(0, CGRectGetMaxY(self.navigationController.navigationBar.frame), CGRectGetWidth(self.view.bounds), 8);
     }
     
     [self.view addSubview:_webView];
