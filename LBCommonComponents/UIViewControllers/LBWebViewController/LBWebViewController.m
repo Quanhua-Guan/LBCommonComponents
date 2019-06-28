@@ -25,8 +25,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:_urlString]];
+    self.title = self.customTitle;
     
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:_urlString]];
     
     _webView = [[WKWebView alloc] init];
     _webView.layer.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;
@@ -93,6 +94,11 @@
     
 }
 
+-(void)setCustomTitle:(NSString *)customTitle{
+    _customTitle = customTitle;
+    self.title = customTitle;
+}
+
 
 
 - (void)goBack:(UIButton*)sender
@@ -127,22 +133,31 @@
 }
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
     _loadingProgressView.hidden = YES;
-    if (!self.title.length) {
+    _loadingProgressView.progress = 0;
+    if (!self.customTitle.length) {
         self.title = webView.title;
     }
 }
 //页面加载失败
 - (void)webView:(WKWebView *)webView didFailNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error{
     _loadingProgressView.hidden = YES;
+    _loadingProgressView.progress = 0;
 }
 
 
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
-    if (_showFunctionMenu) {
-        CATextLayer *hostLPromptLayer = (CATextLayer *)[webView.layer.sublayers firstObject];
-        hostLPromptLayer.string = [NSString stringWithFormat:@"网页由 %@ 提供",navigationAction.request.URL.host];
+    
+    if([[navigationAction.request.URL host] isEqualToString:@"itunes.apple.com"] &&
+          [[UIApplication sharedApplication] openURL:navigationAction.request.URL]){
+        decisionHandler(WKNavigationActionPolicyCancel);
+    }else{
+        if (_showFunctionMenu) {
+            CATextLayer *hostLPromptLayer = (CATextLayer *)[webView.layer.sublayers firstObject];
+            hostLPromptLayer.string = [NSString stringWithFormat:@"网页由 %@ 提供",navigationAction.request.URL.host];
+        }
+        decisionHandler(WKNavigationActionPolicyAllow);
     }
-    decisionHandler(WKNavigationActionPolicyAllow);
+    
 }
 
 

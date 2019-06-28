@@ -10,10 +10,10 @@
 #import <WebKit/WebKit.h>
 
 @interface LBWebViewController : UIViewController<WKNavigationDelegate>
-
-@property(nonatomic,assign)BOOL showFunctionMenu;
-@property(nonatomic,strong)WKWebView *webView;
-@property (nonatomic, strong)UIProgressView *loadingProgressView;
+@property (nonatomic,strong)NSString *customTitle;
+@property (nonatomic,assign)BOOL showFunctionMenu;
+@property (nonatomic,strong)WKWebView *webView;
+@property (nonatomic,strong)UIProgressView *loadingProgressView;
 
 - (instancetype)initWithUrlString:(NSString *)urlString;
 @end
