@@ -153,10 +153,10 @@
                 break;
             case FCodeInput:
                 if (!_f_inputPredicate) {
-                    _f_inputPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", [NSString stringWithFormat:@"\\d{%u}",_f_maxLength]];
+                    _f_inputPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", [NSString stringWithFormat:@"\\d{%lu}",_f_maxLength]];
                 }
                 if (![_f_inputPredicate evaluateWithObject:self.text]){
-                    errorDescription = [NSString stringWithFormat:@"请输入%u位验证码",_f_maxLength];
+                    errorDescription = [NSString stringWithFormat:@"请输入%lu位验证码",_f_maxLength];
                 }
                 break;
             case FIndateInput:
