@@ -147,8 +147,7 @@
 
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
     
-    if([[navigationAction.request.URL host] isEqualToString:@"itunes.apple.com"] &&
-          [[UIApplication sharedApplication] openURL:navigationAction.request.URL]){
+    if([[navigationAction.request.URL host] isEqualToString:@"itunes.apple.com"] && [[UIApplication sharedApplication] openURL:navigationAction.request.URL]){
         decisionHandler(WKNavigationActionPolicyCancel);
     }else{
         if (_showFunctionMenu) {
