@@ -66,78 +66,123 @@
     }else{
         switch (self.f_inputType) {
             case FBankCardNumberInput:
-                if (self.text.length && ![[NSPredicate predicateWithFormat:@"SELF MATCHES %@",@"^(\\d{14,20})"] evaluateWithObject:self.text]){
+                if (!_f_inputPredicate) {
+                    _f_inputPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",@"^(\\d{14,20})"];
+                }
+                if (![_f_inputPredicate evaluateWithObject:self.text]){
                     errorDescription = @"请输入正确的银行卡号";
                 }
                 break;
             case FMoneyInput:
-                if (![self.text floatValue] || ![[NSPredicate predicateWithFormat:@"SELF MATCHES %@",@"^[0-9]+(.[0-9]{1,2})?$"] evaluateWithObject:self.text]) {
+                if (!_f_inputPredicate) {
+                    _f_inputPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",@"^[0-9]+(.[0-9]{1,2})?$"];
+                }
+                if (![self.text floatValue] || ![_f_inputPredicate evaluateWithObject:self.text]) {
                     errorDescription = @"请输入有效金额";
                 }
                 break;
             case FIDCardNumberInput:
-                if (self.text.length && ![[NSPredicate predicateWithFormat:@"SELF MATCHES %@",@"^(\\d{14}|\\d{17})(\\d|[xX])$"] evaluateWithObject:self.text]){
+                if (!_f_inputPredicate) {
+                    _f_inputPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",@"^(\\d{14}|\\d{17})(\\d|[xX])$"];
+                }
+                if (![_f_inputPredicate evaluateWithObject:self.text]){
                     errorDescription = @"请输入正确的身份证号码";
                 }
                 break;
             case FPhoneNumberInput:
-                if (![[NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"^1(\\d{10})"] evaluateWithObject:self.text]){
+                if (!_f_inputPredicate) {
+                    _f_inputPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"^1(\\d{10})"];
+                }
+                if (![_f_inputPredicate evaluateWithObject:self.text]){
                     errorDescription = @"请输入正确的手机号码";
                 }
                 break;
-            case FIndateInput:
-                if (self.text.length < 4 || [[self.text substringToIndex:2] integerValue] > 12 || [[self.text substringToIndex:2] integerValue] == 0 || [[self.text substringFromIndex:2] integerValue] > 31 || [[self.text substringFromIndex:2] integerValue] == 0){
-                    errorDescription = @"请输入正确的有效期";
+            case FCodeInput:
+                if (!_f_inputPredicate) {
+                    _f_inputPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", [NSString stringWithFormat:@"\\d{%u}",_f_codeLength]];
+                }
+                if (![_f_inputPredicate evaluateWithObject:self.text]){
+                    errorDescription = [NSString stringWithFormat:@"请输入%u位验证码",_f_codeLength];
                 }
                 break;
+            case FIndateInput:
+            {
+                bool inputError = YES;
+                if (_f_inputPredicate) {
+                    inputError = ![_f_inputPredicate evaluateWithObject:self.text];
+                }else{
+                    inputError = (self.text.length < 4 || [[self.text substringToIndex:2] integerValue] > 12 || [[self.text substringToIndex:2] integerValue] == 0 || [[self.text substringFromIndex:2] integerValue] > 31 || [[self.text substringFromIndex:2] integerValue] == 0);
+                }
+                if (inputError){
+                    errorDescription = @"请输入正确的有效期";
+                }
+            }
+                break;
             case FCVV2Input:
-                if (self.text.length < 3){
+            {
+                bool inputError = YES;
+                if (_f_inputPredicate) {
+                    inputError = ![_f_inputPredicate evaluateWithObject:self.text];
+                }else{
+                    inputError = (self.text.length < 3);
+                }
+                if (inputError){
                     errorDescription = @"请输入3位安全码";
                 }
+            }
                 break;
             case FPasswordInput:
             {
-                if (![[NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"^(?![a-zA-Z0-9]+$)(?![^a-zA-Z/D]+$)(?![^0-9/D]+$).{8,16}$"] evaluateWithObject:self.text]) {
+                if (!_f_inputPredicate) {
+                    _f_inputPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"^(?![a-zA-Z0-9]+$)(?![^a-zA-Z/D]+$)(?![^0-9/D]+$).{8,16}$"];
+                }
+                if (![_f_inputPredicate evaluateWithObject:self.text]) {
                     errorDescription = @"密码必须由8-16位字母、数字和特殊字符组成";
-                    
                 }
             }
                 break;
             case FPayPasswordInput:
             {
-                NSUInteger index = 0;
-                BOOL isNotAllEnqual = NO;
-                while ((!isNotAllEnqual) && (index+1) < self.text.length) {
-                    if ([[self.text substringWithRange:NSMakeRange(index, 1)] isEqualToString:[self.text substringWithRange:NSMakeRange(index+1, 1)]]) {
-                        index ++;
-                    }else{
-                        isNotAllEnqual = YES;
+                
+                bool inputError = YES;
+                if (_f_inputPredicate) {
+                    inputError = ![_f_inputPredicate evaluateWithObject:self.text];
+                }else{
+                    NSUInteger index = 0;
+                    BOOL isNotAllEnqual = NO;
+                    while ((!isNotAllEnqual) && (index+1) < self.text.length) {
+                        if ([[self.text substringWithRange:NSMakeRange(index, 1)] isEqualToString:[self.text substringWithRange:NSMakeRange(index+1, 1)]]) {
+                            index ++;
+                        }else{
+                            isNotAllEnqual = YES;
+                        }
                     }
+                    
+                    NSUInteger index2 = 0;
+                    BOOL isNotAscending = NO;
+                    while ((!isNotAscending) && (index2+1) < self.text.length) {
+                        if ([[self.text substringWithRange:NSMakeRange(index2, 1)] integerValue] + 1 == [[self.text substringWithRange:NSMakeRange(index2+1, 1)] integerValue]) {
+                            index2 ++;
+                        }else{
+                            isNotAscending = YES;
+                        }
+                    }
+                    
+                    NSUInteger index3 = 0;
+                    BOOL isNotDescending = NO;
+                    while ((!isNotDescending) && (index3+1) < self.text.length) {
+                        if ([[self.text substringWithRange:NSMakeRange(index3, 1)] integerValue] - 1 == [[self.text substringWithRange:NSMakeRange(index3+1, 1)] integerValue]) {
+                            index3 ++;
+                        }else{
+                            isNotDescending = YES;
+                        }
+                    }
+                    
+                    inputError = (!isNotAllEnqual || !isNotAscending || !isNotDescending || [self.text isEqualToString:@"123456"] ||  [self.text isEqualToString:@"654321"]);
+                    
                 }
                 
-                
-                NSUInteger index2 = 0;
-                BOOL isNotAscending = NO;
-                while ((!isNotAscending) && (index2+1) < self.text.length) {
-                    if ([[self.text substringWithRange:NSMakeRange(index2, 1)] integerValue] + 1 == [[self.text substringWithRange:NSMakeRange(index2+1, 1)] integerValue]) {
-                        index2 ++;
-                    }else{
-                        isNotAscending = YES;
-                    }
-                }
-                
-                NSUInteger index3 = 0;
-                BOOL isNotDescending = NO;
-                while ((!isNotDescending) && (index3+1) < self.text.length) {
-                    if ([[self.text substringWithRange:NSMakeRange(index3, 1)] integerValue] - 1 == [[self.text substringWithRange:NSMakeRange(index3+1, 1)] integerValue]) {
-                        index3 ++;
-                    }else{
-                        isNotDescending = YES;
-                    }
-                }
-                
-                
-                if (!isNotAllEnqual || !isNotAscending || !isNotDescending || [self.text isEqualToString:@"123456"] ||  [self.text isEqualToString:@"654321"]) {
+                if (inputError) {
                     errorDescription = @"为了您的账户安全，请避免输入过于简单的支付密码";
                 }
             }
@@ -155,36 +200,41 @@
 }
 
 -(NSString *)text{
-    return [[super text] stringByReplacingOccurrencesOfString:@" " withString:@""];
+    if (_f_numberFormated) {
+        return [[super text] stringByReplacingOccurrencesOfString:@" " withString:@""];
+    }
+    return [super text];
 }
 
 
 -(void)textFieldTextDidChange:(NSNotification *)notification{
     if (self.f_inputType == FBankCardNumberInput) {
-        NSMutableString *string = [self.text mutableCopy];
-
-        while ([[string componentsSeparatedByString:@" "] lastObject].length > 4) {
-            NSUInteger spaceNumber = [string componentsSeparatedByString:@" "].count-1;
-            [string insertString:@" " atIndex:spaceNumber+(spaceNumber+1)*4];
+        if (_f_numberFormated) {
+            NSMutableString *string = [self.text mutableCopy];
+            while ([[string componentsSeparatedByString:@" "] lastObject].length > 4) {
+                NSUInteger spaceNumber = [string componentsSeparatedByString:@" "].count-1;
+                [string insertString:@" " atIndex:spaceNumber+(spaceNumber+1)*4];
+            }
+            self.text = string;
         }
-        self.text = string;
         
         if (self.text.length>19){
             self.text = [self.text substringToIndex:19];
         }
     }else if (self.f_inputType == FPhoneNumberInput){
-        NSMutableString *string = [self.text mutableCopy];
-        
-        while ([[string componentsSeparatedByString:@" "] lastObject].length > ((string.length<7)?3:4)) {
-            NSUInteger spaceNumber = [string componentsSeparatedByString:@" "].count-1;
-            if (string.length<7) {
-                [string insertString:@" " atIndex:3];
-            }else{
-                [string insertString:@" " atIndex:3+spaceNumber+spaceNumber*4];
+        if (_f_numberFormated) {
+            NSMutableString *string = [self.text mutableCopy];
+            while ([[string componentsSeparatedByString:@" "] lastObject].length > ((string.length<7)?3:4)) {
+                NSUInteger spaceNumber = [string componentsSeparatedByString:@" "].count-1;
+                if (string.length<7) {
+                    [string insertString:@" " atIndex:3];
+                }else{
+                    [string insertString:@" " atIndex:3+spaceNumber+spaceNumber*4];
+                }
+                
             }
-            
+            self.text = string;
         }
-        self.text = string;
         
         if (self.text.length > 11){
             self.text = [self.text substringToIndex:11];
@@ -208,8 +258,8 @@
             self.text = [self.text substringToIndex:3];
         }
     }else if (self.f_inputType == FCodeInput){
-        if (self.text.length>6) {
-            self.text = [self.text substringToIndex:6];
+        if (self.text.length>_f_codeLength) {
+            self.text = [self.text substringToIndex:_f_codeLength];
         }
     }else if (self.f_inputType == FPasswordInput){
         if (self.text.length > 16) {
@@ -265,7 +315,7 @@
                 return NO;
             }
         }else if (textField.f_inputType == FCodeInput){
-            if (textField.text.length>5) {
+            if (textField.text.length>(textField.f_codeLength-1)) {
                 return NO;
             }
         }else if (textField.f_inputType == FPasswordInput){
@@ -308,6 +358,5 @@
     }
     return [super forwardingTargetForSelector: aSelector];
 }
-//fdasfa
 @end
 

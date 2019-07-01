@@ -115,8 +115,8 @@
 		4012EBEB22202D22006510F3 /* LBFunctionalTextField */ = {
 			isa = PBXGroup;
 			children = (
-				4012EBEC22202D22006510F3 /* LBFunctionalTextField.m */,
 				4012EBED22202D22006510F3 /* LBFunctionalTextField.h */,
+				4012EBEC22202D22006510F3 /* LBFunctionalTextField.m */,
 			);
 			path = LBFunctionalTextField;
 			sourceTree = "<group>";
