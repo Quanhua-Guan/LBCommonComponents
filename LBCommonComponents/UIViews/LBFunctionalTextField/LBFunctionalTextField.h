@@ -25,7 +25,7 @@ typedef NS_ENUM(NSUInteger, FTextFieldInputType) {
 @property(nonatomic,readonly,strong)NSError *f_inputError;
 @property(nonatomic,strong)NSPredicate *f_inputPredicate;
 @property(nonatomic,assign)BOOL f_numberFormated;//手机号和银行卡自动插入空格分隔
-@property(nonatomic,assign)NSUInteger f_codeLength;//在设置f_inputType=FCodeInput时有效
+@property(nonatomic,assign)NSUInteger f_maxLength;//对应每个f_inputType有其默认值
 
 +(BOOL)textField:(LBFunctionalTextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string;
 @end

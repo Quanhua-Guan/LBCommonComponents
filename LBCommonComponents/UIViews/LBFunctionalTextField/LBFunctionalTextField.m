@@ -7,6 +7,13 @@
 //
 
 #import "LBFunctionalTextField.h"
+
+@interface LBFunctionalTextField ()
+{
+    BOOL _hasSetMaxLength;
+}
+@end
+
 @implementation LBFunctionalTextField
 
 - (instancetype)init
@@ -21,6 +28,8 @@
     if (self) {
         self.clearButtonMode = UITextFieldViewModeWhileEditing;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldTextDidChange:) name:UITextFieldTextDidChangeNotification object:self];
+        
+        _hasSetMaxLength = NO;
     }
     return self;
 }
@@ -37,22 +46,67 @@
     
     return [super canPerformAction:action withSender:sender];
 }
+
+- (void)setF_maxLength:(NSUInteger)f_maxLength{
+    _f_maxLength = f_maxLength;
+    _hasSetMaxLength = YES;
+}
+
 -(void)setF_inputType:(FTextFieldInputType)lb_inputType{
     _f_inputType = lb_inputType;
     switch (lb_inputType) {
         case FPhoneNumberInput:
+            if (!_hasSetMaxLength) {
+                self.f_maxLength = 11;
+            }
+            self.keyboardType = UIKeyboardTypeNumberPad;
+            break;
         case FBankCardNumberInput:
+            if (!_hasSetMaxLength) {
+                self.f_maxLength = 19;
+            }
+            self.keyboardType = UIKeyboardTypeNumberPad;
+            break;
         case FCVV2Input:
+            if (!_hasSetMaxLength) {
+                self.f_maxLength = 3;
+            }
+            self.keyboardType = UIKeyboardTypeNumberPad;
+            break;
         case FCodeInput:
+            if (!_hasSetMaxLength) {
+                self.f_maxLength = 6;
+            }
+            self.keyboardType = UIKeyboardTypeNumberPad;
+            break;
         case FPayPasswordInput:
+            if (!_hasSetMaxLength) {
+                self.f_maxLength = 6;
+            }
+            self.keyboardType = UIKeyboardTypeNumberPad;
+            break;
         case FIndateInput:
+            if (!_hasSetMaxLength) {
+                self.f_maxLength = 4;
+            }
+            self.keyboardType = UIKeyboardTypeNumberPad;
+            break;
         case FPercentInput:
+            if (!_hasSetMaxLength) {
+                self.f_maxLength = 3;
+            }
             self.keyboardType = UIKeyboardTypeNumberPad;
             break;
         case FMoneyInput:
+            if (!_hasSetMaxLength) {
+                self.f_maxLength = 15;
+            }
             self.keyboardType = UIKeyboardTypeDecimalPad;
             break;
         case FPasswordInput:
+            if (!_hasSetMaxLength) {
+                self.f_maxLength = 16;
+            }
             self.keyboardType = UIKeyboardTypeASCIICapable;
             break;
         default:
@@ -99,10 +153,10 @@
                 break;
             case FCodeInput:
                 if (!_f_inputPredicate) {
-                    _f_inputPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", [NSString stringWithFormat:@"\\d{%lu}",_f_codeLength]];
+                    _f_inputPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", [NSString stringWithFormat:@"\\d{%u}",_f_maxLength]];
                 }
                 if (![_f_inputPredicate evaluateWithObject:self.text]){
-                    errorDescription = [NSString stringWithFormat:@"请输入%lu位验证码",_f_codeLength];
+                    errorDescription = [NSString stringWithFormat:@"请输入%u位验证码",_f_maxLength];
                 }
                 break;
             case FIndateInput:
@@ -208,6 +262,9 @@
 
 
 -(void)textFieldTextDidChange:(NSNotification *)notification{
+    if (self.text.length>_f_maxLength){
+        self.text = [self.text substringToIndex:19];
+    }
     if (self.f_inputType == FBankCardNumberInput) {
         if (_f_numberFormated) {
             NSMutableString *string = [self.text mutableCopy];
@@ -216,10 +273,6 @@
                 [string insertString:@" " atIndex:spaceNumber+(spaceNumber+1)*4];
             }
             self.text = string;
-        }
-        
-        if (self.text.length>19){
-            self.text = [self.text substringToIndex:19];
         }
     }else if (self.f_inputType == FPhoneNumberInput){
         if (_f_numberFormated) {
@@ -235,39 +288,9 @@
             }
             self.text = string;
         }
-        
-        if (self.text.length > 11){
-            self.text = [self.text substringToIndex:11];
-        }
     }else if (self.f_inputType == FMoneyInput){
         if ([self.text rangeOfString:@"."].length && [[self.text componentsSeparatedByString:@"."] lastObject].length >2) {
             self.text = [self.text substringToIndex:4];
-        }else if (self.text.length>15){
-            self.text = [self.text substringToIndex:15];
-        }
-    }else if (self.f_inputType == FIDCardNumberInput){
-        if (self.text.length>18) {
-            self.text = [self.text substringToIndex:18];
-        }
-    }else if (self.f_inputType == FIndateInput){
-        if (self.text.length>4) {
-            self.text = [self.text substringToIndex:4];
-        }
-    }else if (self.f_inputType == FCVV2Input){
-        if (self.text.length>3) {
-            self.text = [self.text substringToIndex:3];
-        }
-    }else if (self.f_inputType == FCodeInput){
-        if (self.text.length>_f_codeLength) {
-            self.text = [self.text substringToIndex:_f_codeLength];
-        }
-    }else if (self.f_inputType == FPasswordInput){
-        if (self.text.length > 16) {
-            self.text = [self.text substringToIndex:16];
-        }
-    }else if (self.f_inputType == FPayPasswordInput){
-        if (self.text.length > 6) {
-            self.text = [self.text substringToIndex:6];
         }
     }else if (self.f_inputType == FPercentInput){
         if (self.text.integerValue > 100) {
@@ -281,11 +304,7 @@
         return YES;
     }
     if (string.length && [textField isKindOfClass:[LBFunctionalTextField class]]) {
-        if (textField.f_inputType == FBankCardNumberInput) {
-            if (textField.text.length>=19){
-                return NO;
-            }
-        }else if (textField.f_inputType == FMoneyInput){
+        if (textField.f_inputType == FMoneyInput){
             if ([textField.text isEqualToString:@"0"] && ![string isEqualToString:@"."]) {
                 return NO;
             }else if (!textField.text.length && [string isEqualToString:@"."]){
@@ -298,36 +317,12 @@
                     return NO;
                 }
             }
-        }else if (textField.f_inputType == FIDCardNumberInput){
-            if (textField.text.length>17) {
-                return NO;
-            }
-        }else if (textField.f_inputType == FPhoneNumberInput){
-            if (textField.text.length > 10){
-                return NO;
-            }
-        }else if (textField.f_inputType == FIndateInput){
-            if (textField.text.length>3) {
-                return NO;
-            }
-        }else if (textField.f_inputType == FCVV2Input){
-            if (textField.text.length>2) {
-                return NO;
-            }
-        }else if (textField.f_inputType == FCodeInput){
-            if (textField.text.length>(textField.f_codeLength-1)) {
-                return NO;
-            }
-        }else if (textField.f_inputType == FPasswordInput){
-            if (textField.text.length > 15) {
-                return NO;
-            }
-        }else if (textField.f_inputType == FPayPasswordInput){
-            if (textField.text.length > 5) {
-                return NO;
-            }
         }else if (textField.f_inputType == FPercentInput){
             if (textField.text.integerValue >= 100) {
+                return NO;
+            }
+        }else{
+            if (textField.text.length>(textField.f_maxLength-1)) {
                 return NO;
             }
         }
