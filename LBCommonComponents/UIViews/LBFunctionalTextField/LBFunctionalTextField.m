@@ -242,6 +242,9 @@
             }
                 break;
             default:
+                if (_f_inputPredicate && ![_f_inputPredicate evaluateWithObject:self.text]){
+                    errorDescription = @"输入格式错误";
+                }
                 break;
         }
     
