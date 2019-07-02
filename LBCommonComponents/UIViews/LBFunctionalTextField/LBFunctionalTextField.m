@@ -263,7 +263,7 @@
 
 -(void)textFieldTextDidChange:(NSNotification *)notification{
     if (self.text.length>_f_maxLength){
-        self.text = [self.text substringToIndex:19];
+        self.text = [self.text substringToIndex:_f_maxLength];
     }
     if (self.f_inputType == FBankCardNumberInput) {
         if (_f_numberFormated) {
