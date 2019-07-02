@@ -9,9 +9,7 @@
 #import "LBFunctionalTextField.h"
 
 @interface LBFunctionalTextField ()
-{
-    BOOL _hasSetMaxLength;
-}
+@property (nonatomic,assign)BOOL hasSetMaxLength;;
 @end
 
 @implementation LBFunctionalTextField
@@ -265,7 +263,7 @@
 
 
 -(void)textFieldTextDidChange:(NSNotification *)notification{
-    if (self.text.length>_f_maxLength){
+    if (_hasSetMaxLength && (self.text.length>_f_maxLength)){
         self.text = [self.text substringToIndex:_f_maxLength];
     }
     if (self.f_inputType == FBankCardNumberInput) {
@@ -325,7 +323,7 @@
                 return NO;
             }
         }else{
-            if (textField.text.length>(textField.f_maxLength-1)) {
+            if (textField.hasSetMaxLength && (textField.text.length>(textField.f_maxLength-1))) {
                 return NO;
             }
         }
