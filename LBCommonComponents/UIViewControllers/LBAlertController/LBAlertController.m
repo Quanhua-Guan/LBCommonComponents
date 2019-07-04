@@ -72,7 +72,7 @@
     
     
     CGFloat alertMessageWidth = CGRectGetWidth(self.view.bounds)-25*2;
-    _alertMessageLabel.frame = CGRectMake((CGRectGetWidth(self.view.frame)-alertMessageWidth)/2, CGRectGetMaxY(_alertTitleLabel.frame), alertMessageWidth, [_alertMessageLabel sizeThatFits:CGSizeMake(alertMessageWidth, CGFLOAT_MAX)].height+_alertMessage.length?30:0);
+    _alertMessageLabel.frame = CGRectMake((CGRectGetWidth(self.view.frame)-alertMessageWidth)/2, CGRectGetMaxY(_alertTitleLabel.frame), alertMessageWidth, [_alertMessageLabel sizeThatFits:CGSizeMake(alertMessageWidth, CGFLOAT_MAX)].height+(_alertMessage.length?30:0));
     [self.view addSubview:_alertMessageLabel];
     
     _userView.frame = CGRectMake((CGRectGetWidth(self.view.frame)-CGRectGetWidth(_userView.frame))/2, CGRectGetMaxY(_alertMessageLabel.frame), CGRectGetWidth(_userView.frame), CGRectGetHeight(_userView.frame));
