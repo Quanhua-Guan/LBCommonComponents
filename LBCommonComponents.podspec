@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'LBCommonComponents'
-  s.version          = '0.1.4'
+  s.version          = '0.1.5'
   s.summary          = 'CommonComponents of my project.'
   s.description      = <<-DESC
 TODO: Add long description of the pod here.
@@ -55,6 +55,12 @@ TODO: Add long description of the pod here.
     ss.subspec 'LBEncrypt' do |sss|
       sss.source_files = 'LBCommonComponents/NSObjects/LBEncrypt/**/*'
     end
+
+    ss.subspec 'LBUserModel' do |sss|
+      sss.source_files = 'LBCommonComponents/NSObjects/LBUserModel/**/*'
+    end
+
+
   end
 
   s.subspec 'UIViewControllers' do |ss|
@@ -102,6 +108,14 @@ TODO: Add long description of the pod here.
 
    ss.subspec 'LBCodeView' do |sss|
       sss.source_files = 'LBCommonComponents/UIViews/LBCodeView/**/*'
+   end
+
+   ss.subspec 'LBUnderlineButton' do |sss|
+      sss.source_files = 'LBCommonComponents/UIViews/LBUnderlineButton/**/*'
+   end
+
+   ss.subspec 'LBUnderlineSegmentedControl' do |sss|
+      sss.source_files = 'LBCommonComponents/UIViews/LBUnderlineSegmentedControl/**/*'
    end
 
   end

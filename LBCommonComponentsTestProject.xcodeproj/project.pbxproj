@@ -30,6 +30,10 @@
 		40BEB3DB221E43BF005A8481 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BEB3DA221E43BF005A8481 /* main.m */; };
 		40BEB3E7221E4469005A8481 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BEB3E3221E4469005A8481 /* AppDelegate.m */; };
 		40BEB3E8221E4469005A8481 /* LBCommonComponentsTestVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BEB3E5221E4469005A8481 /* LBCommonComponentsTestVC.m */; };
+		40C6F09822D3345A005770E9 /* LBUnderlineButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C6F09722D3345A005770E9 /* LBUnderlineButton.m */; };
+		40C6F09E22D33583005770E9 /* UserModel+TempOperateInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C6F09A22D33582005770E9 /* UserModel+TempOperateInfo.m */; };
+		40C6F09F22D33583005770E9 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C6F09B22D33583005770E9 /* UserModel.m */; };
+		40C6F0A322D34344005770E9 /* LBUnderlineSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C6F0A222D34344005770E9 /* LBUnderlineSegmentedControl.m */; };
 		40E061B2221FCB5D00DB89E3 /* LBCommonComponents.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 40E061B1221FCB5D00DB89E3 /* LBCommonComponents.podspec */; };
 		40F82ECE2276BE4E000259A3 /* LBPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F82ECD2276BE4E000259A3 /* LBPlaceholderTextView.m */; };
 /* End PBXBuildFile section */
@@ -82,6 +86,14 @@
 		40BEB3E2221E4469005A8481 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		40BEB3E3221E4469005A8481 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		40BEB3E5221E4469005A8481 /* LBCommonComponentsTestVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBCommonComponentsTestVC.m; sourceTree = "<group>"; };
+		40C6F09622D3345A005770E9 /* LBUnderlineButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBUnderlineButton.h; sourceTree = "<group>"; };
+		40C6F09722D3345A005770E9 /* LBUnderlineButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBUnderlineButton.m; sourceTree = "<group>"; };
+		40C6F09A22D33582005770E9 /* UserModel+TempOperateInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UserModel+TempOperateInfo.m"; sourceTree = "<group>"; };
+		40C6F09B22D33583005770E9 /* UserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserModel.m; sourceTree = "<group>"; };
+		40C6F09C22D33583005770E9 /* UserModel+TempOperateInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UserModel+TempOperateInfo.h"; sourceTree = "<group>"; };
+		40C6F09D22D33583005770E9 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
+		40C6F0A122D34344005770E9 /* LBUnderlineSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBUnderlineSegmentedControl.h; sourceTree = "<group>"; };
+		40C6F0A222D34344005770E9 /* LBUnderlineSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBUnderlineSegmentedControl.m; sourceTree = "<group>"; };
 		40E061B1221FCB5D00DB89E3 /* LBCommonComponents.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LBCommonComponents.podspec; sourceTree = "<group>"; };
 		40E061B7221FD36E00DB89E3 /* LBCommonComponentsTestProject.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBCommonComponentsTestProject.pch; sourceTree = "<group>"; };
 		40F82ECC2276BE4E000259A3 /* LBPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBPlaceholderTextView.h; sourceTree = "<group>"; };
@@ -102,6 +114,8 @@
 		4012EBEA22202D22006510F3 /* UIViews */ = {
 			isa = PBXGroup;
 			children = (
+				40C6F0A022D34344005770E9 /* LBUnderlineSegmentedControl */,
+				40C6F09522D3345A005770E9 /* LBUnderlineButton */,
 				4091C17122816CAF00C09FE6 /* LBCodeView */,
 				40F82ECB2276BE4E000259A3 /* LBPlaceholderTextView */,
 				4012EBEB22202D22006510F3 /* LBFunctionalTextField */,
@@ -155,6 +169,7 @@
 		4012EBFB22202D22006510F3 /* NSObjects */ = {
 			isa = PBXGroup;
 			children = (
+				40C6F09922D33582005770E9 /* LBUserModel */,
 				4012EBFC22202D22006510F3 /* LBCustemPresentTransitions */,
 				4012EC0222202D22006510F3 /* LBEncrypt */,
 			);
@@ -351,6 +366,35 @@
 			path = LBCommonComponentsTestVC;
 			sourceTree = "<group>";
 		};
+		40C6F09522D3345A005770E9 /* LBUnderlineButton */ = {
+			isa = PBXGroup;
+			children = (
+				40C6F09622D3345A005770E9 /* LBUnderlineButton.h */,
+				40C6F09722D3345A005770E9 /* LBUnderlineButton.m */,
+			);
+			path = LBUnderlineButton;
+			sourceTree = "<group>";
+		};
+		40C6F09922D33582005770E9 /* LBUserModel */ = {
+			isa = PBXGroup;
+			children = (
+				40C6F09D22D33583005770E9 /* UserModel.h */,
+				40C6F09B22D33583005770E9 /* UserModel.m */,
+				40C6F09C22D33583005770E9 /* UserModel+TempOperateInfo.h */,
+				40C6F09A22D33582005770E9 /* UserModel+TempOperateInfo.m */,
+			);
+			path = LBUserModel;
+			sourceTree = "<group>";
+		};
+		40C6F0A022D34344005770E9 /* LBUnderlineSegmentedControl */ = {
+			isa = PBXGroup;
+			children = (
+				40C6F0A122D34344005770E9 /* LBUnderlineSegmentedControl.h */,
+				40C6F0A222D34344005770E9 /* LBUnderlineSegmentedControl.m */,
+			);
+			path = LBUnderlineSegmentedControl;
+			sourceTree = "<group>";
+		};
 		40E06199221F93F100DB89E3 /* LBCommonComponents */ = {
 			isa = PBXGroup;
 			children = (
@@ -447,6 +491,7 @@
 				4091C17422816CAF00C09FE6 /* LBCodeView.m in Sources */,
 				4012EC1822202D22006510F3 /* LBFunctionalTextField.m in Sources */,
 				406DAFE5222E2DCD000A7BE9 /* NSDate+LBToString.m in Sources */,
+				40C6F09E22D33583005770E9 /* UserModel+TempOperateInfo.m in Sources */,
 				40F82ECE2276BE4E000259A3 /* LBPlaceholderTextView.m in Sources */,
 				4012EC1A22202D22006510F3 /* LBCodeGetButton.m in Sources */,
 				406DAFEC222E31B8000A7BE9 /* NSNull+LBInternalNullExtention.m in Sources */,
@@ -456,11 +501,14 @@
 				4012EC1C22202D22006510F3 /* UIButton+LBInit.m in Sources */,
 				40BEB3E8221E4469005A8481 /* LBCommonComponentsTestVC.m in Sources */,
 				4012EC1D22202D22006510F3 /* UILabel+LBInit.m in Sources */,
+				40C6F09F22D33583005770E9 /* UserModel.m in Sources */,
 				40BEB3E7221E4469005A8481 /* AppDelegate.m in Sources */,
 				4012EC2522202D23006510F3 /* LBWebViewController.m in Sources */,
 				4012EC1E22202D23006510F3 /* LBCustemPresentTransitions.m in Sources */,
 				4012EC1922202D22006510F3 /* LBTitleAndInputCell.m in Sources */,
+				40C6F0A322D34344005770E9 /* LBUnderlineSegmentedControl.m in Sources */,
 				40BEB3DB221E43BF005A8481 /* main.m in Sources */,
+				40C6F09822D3345A005770E9 /* LBUnderlineButton.m in Sources */,
 				406DAFE8222E2DE1000A7BE9 /* NSString+LBToDate.m in Sources */,
 				4012EC2122202D23006510F3 /* LBAESEncrypt.m in Sources */,
 				4012EC2222202D23006510F3 /* LBItemsSelectViewController.m in Sources */,
