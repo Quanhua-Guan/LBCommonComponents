@@ -34,6 +34,7 @@
 		40C6F09E22D33583005770E9 /* UserModel+TempOperateInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C6F09A22D33582005770E9 /* UserModel+TempOperateInfo.m */; };
 		40C6F09F22D33583005770E9 /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C6F09B22D33583005770E9 /* UserModel.m */; };
 		40C6F0A322D34344005770E9 /* LBUnderlineSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C6F0A222D34344005770E9 /* LBUnderlineSegmentedControl.m */; };
+		40C6F0A722D34417005770E9 /* LBYearMonthPickerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C6F0A622D34417005770E9 /* LBYearMonthPickerVC.m */; };
 		40E061B2221FCB5D00DB89E3 /* LBCommonComponents.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 40E061B1221FCB5D00DB89E3 /* LBCommonComponents.podspec */; };
 		40F82ECE2276BE4E000259A3 /* LBPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F82ECD2276BE4E000259A3 /* LBPlaceholderTextView.m */; };
 /* End PBXBuildFile section */
@@ -94,6 +95,8 @@
 		40C6F09D22D33583005770E9 /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
 		40C6F0A122D34344005770E9 /* LBUnderlineSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBUnderlineSegmentedControl.h; sourceTree = "<group>"; };
 		40C6F0A222D34344005770E9 /* LBUnderlineSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBUnderlineSegmentedControl.m; sourceTree = "<group>"; };
+		40C6F0A522D34417005770E9 /* LBYearMonthPickerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBYearMonthPickerVC.h; sourceTree = "<group>"; };
+		40C6F0A622D34417005770E9 /* LBYearMonthPickerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBYearMonthPickerVC.m; sourceTree = "<group>"; };
 		40E061B1221FCB5D00DB89E3 /* LBCommonComponents.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LBCommonComponents.podspec; sourceTree = "<group>"; };
 		40E061B7221FD36E00DB89E3 /* LBCommonComponentsTestProject.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBCommonComponentsTestProject.pch; sourceTree = "<group>"; };
 		40F82ECC2276BE4E000259A3 /* LBPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBPlaceholderTextView.h; sourceTree = "<group>"; };
@@ -215,6 +218,7 @@
 		4012EC0922202D22006510F3 /* UIViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				40C6F0A422D34417005770E9 /* LBYearMonthPickerVC */,
 				4012EC0A22202D22006510F3 /* LBItemsSelectViewController */,
 				4012EC0D22202D22006510F3 /* LBWebViewController */,
 				4012EC1522202D22006510F3 /* LBAlertController */,
@@ -395,6 +399,15 @@
 			path = LBUnderlineSegmentedControl;
 			sourceTree = "<group>";
 		};
+		40C6F0A422D34417005770E9 /* LBYearMonthPickerVC */ = {
+			isa = PBXGroup;
+			children = (
+				40C6F0A522D34417005770E9 /* LBYearMonthPickerVC.h */,
+				40C6F0A622D34417005770E9 /* LBYearMonthPickerVC.m */,
+			);
+			path = LBYearMonthPickerVC;
+			sourceTree = "<group>";
+		};
 		40E06199221F93F100DB89E3 /* LBCommonComponents */ = {
 			isa = PBXGroup;
 			children = (
@@ -507,6 +520,7 @@
 				4012EC1E22202D23006510F3 /* LBCustemPresentTransitions.m in Sources */,
 				4012EC1922202D22006510F3 /* LBTitleAndInputCell.m in Sources */,
 				40C6F0A322D34344005770E9 /* LBUnderlineSegmentedControl.m in Sources */,
+				40C6F0A722D34417005770E9 /* LBYearMonthPickerVC.m in Sources */,
 				40BEB3DB221E43BF005A8481 /* main.m in Sources */,
 				40C6F09822D3345A005770E9 /* LBUnderlineButton.m in Sources */,
 				406DAFE8222E2DE1000A7BE9 /* NSString+LBToDate.m in Sources */,

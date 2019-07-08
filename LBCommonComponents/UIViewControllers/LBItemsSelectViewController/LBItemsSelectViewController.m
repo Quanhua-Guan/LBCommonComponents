@@ -73,9 +73,9 @@
 }
 #pragma mark UITableViewDelegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    typeof(self) __weak weakSelf = self;
     dispatch_async(dispatch_get_main_queue(), ^{
-        WEAKSELF
-        [self dismissViewControllerAnimated:YES completion:^{
+        [weakSelf dismissViewControllerAnimated:YES completion:^{
             weakSelf.selectedItem?weakSelf.selectedItem(weakSelf.items[indexPath.row]):NULL;
         }];
     });

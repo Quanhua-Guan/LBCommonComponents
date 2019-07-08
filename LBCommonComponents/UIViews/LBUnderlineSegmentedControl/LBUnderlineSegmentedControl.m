@@ -50,8 +50,8 @@
 
 
 @interface LBUnderlineSegmentedControl ()
-
 @property (nonatomic,strong)NSMutableArray<LBUnderlineSegmentedButton *> *privateItemsBtnArray;
+@property (nonatomic,copy)void (^itemSeletedBlock)(__weak UIButton *sliderButton);
 @end
 @implementation LBUnderlineSegmentedControl
 
@@ -61,22 +61,22 @@
     if (self) {
         _font = [UIFont systemFontOfSize:14];
         _privateItemsBtnArray = [NSMutableArray array];
+        _itemSeletedBlock = action;
         
-        WEAKSELF;WEAK(weakItems, items);
+        typeof(self) __weak weakSelf = self;
+        typeof(items) __weak weakItems = items;
         [items enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            LBUnderlineSegmentedButton *itemsBtn = [[LBUnderlineSegmentedButton alloc] initWithFrame:CGRectMake(idx*(CGRectGetWidth(frame)/weakItems.count), 0, CGRectGetWidth(frame)/weakItems.count, CGRectGetHeight(frame)) action:^(UIButton * _Nonnull __weak sender) {
-                [weakSelf setSelectedSegmentIndex:[weakSelf.privateItemsBtnArray indexOfObject:(LBUnderlineSegmentedButton *)sender]];
-                action?action(weakSelf.sliderButton):NULL;
-            }];
+            LBUnderlineSegmentedButton *itemsBtn = [[LBUnderlineSegmentedButton alloc] initWithFrame:CGRectMake(idx*(CGRectGetWidth(frame)/weakItems.count), 0, CGRectGetWidth(frame)/weakItems.count, CGRectGetHeight(frame))];
             itemsBtn.titleLabel.font = weakSelf.font;
             itemsBtn.underLineView.hidden = YES;
             [itemsBtn setTitle:obj forState:UIControlStateNormal];
+            [itemsBtn addTarget:weakSelf action:@selector(itemSelected:) forControlEvents:UIControlEventTouchUpInside];
             [weakSelf addSubview:itemsBtn];
             [weakSelf.privateItemsBtnArray addObject:itemsBtn];
         }];
         _itemsBtnArray = [NSArray arrayWithArray:_privateItemsBtnArray];
         
-        _sliderButton = [[LBUnderlineSegmentedButton alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(frame)/items.count, CGRectGetHeight(frame)) action:nil];
+        _sliderButton = [[LBUnderlineSegmentedButton alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(frame)/items.count, CGRectGetHeight(frame))];
         _sliderButton.userInteractionEnabled = NO;
         [self addSubview:_sliderButton];
         
@@ -116,7 +116,7 @@
 -(void)setSelectedSegmentIndex:(NSInteger)selectedSegmentIndex{
     _selectedSegmentIndex = selectedSegmentIndex;
     
-    WEAKSELF
+    typeof(self) __weak weakSelf = self;
     [UIView animateWithDuration:0.3 delay:0 usingSpringWithDamping:0.6 initialSpringVelocity:0.1 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         LBUnderlineSegmentedButton *itmeBtn = [weakSelf.privateItemsBtnArray objectAtIndex:selectedSegmentIndex];
         weakSelf.sliderButton.center = CGPointMake(itmeBtn.center.x, weakSelf.sliderButton.center.y);
@@ -126,5 +126,11 @@
 }
 -(void)setNews:(BOOL)showNews forSegmentIndex:(NSInteger)selectedSegmentIndex{
     [_privateItemsBtnArray objectAtIndex:selectedSegmentIndex].newsPoint.hidden = !showNews;
+}
+
+-(void)itemSelected:(LBUnderlineSegmentedButton *)sender{
+    [self setSelectedSegmentIndex:[_privateItemsBtnArray indexOfObject:sender]];
+    typeof(self) __weak weakSelf = self;
+    _itemSeletedBlock?_itemSeletedBlock(weakSelf.sliderButton):NULL;
 }
 @end
