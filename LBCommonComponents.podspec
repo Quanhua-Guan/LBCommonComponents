@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'LBCommonComponents'
-  s.version          = '0.1.5'
+  s.version          = '0.1.7'
   s.summary          = 'CommonComponents of my project.'
   s.description      = <<-DESC
 TODO: Add long description of the pod here.
@@ -49,7 +49,7 @@ TODO: Add long description of the pod here.
     ss.dependency 'LBCommonComponents/Macros'
 
     ss.subspec 'LBCustemPresentTransitions' do |sss|
-      sss.source_files = 'LBCommonComponents/NSObjects/LBCustemPresentTransitions/**/*'
+      sss.source_files = 'LBCommonComponents/NSObjects/LBCustemPresentTransitions/**/*.{h,m}'
     end
 
     ss.subspec 'LBEncrypt' do |sss|
