@@ -41,7 +41,10 @@
     _tableView.tableFooterView = [[UIView alloc] init];
     [self.view addSubview:_tableView];
 }
-
+- (void)setCellHeight:(CGFloat)cellHeight{
+    _cellHeight = cellHeight;
+    [_tableView reloadData];
+}
 
 -(void)setItems:(NSArray<NSObject<LBSelectItemsProtocol> *> *)items{
     _items = items;
@@ -54,7 +57,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return DropDownViewCELL_HEIGHT;
+    return _cellHeight;
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
