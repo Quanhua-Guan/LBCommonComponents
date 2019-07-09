@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'LBCommonComponents'
-  s.version          = '0.1.8'
+  s.version          = '0.1.9'
   s.summary          = 'CommonComponents of my project.'
   s.description      = <<-DESC
 TODO: Add long description of the pod here.
@@ -25,8 +25,6 @@ TODO: Add long description of the pod here.
 
 
   s.subspec 'Category' do |ss|
-    ss.dependency 'LBCommonComponents/Macros'
-
     ss.subspec 'NSNull+InternalNullExtention' do |sss|
       sss.source_files = 'LBCommonComponents/Category/NSNull+InternalNullExtention/**/*.{h,m}'
     end
@@ -46,8 +44,6 @@ TODO: Add long description of the pod here.
 
    
   s.subspec 'NSObjects' do |ss|
-    ss.dependency 'LBCommonComponents/Macros'
-
     ss.subspec 'LBCustemPresentTransitions' do |sss|
       sss.source_files = 'LBCommonComponents/NSObjects/LBCustemPresentTransitions/**/*.{h,m}'
     end
@@ -64,8 +60,6 @@ TODO: Add long description of the pod here.
   end
 
   s.subspec 'UIViewControllers' do |ss|
-    ss.dependency 'LBCommonComponents/Macros'
-
     ss.subspec 'LBItemsSelectViewController' do |sss|
       sss.source_files = 'LBCommonComponents/UIViewControllers/LBItemsSelectViewController/**/*'
     end
@@ -88,8 +82,6 @@ TODO: Add long description of the pod here.
 
 
   s.subspec 'UIViews' do |ss|
-    ss.dependency 'LBCommonComponents/Macros'
-
     ss.subspec 'UIViewInit' do |sss|
       sss.source_files = 'LBCommonComponents/UIViews/UIViewInit/**/*'
     end
