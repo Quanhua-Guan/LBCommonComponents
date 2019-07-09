@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'LBCommonComponents'
-  s.version          = '0.1.7'
+  s.version          = '0.1.8'
   s.summary          = 'CommonComponents of my project.'
   s.description      = <<-DESC
 TODO: Add long description of the pod here.
@@ -65,7 +65,6 @@ TODO: Add long description of the pod here.
 
   s.subspec 'UIViewControllers' do |ss|
     ss.dependency 'LBCommonComponents/Macros'
-    ss.dependency 'LBCommonComponents/NSObjects/LBCustemPresentTransitions'
 
     ss.subspec 'LBItemsSelectViewController' do |sss|
       sss.source_files = 'LBCommonComponents/UIViewControllers/LBItemsSelectViewController/**/*'
@@ -77,7 +76,13 @@ TODO: Add long description of the pod here.
     end
 
     ss.subspec 'LBAlertController' do |sss|
+      sss.dependency 'LBCommonComponents/NSObjects/LBCustemPresentTransitions'
       sss.source_files = 'LBCommonComponents/UIViewControllers/LBAlertController/**/*'
+    end
+
+    ss.subspec 'LBYearMonthPickerVC' do |sss|
+      sss.dependency 'LBCommonComponents/NSObjects/LBCustemPresentTransitions'
+      sss.source_files = 'LBCommonComponents/UIViewControllers/LBYearMonthPickerVC/**/*'
     end
   end
 
