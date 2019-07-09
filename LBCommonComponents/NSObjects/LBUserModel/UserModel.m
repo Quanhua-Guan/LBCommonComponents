@@ -7,8 +7,6 @@
 //
 
 #import "UserModel.h"
-#import "AppDelegate.h"
-
 NSString *const QHUserInfo = @"QHUserInfo";//私有
 
 NSString *const QHToken = @"QHToken";
