@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
 
 extern NSString *const QHToken;//登录token
 extern NSString *const QHAccount;
