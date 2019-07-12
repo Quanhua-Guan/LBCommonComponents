@@ -116,13 +116,15 @@
 -(void)setSelectedSegmentIndex:(NSInteger)selectedSegmentIndex{
     _selectedSegmentIndex = selectedSegmentIndex;
     
+    LBUnderlineSegmentedButton *itmeBtn = [self.privateItemsBtnArray objectAtIndex:selectedSegmentIndex];
+    [self.sliderButton setTitle:[itmeBtn titleForState:UIControlStateNormal] forState:UIControlStateNormal];
+    self.itemSeletedBlock?self.itemSeletedBlock(self.sliderButton):NULL;
+    
     typeof(self) __weak weakSelf = self;
     [UIView animateWithDuration:0.3 delay:0 usingSpringWithDamping:0.6 initialSpringVelocity:0.1 options:UIViewAnimationOptionCurveEaseInOut animations:^{
-        LBUnderlineSegmentedButton *itmeBtn = [weakSelf.privateItemsBtnArray objectAtIndex:selectedSegmentIndex];
         weakSelf.sliderButton.center = CGPointMake(itmeBtn.center.x, weakSelf.sliderButton.center.y);
-        [weakSelf.sliderButton setTitle:[itmeBtn titleForState:UIControlStateNormal] forState:UIControlStateNormal];
         ((LBUnderlineSegmentedButton *)weakSelf.sliderButton).newsPoint.hidden = itmeBtn.newsPoint.hidden;
-    } completion:nil];
+    } completion:NULL];
 }
 -(void)setNews:(BOOL)showNews forSegmentIndex:(NSInteger)selectedSegmentIndex{
     [_privateItemsBtnArray objectAtIndex:selectedSegmentIndex].newsPoint.hidden = !showNews;
