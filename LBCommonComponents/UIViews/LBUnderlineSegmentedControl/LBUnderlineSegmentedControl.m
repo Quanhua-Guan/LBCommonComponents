@@ -51,11 +51,11 @@
 
 @interface LBUnderlineSegmentedControl ()
 @property (nonatomic,strong)NSMutableArray<LBUnderlineSegmentedButton *> *privateItemsBtnArray;
-@property (nonatomic,copy)void (^itemSeletedBlock)(__weak UIButton *sliderButton);
+@property (nonatomic,copy)void (^itemSeletedBlock)(__weak UIButton *sliderButton,BOOL isTopAction);
 @end
 @implementation LBUnderlineSegmentedControl
 
-- (instancetype)initWithFrame:(CGRect)frame items:(NSArray <NSString *>*)items action:(void (^ _Nullable)(__weak UIButton *sliderButton))action
+- (instancetype)initWithFrame:(CGRect)frame items:(NSArray <NSString *>*)items action:(void (^ _Nullable)(__weak UIButton *sliderButton,BOOL isTopAction))action
 {
     self = [super initWithFrame:frame];
     if (self) {
@@ -118,7 +118,7 @@
     
     LBUnderlineSegmentedButton *itmeBtn = [self.privateItemsBtnArray objectAtIndex:selectedSegmentIndex];
     [self.sliderButton setTitle:[itmeBtn titleForState:UIControlStateNormal] forState:UIControlStateNormal];
-    self.itemSeletedBlock?self.itemSeletedBlock(self.sliderButton):NULL;
+    self.itemSeletedBlock?self.itemSeletedBlock(self.sliderButton,NO):NULL;
     
     typeof(self) __weak weakSelf = self;
     [UIView animateWithDuration:0.3 delay:0 usingSpringWithDamping:0.6 initialSpringVelocity:0.1 options:UIViewAnimationOptionCurveEaseInOut animations:^{
@@ -133,6 +133,6 @@
 -(void)itemSelected:(LBUnderlineSegmentedButton *)sender{
     [self setSelectedSegmentIndex:[_privateItemsBtnArray indexOfObject:sender]];
     typeof(self) __weak weakSelf = self;
-    _itemSeletedBlock?_itemSeletedBlock(weakSelf.sliderButton):NULL;
+    _itemSeletedBlock?_itemSeletedBlock(weakSelf.sliderButton,YES):NULL;
 }
 @end

@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic,strong)UIFont *font;
 @property (nonatomic) NSInteger selectedSegmentIndex;
 
-- (instancetype)initWithFrame:(CGRect)frame items:(NSArray <NSString *>*)items action:(void (^ _Nullable)(__weak UIButton *sliderButton))action;
+- (instancetype)initWithFrame:(CGRect)frame items:(NSArray <NSString *>*)items action:(void (^ _Nullable)(__weak UIButton *sliderButton,BOOL isTopAction))action;
 -(void)setNews:(BOOL )showNews forSegmentIndex:(NSInteger)selectedSegmentIndex;
 @end
 
