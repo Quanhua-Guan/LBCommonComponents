@@ -6,22 +6,22 @@
 //  Copyright © 2016年 刘彬. All rights reserved.
 //
 
-#import "UserModel.h"
-NSString *const QHUserInfo = @"QHUserInfo";//私有
+#import "LBUserModel.h"
+NSString *const LBUserInfo = @"LBUserInfo";//私有
 
-NSString *const QHToken = @"QHToken";
-NSString *const QHAccount = @"QHAccount";
+NSString *const LBToken = @"LBToken";
+NSString *const LBAccount = @"LBAccount";
 
-@interface UserModel()
+@interface LBUserModel()
 @property (nonatomic,strong)NSMutableDictionary *privateUserInfo;
 @end
 
-@implementation UserModel
-+(UserModel *)shareInstanse{
-    static UserModel *info = nil;
+@implementation LBUserModel
++(LBUserModel *)shareInstanse{
+    static LBUserModel *info = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        info = [[UserModel alloc] init];
+        info = [[LBUserModel alloc] init];
     });
     return info;
 }
@@ -30,7 +30,7 @@ NSString *const QHAccount = @"QHAccount";
     if (_privateUserInfo) {
         return _privateUserInfo;
     }else{
-        _privateUserInfo = [[[NSUserDefaults standardUserDefaults] objectForKey:QHUserInfo] mutableCopy];
+        _privateUserInfo = [[[NSUserDefaults standardUserDefaults] objectForKey:LBUserInfo] mutableCopy];
         if (!_privateUserInfo) {
             _privateUserInfo = [[NSMutableDictionary alloc] init];
         }
@@ -38,15 +38,15 @@ NSString *const QHAccount = @"QHAccount";
     }
     return _privateUserInfo;
 }
-- (void)setObject:(id)anObject forKey:(id)aKey{
+- (void)setLBUserInfoObject:(id)anObject forKey:(id)aKey{
     if ([anObject isEqual:[NSNull null]]) {
         anObject = @"";
     }
     [_privateUserInfo setValue:anObject forKey:aKey];
-    [[NSUserDefaults standardUserDefaults] setObject:_privateUserInfo forKey:QHUserInfo];
+    [[NSUserDefaults standardUserDefaults] setObject:_privateUserInfo forKey:LBUserInfo];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
-- (void)addEntriesFromDictionary:(NSDictionary *)otherDictionary{
+- (void)addEntriesForLBUserInfoFromDictionary:(NSDictionary *)otherDictionary{
     for (id key in otherDictionary.allKeys) {
         id anObject = otherDictionary[key];
         if ([anObject isEqual:[NSNull null]]) {
@@ -54,25 +54,25 @@ NSString *const QHAccount = @"QHAccount";
         }
         [_privateUserInfo setValue:anObject forKey:key];
     }
-    [[NSUserDefaults standardUserDefaults] setObject:_privateUserInfo forKey:QHUserInfo];
+    [[NSUserDefaults standardUserDefaults] setObject:_privateUserInfo forKey:LBUserInfo];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
 - (void)removeUserInfo{
     _privateUserInfo = nil;
-    [[NSUserDefaults standardUserDefaults] removeObjectForKey:QHUserInfo];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:LBUserInfo];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
-- (void)removeAllObjects{
-    [self removeObjectsForKeys:_privateUserInfo.allKeys];
+- (void)removeLBUserInfoAllObjects{
+    [self removeLBUserInfoObjectsForKeys:_privateUserInfo.allKeys];
 }
-- (void)removeObjectForKey:(id)aKey{
-    [self removeObjectsForKeys:@[aKey]];
+- (void)removeLBUserInfoObjectForKey:(id)aKey{
+    [self removeLBUserInfoObjectsForKeys:@[aKey]];
 }
 
-- (void)removeObjectsForKeys:(NSArray*)keyArray{
+- (void)removeLBUserInfoObjectsForKeys:(NSArray*)keyArray{
     [_privateUserInfo removeObjectsForKeys:keyArray];
-    [[NSUserDefaults standardUserDefaults] setObject:_privateUserInfo forKey:QHUserInfo];
+    [[NSUserDefaults standardUserDefaults] setObject:_privateUserInfo forKey:LBUserInfo];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 @end

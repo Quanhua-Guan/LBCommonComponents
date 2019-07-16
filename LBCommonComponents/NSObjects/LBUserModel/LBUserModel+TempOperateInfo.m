@@ -6,9 +6,9 @@
 //  Copyright © 2019 BIN. All rights reserved.
 //
 
-#import "UserModel+TempOperateInfo.h"
+#import "LBUserModel+TempOperateInfo.h"
 #import <objc/runtime.h>
-@implementation UserModel (TempOperateInfo)
+@implementation LBUserModel (TempOperateInfo)
 
 @dynamic tempOperateInfo;
 static NSString *tempOperateInfoKey = @"TempOperateInfoKey";

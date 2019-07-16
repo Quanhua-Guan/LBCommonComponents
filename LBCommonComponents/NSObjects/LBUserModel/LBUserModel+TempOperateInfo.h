@@ -6,11 +6,11 @@
 //  Copyright © 2019 BIN. All rights reserved.
 //
 
-#import "UserModel.h"
+#import "LBUserModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 typedef void(^NeedRefreshDataBlock)(id info);
-@interface UserModel (TempOperateInfo)
+@interface LBUserModel (TempOperateInfo)
 //一些临时需要多级传值的时候用，该属性可随意根据当前操作流程更改其内容
 @property (nonatomic,strong)NSMutableDictionary *tempOperateInfo;
 @end
