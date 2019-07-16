@@ -32,6 +32,7 @@
     [super loadView];
     
     self.view.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 0);
+    self.view.backgroundColor = [UIColor whiteColor];
     //取消
     UIButton *cancelButton = [[UIButton alloc] initWithFrame:CGRectMake(15, 10, 40, 30)];
     [cancelButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
