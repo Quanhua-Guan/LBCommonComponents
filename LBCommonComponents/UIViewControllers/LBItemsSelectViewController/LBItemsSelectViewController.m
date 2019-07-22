@@ -8,6 +8,37 @@
 
 #import "LBItemsSelectViewController.h"
 
+@interface LBItemsSelectCell : UITableViewCell
+@property (nonatomic,strong)UIImageView *icon;
+@property (nonatomic,strong)UILabel *titleLabel;
+@end
+
+@implementation LBItemsSelectCell
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        self.icon = [[UIImageView alloc] init];
+        [self addSubview:self.icon];
+        
+        self.titleLabel = [[UILabel alloc] init];
+        self.titleLabel.font = [UIFont systemFontOfSize:12];
+        [self addSubview:self.titleLabel];
+    }
+    return self;
+}
+- (void)setFrame:(CGRect)frame{
+    [super setFrame:frame];
+    self.icon.frame = CGRectMake(self.layoutMargins.left, self.layoutMargins.top, self.icon.image?CGRectGetHeight(frame)-self.layoutMargins.top-self.layoutMargins.bottom:0, CGRectGetHeight(frame)-self.layoutMargins.top-self.layoutMargins.bottom);
+    self.titleLabel.frame = CGRectMake(CGRectGetMaxX(self.icon.frame)+(self.icon.image?5:0), CGRectGetMinY(self.icon.frame), CGRectGetWidth(frame)-CGRectGetMaxX(self.icon.frame)-10, CGRectGetHeight(self.icon.frame));
+    
+    if (self.icon.image) {
+        self.titleLabel.textAlignment = NSTextAlignmentLeft;
+    }else{
+        self.titleLabel.textAlignment = NSTextAlignmentCenter;
+    }
+}
+@end
+
 @interface LBItemsSelectViewController ()<UITableViewDataSource,UITableViewDelegate,UIPopoverPresentationControllerDelegate>
 @property (nonatomic,strong)UITableView *tableView;
 @end
@@ -30,7 +61,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+}
+- (void)setSeparatorInset:(UIEdgeInsets)separatorInset{
+    _separatorInset = separatorInset;
+    [_tableView reloadData];
 }
 -(void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
@@ -62,16 +96,23 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *identifier = @"DROP_DOWN_CELL";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    LBItemsSelectCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[LBItemsSelectCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
         cell.backgroundColor = [UIColor clearColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
         cell.textLabel.font = [UIFont systemFontOfSize:12];
         cell.textLabel.textAlignment = NSTextAlignmentCenter;
     }
-    cell.textLabel.text = [_items[indexPath.row] title];
+    cell.separatorInset = self.separatorInset;
+    
+    self.font?cell.titleLabel.font = self.font:NULL;
+    self.textColor?cell.titleLabel.textColor = self.textColor:NULL;
+    cell.titleLabel.text = [_items[indexPath.row] title];
+    if ([_items[indexPath.row] respondsToSelector:@selector(image)]) {
+        cell.icon.image = [_items[indexPath.row] image];
+    }
     return cell;
 }
 #pragma mark UITableViewDelegate
