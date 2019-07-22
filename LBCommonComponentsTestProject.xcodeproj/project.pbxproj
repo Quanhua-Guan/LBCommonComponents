@@ -36,6 +36,7 @@
 		40C6F0A322D34344005770E9 /* LBUnderlineSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C6F0A222D34344005770E9 /* LBUnderlineSegmentedControl.m */; };
 		40C6F0A722D34417005770E9 /* LBYearMonthPickerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C6F0A622D34417005770E9 /* LBYearMonthPickerVC.m */; };
 		40E061B2221FCB5D00DB89E3 /* LBCommonComponents.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 40E061B1221FCB5D00DB89E3 /* LBCommonComponents.podspec */; };
+		40F69D8D22E57C9300EEA23A /* LBRichTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F69D8B22E57C9300EEA23A /* LBRichTextView.m */; };
 		40F82ECE2276BE4E000259A3 /* LBPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F82ECD2276BE4E000259A3 /* LBPlaceholderTextView.m */; };
 /* End PBXBuildFile section */
 
@@ -99,6 +100,8 @@
 		40C6F0A622D34417005770E9 /* LBYearMonthPickerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBYearMonthPickerVC.m; sourceTree = "<group>"; };
 		40E061B1221FCB5D00DB89E3 /* LBCommonComponents.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LBCommonComponents.podspec; sourceTree = "<group>"; };
 		40E061B7221FD36E00DB89E3 /* LBCommonComponentsTestProject.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBCommonComponentsTestProject.pch; sourceTree = "<group>"; };
+		40F69D8B22E57C9300EEA23A /* LBRichTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBRichTextView.m; sourceTree = "<group>"; };
+		40F69D8C22E57C9300EEA23A /* LBRichTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBRichTextView.h; sourceTree = "<group>"; };
 		40F82ECC2276BE4E000259A3 /* LBPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBPlaceholderTextView.h; sourceTree = "<group>"; };
 		40F82ECD2276BE4E000259A3 /* LBPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBPlaceholderTextView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,6 +120,7 @@
 		4012EBEA22202D22006510F3 /* UIViews */ = {
 			isa = PBXGroup;
 			children = (
+				40F69D8A22E57C9300EEA23A /* LBRichTextView */,
 				40C6F0A022D34344005770E9 /* LBUnderlineSegmentedControl */,
 				40C6F09522D3345A005770E9 /* LBUnderlineButton */,
 				4091C17122816CAF00C09FE6 /* LBCodeView */,
@@ -420,6 +424,15 @@
 			path = LBCommonComponents;
 			sourceTree = SOURCE_ROOT;
 		};
+		40F69D8A22E57C9300EEA23A /* LBRichTextView */ = {
+			isa = PBXGroup;
+			children = (
+				40F69D8C22E57C9300EEA23A /* LBRichTextView.h */,
+				40F69D8B22E57C9300EEA23A /* LBRichTextView.m */,
+			);
+			path = LBRichTextView;
+			sourceTree = "<group>";
+		};
 		40F82ECB2276BE4E000259A3 /* LBPlaceholderTextView */ = {
 			isa = PBXGroup;
 			children = (
@@ -501,6 +514,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4012EC1B22202D22006510F3 /* UIView+LBInit.m in Sources */,
+				40F69D8D22E57C9300EEA23A /* LBRichTextView.m in Sources */,
 				4091C17422816CAF00C09FE6 /* LBCodeView.m in Sources */,
 				4012EC1822202D22006510F3 /* LBFunctionalTextField.m in Sources */,
 				406DAFE5222E2DCD000A7BE9 /* NSDate+LBToString.m in Sources */,
