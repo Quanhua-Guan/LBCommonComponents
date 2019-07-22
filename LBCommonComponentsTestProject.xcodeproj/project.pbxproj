@@ -37,6 +37,7 @@
 		40C6F0A722D34417005770E9 /* LBYearMonthPickerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C6F0A622D34417005770E9 /* LBYearMonthPickerVC.m */; };
 		40E061B2221FCB5D00DB89E3 /* LBCommonComponents.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 40E061B1221FCB5D00DB89E3 /* LBCommonComponents.podspec */; };
 		40F69D8D22E57C9300EEA23A /* LBRichTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F69D8B22E57C9300EEA23A /* LBRichTextView.m */; };
+		40F69D9422E5B64C00EEA23A /* UIImage+LBChangeColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F69D9322E5B64C00EEA23A /* UIImage+LBChangeColor.m */; };
 		40F82ECE2276BE4E000259A3 /* LBPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F82ECD2276BE4E000259A3 /* LBPlaceholderTextView.m */; };
 /* End PBXBuildFile section */
 
@@ -102,6 +103,8 @@
 		40E061B7221FD36E00DB89E3 /* LBCommonComponentsTestProject.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBCommonComponentsTestProject.pch; sourceTree = "<group>"; };
 		40F69D8B22E57C9300EEA23A /* LBRichTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBRichTextView.m; sourceTree = "<group>"; };
 		40F69D8C22E57C9300EEA23A /* LBRichTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBRichTextView.h; sourceTree = "<group>"; };
+		40F69D9222E5B64C00EEA23A /* UIImage+LBChangeColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+LBChangeColor.h"; sourceTree = "<group>"; };
+		40F69D9322E5B64C00EEA23A /* UIImage+LBChangeColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+LBChangeColor.m"; sourceTree = "<group>"; };
 		40F82ECC2276BE4E000259A3 /* LBPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBPlaceholderTextView.h; sourceTree = "<group>"; };
 		40F82ECD2276BE4E000259A3 /* LBPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBPlaceholderTextView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -272,6 +275,7 @@
 		406DAFD1222E2B92000A7BE9 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				40F69D9122E5B64C00EEA23A /* UIImage+ChangeColor */,
 				406DAFE9222E31B8000A7BE9 /* NSNull+InternalNullExtention */,
 				406DAFE1222E2DAA000A7BE9 /* NSDate+ToString */,
 				406DAFE2222E2DAB000A7BE9 /* NSString+ToDate */,
@@ -433,6 +437,15 @@
 			path = LBRichTextView;
 			sourceTree = "<group>";
 		};
+		40F69D9122E5B64C00EEA23A /* UIImage+ChangeColor */ = {
+			isa = PBXGroup;
+			children = (
+				40F69D9222E5B64C00EEA23A /* UIImage+LBChangeColor.h */,
+				40F69D9322E5B64C00EEA23A /* UIImage+LBChangeColor.m */,
+			);
+			path = "UIImage+ChangeColor";
+			sourceTree = "<group>";
+		};
 		40F82ECB2276BE4E000259A3 /* LBPlaceholderTextView */ = {
 			isa = PBXGroup;
 			children = (
@@ -522,6 +535,7 @@
 				40F82ECE2276BE4E000259A3 /* LBPlaceholderTextView.m in Sources */,
 				4012EC1A22202D22006510F3 /* LBCodeGetButton.m in Sources */,
 				406DAFEC222E31B8000A7BE9 /* NSNull+LBInternalNullExtention.m in Sources */,
+				40F69D9422E5B64C00EEA23A /* UIImage+LBChangeColor.m in Sources */,
 				4012EC2722202D23006510F3 /* LBAlertController.m in Sources */,
 				4012EC2022202D23006510F3 /* LBSecKeyWrapper.m in Sources */,
 				406DAFD5222E2C22000A7BE9 /* UIColor+LBConvertToImage.m in Sources */,

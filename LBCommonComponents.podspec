@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'LBCommonComponents'
-  s.version          = '0.2.4'
+  s.version          = '0.2.5'
   s.summary          = 'CommonComponents of my project.'
   s.description      = <<-DESC
 TODO: Add long description of the pod here.
@@ -27,6 +27,10 @@ TODO: Add long description of the pod here.
   s.subspec 'Category' do |ss|
     ss.subspec 'NSNull+InternalNullExtention' do |sss|
       sss.source_files = 'LBCommonComponents/Category/NSNull+InternalNullExtention/**/*.{h,m}'
+    end
+
+    ss.subspec 'UIImage+ChangeColor' do |sss|
+      sss.source_files = 'LBCommonComponents/Category/UIImage+ChangeColor/**/*.{h,m}'
     end
     
     ss.subspec 'NSDate+ToString' do |sss|
