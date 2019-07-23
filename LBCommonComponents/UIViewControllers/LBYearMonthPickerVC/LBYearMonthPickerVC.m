@@ -24,7 +24,8 @@
         transitions.contentMode = LBViewContentModeBottom;
         self.transitioningDelegate = transitions;
         self.modalPresentationStyle = UIModalPresentationCustom;
-        self.minDate = [NSDate dateWithTimeIntervalSince1970:0];
+        self.minimumDate = [NSDate dateWithTimeIntervalSince1970:0];
+        self.maximumDate = [NSDate date];
     }
     return self;
 }
@@ -62,38 +63,20 @@
     [self dataSource];
     
 }
-- (void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    if (_selectedDate) {
-        NSDateFormatter *yearMonthFormatter = [[NSDateFormatter alloc] init];
-        yearMonthFormatter.timeZone = [NSTimeZone timeZoneWithName:@"GMT"];
-        [yearMonthFormatter setDateFormat:@"yyyy-MM"];
-        
-        NSString *selectedDateString = [yearMonthFormatter stringFromDate:_selectedDate];
-        
-        NSString *selectedYear = [selectedDateString componentsSeparatedByString:@"-"].firstObject;
-        
-        NSString *selectedMonth = [selectedDateString componentsSeparatedByString:@"-"].lastObject;
-        
-        [_datePickerView selectRow:[_yearsArray indexOfObject:selectedYear] inComponent:0 animated:NO];
-        [_datePickerView reloadComponent:1];
-        
-        
-        // Intermediate
-        NSMutableString *numberString = [[NSMutableString alloc] init];
-        NSScanner *scanner = [NSScanner scannerWithString:_selectedDateString];
-        NSString *tempStr;
-        while (![scanner isAtEnd]) {
-            // Throw away characters before the first number.
-            [scanner scanUpToCharactersFromSet:[NSCharacterSet decimalDigitCharacterSet] intoString:nil];
-            // Collect numbers.
-            [scanner scanCharactersFromSet:[NSCharacterSet decimalDigitCharacterSet] intoString:&tempStr];
-            [numberString appendString:tempStr];
-            tempStr = @"";
-        }
-        if (numberString.length > 4) {
-            [_datePickerView selectRow:[_monthsOfAllYearsArray[[_yearsArray indexOfObject:selectedYear]] indexOfObject:selectedMonth] inComponent:1 animated:NO];
-        }
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    if (!_selectedSimilarYear.length) {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"yyyy"];
+        self.selectedSimilarYear = [formatter stringFromDate:self.maximumDate];
+    }
+    
+    [_datePickerView selectRow:[_yearsArray indexOfObject:_selectedSimilarYear] inComponent:0 animated:NO];
+    [_datePickerView reloadComponent:1];
+    
+    if (_selectedSimilarMonth.length) {
+        [_datePickerView selectRow:[_monthsOfAllYearsArray[[_yearsArray indexOfObject:_selectedSimilarYear]] indexOfObject:_selectedSimilarMonth] inComponent:1 animated:NO];
     }
 }
     
@@ -106,7 +89,7 @@
     [yearMonthFormatter setDateFormat:@"yyyy-MM"];
     
     //加入当前年月
-    NSDate *date = [NSDate date];
+    NSDate *date = self.maximumDate;
     NSString *year = [[yearMonthFormatter stringFromDate:date] componentsSeparatedByString:@"-"].firstObject;
     NSString *month = [[yearMonthFormatter stringFromDate:date] componentsSeparatedByString:@"-"].lastObject;
     NSMutableArray *oneYearMonthsArray = [NSMutableArray array];
@@ -119,10 +102,10 @@
     NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
     NSDateComponents *monthComps = [[NSDateComponents alloc] init];
     monthComps.month = -1;
-    while ([date compare:_minDate] != NSOrderedAscending) {
+    while ([date compare:self.minimumDate] != NSOrderedAscending) {
         //获取之前n个月, setMonth的参数为正则向后，为负则表示之前
         NSDate *lastDate = [calendar dateByAddingComponents:monthComps toDate:date options:0];
-        if ([lastDate compare:_minDate] == NSOrderedAscending) {
+        if ([lastDate compare:self.minimumDate] == NSOrderedAscending) {
             [_eachYearDefaultLikeMonths enumerateKeysAndObjectsUsingBlock:^(NSNumber * _Nonnull key, NSString * _Nonnull obj, BOOL * _Nonnull stop) {
                 if (key.integerValue < 0) {
                     [oneYearMonthsArray addObject:obj];
@@ -202,9 +185,9 @@
 -(void)pickerSelectedDate{
     typeof(self) __weak weakSelf = self;
     [weakSelf dismissViewControllerAnimated:YES completion:^{
-        NSString *yearString = weakSelf.yearsArray[[weakSelf.datePickerView selectedRowInComponent:0]];
-        NSString *monthString = weakSelf.monthsOfAllYearsArray[[weakSelf.yearsArray indexOfObject:yearString]][[weakSelf.datePickerView selectedRowInComponent:1]];
-        weakSelf.pickerViewSelectDate?weakSelf.pickerViewSelectDate(yearString,monthString):NULL;
+        weakSelf.selectedSimilarYear = weakSelf.yearsArray[[weakSelf.datePickerView selectedRowInComponent:0]];
+        weakSelf.selectedSimilarMonth = weakSelf.monthsOfAllYearsArray[[weakSelf.yearsArray indexOfObject:weakSelf.selectedSimilarYear]][[weakSelf.datePickerView selectedRowInComponent:1]];
+        weakSelf.pickerViewSelectDate?weakSelf.pickerViewSelectDate(weakSelf.selectedSimilarYear,weakSelf.selectedSimilarMonth):NULL;
     }];
 }
 @end
