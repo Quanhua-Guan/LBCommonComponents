@@ -123,6 +123,10 @@ TODO: Add long description of the pod here.
       sss.source_files = 'LBCommonComponents/UIViews/LBUnderlineSegmentedControl/**/*'
    end
 
+   ss.subspec 'LBVerticalButton' do |sss|
+      sss.source_files = 'LBCommonComponents/UIViews/LBVerticalButton/**/*'
+   end
+
   end
 
 end

@@ -26,6 +26,7 @@
 		406DAFE5222E2DCD000A7BE9 /* NSDate+LBToString.m in Sources */ = {isa = PBXBuildFile; fileRef = 406DAFE4222E2DCD000A7BE9 /* NSDate+LBToString.m */; };
 		406DAFE8222E2DE1000A7BE9 /* NSString+LBToDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 406DAFE7222E2DE1000A7BE9 /* NSString+LBToDate.m */; };
 		406DAFEC222E31B8000A7BE9 /* NSNull+LBInternalNullExtention.m in Sources */ = {isa = PBXBuildFile; fileRef = 406DAFEA222E31B8000A7BE9 /* NSNull+LBInternalNullExtention.m */; };
+		408847D222E6C954002A25BD /* LBVerticalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 408847D022E6C954002A25BD /* LBVerticalButton.m */; };
 		4091C17422816CAF00C09FE6 /* LBCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4091C17222816CAF00C09FE6 /* LBCodeView.m */; };
 		40BEB3DB221E43BF005A8481 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BEB3DA221E43BF005A8481 /* main.m */; };
 		40BEB3E7221E4469005A8481 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BEB3E3221E4469005A8481 /* AppDelegate.m */; };
@@ -80,6 +81,8 @@
 		406DAFE7222E2DE1000A7BE9 /* NSString+LBToDate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+LBToDate.m"; sourceTree = "<group>"; };
 		406DAFEA222E31B8000A7BE9 /* NSNull+LBInternalNullExtention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNull+LBInternalNullExtention.m"; sourceTree = "<group>"; };
 		406DAFEB222E31B8000A7BE9 /* NSNull+LBInternalNullExtention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNull+LBInternalNullExtention.h"; sourceTree = "<group>"; };
+		408847D022E6C954002A25BD /* LBVerticalButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBVerticalButton.m; sourceTree = "<group>"; };
+		408847D122E6C954002A25BD /* LBVerticalButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBVerticalButton.h; sourceTree = "<group>"; };
 		4091C17222816CAF00C09FE6 /* LBCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBCodeView.m; sourceTree = "<group>"; };
 		4091C17322816CAF00C09FE6 /* LBCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBCodeView.h; sourceTree = "<group>"; };
 		40AEA9EE224C6B0B0063FCE0 /* LBCommonComponentsTestVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBCommonComponentsTestVC.h; sourceTree = "<group>"; };
@@ -123,6 +126,7 @@
 		4012EBEA22202D22006510F3 /* UIViews */ = {
 			isa = PBXGroup;
 			children = (
+				408847CF22E6C954002A25BD /* LBVerticalButton */,
 				40F69D8A22E57C9300EEA23A /* LBRichTextView */,
 				40C6F0A022D34344005770E9 /* LBUnderlineSegmentedControl */,
 				40C6F09522D3345A005770E9 /* LBUnderlineButton */,
@@ -318,6 +322,15 @@
 				406DAFEB222E31B8000A7BE9 /* NSNull+LBInternalNullExtention.h */,
 			);
 			path = "NSNull+InternalNullExtention";
+			sourceTree = "<group>";
+		};
+		408847CF22E6C954002A25BD /* LBVerticalButton */ = {
+			isa = PBXGroup;
+			children = (
+				408847D022E6C954002A25BD /* LBVerticalButton.m */,
+				408847D122E6C954002A25BD /* LBVerticalButton.h */,
+			);
+			path = LBVerticalButton;
 			sourceTree = "<group>";
 		};
 		4091C17122816CAF00C09FE6 /* LBCodeView */ = {
@@ -538,6 +551,7 @@
 				40F69D9422E5B64C00EEA23A /* UIImage+LBChangeColor.m in Sources */,
 				4012EC2722202D23006510F3 /* LBAlertController.m in Sources */,
 				4012EC2022202D23006510F3 /* LBSecKeyWrapper.m in Sources */,
+				408847D222E6C954002A25BD /* LBVerticalButton.m in Sources */,
 				406DAFD5222E2C22000A7BE9 /* UIColor+LBConvertToImage.m in Sources */,
 				4012EC1C22202D22006510F3 /* UIButton+LBInit.m in Sources */,
 				40BEB3E8221E4469005A8481 /* LBCommonComponentsTestVC.m in Sources */,
