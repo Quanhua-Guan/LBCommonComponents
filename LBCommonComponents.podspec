@@ -127,6 +127,10 @@ TODO: Add long description of the pod here.
       sss.source_files = 'LBCommonComponents/UIViews/LBVerticalButton/**/*'
    end
 
+   ss.subspec 'LBSubtitleButton' do |sss|
+      sss.source_files = 'LBCommonComponents/UIViews/LBSubtitleButton/**/*'
+   end
+
   end
 
 end

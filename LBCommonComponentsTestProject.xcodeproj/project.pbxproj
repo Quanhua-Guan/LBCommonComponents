@@ -22,6 +22,7 @@
 		4012EC2522202D23006510F3 /* LBWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012EC1122202D22006510F3 /* LBWebViewController.m */; };
 		4012EC2722202D23006510F3 /* LBAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012EC1722202D22006510F3 /* LBAlertController.m */; };
 		401998C6224CA1B4009EA79C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 401998C5224CA1B4009EA79C /* Images.xcassets */; };
+		406D504822EAA545001632BC /* LBSubtitleButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 406D504722EAA545001632BC /* LBSubtitleButton.m */; };
 		406DAFD5222E2C22000A7BE9 /* UIColor+LBConvertToImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 406DAFD4222E2C22000A7BE9 /* UIColor+LBConvertToImage.m */; };
 		406DAFE5222E2DCD000A7BE9 /* NSDate+LBToString.m in Sources */ = {isa = PBXBuildFile; fileRef = 406DAFE4222E2DCD000A7BE9 /* NSDate+LBToString.m */; };
 		406DAFE8222E2DE1000A7BE9 /* NSString+LBToDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 406DAFE7222E2DE1000A7BE9 /* NSString+LBToDate.m */; };
@@ -73,6 +74,8 @@
 		4012EC2B22205469006510F3 /* LBSystemMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBSystemMacro.h; sourceTree = "<group>"; };
 		4012EC2C22205469006510F3 /* LBUIMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBUIMacro.h; sourceTree = "<group>"; };
 		401998C5224CA1B4009EA79C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		406D504622EAA545001632BC /* LBSubtitleButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBSubtitleButton.h; sourceTree = "<group>"; };
+		406D504722EAA545001632BC /* LBSubtitleButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBSubtitleButton.m; sourceTree = "<group>"; };
 		406DAFD3222E2C22000A7BE9 /* UIColor+LBConvertToImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+LBConvertToImage.h"; sourceTree = "<group>"; };
 		406DAFD4222E2C22000A7BE9 /* UIColor+LBConvertToImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+LBConvertToImage.m"; sourceTree = "<group>"; };
 		406DAFE3222E2DCD000A7BE9 /* NSDate+LBToString.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+LBToString.h"; sourceTree = "<group>"; };
@@ -126,6 +129,7 @@
 		4012EBEA22202D22006510F3 /* UIViews */ = {
 			isa = PBXGroup;
 			children = (
+				406D504522EAA545001632BC /* LBSubtitleButton */,
 				408847CF22E6C954002A25BD /* LBVerticalButton */,
 				40F69D8A22E57C9300EEA23A /* LBRichTextView */,
 				40C6F0A022D34344005770E9 /* LBUnderlineSegmentedControl */,
@@ -274,6 +278,16 @@
 				4012EC2C22205469006510F3 /* LBUIMacro.h */,
 			);
 			path = Macros;
+			sourceTree = "<group>";
+		};
+		406D504522EAA545001632BC /* LBSubtitleButton */ = {
+			isa = PBXGroup;
+			children = (
+				406D504622EAA545001632BC /* LBSubtitleButton.h */,
+				406D504722EAA545001632BC /* LBSubtitleButton.m */,
+			);
+			name = LBSubtitleButton;
+			path = "../../../../../../../../System/Volumes/Data/Users/liubin/Desktop/个人仓库/MyProject/LBCommonComponentsTestProject/LBCommonComponents/UIViews/LBSubtitleButton";
 			sourceTree = "<group>";
 		};
 		406DAFD1222E2B92000A7BE9 /* Category */ = {
@@ -554,6 +568,7 @@
 				408847D222E6C954002A25BD /* LBVerticalButton.m in Sources */,
 				406DAFD5222E2C22000A7BE9 /* UIColor+LBConvertToImage.m in Sources */,
 				4012EC1C22202D22006510F3 /* UIButton+LBInit.m in Sources */,
+				406D504822EAA545001632BC /* LBSubtitleButton.m in Sources */,
 				40BEB3E8221E4469005A8481 /* LBCommonComponentsTestVC.m in Sources */,
 				4012EC1D22202D22006510F3 /* UILabel+LBInit.m in Sources */,
 				40C6F09F22D33583005770E9 /* LBUserModel.m in Sources */,
