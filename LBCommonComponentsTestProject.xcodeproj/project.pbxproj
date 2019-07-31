@@ -27,6 +27,7 @@
 		406DAFE5222E2DCD000A7BE9 /* NSDate+LBToString.m in Sources */ = {isa = PBXBuildFile; fileRef = 406DAFE4222E2DCD000A7BE9 /* NSDate+LBToString.m */; };
 		406DAFE8222E2DE1000A7BE9 /* NSString+LBToDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 406DAFE7222E2DE1000A7BE9 /* NSString+LBToDate.m */; };
 		406DAFEC222E31B8000A7BE9 /* NSNull+LBInternalNullExtention.m in Sources */ = {isa = PBXBuildFile; fileRef = 406DAFEA222E31B8000A7BE9 /* NSNull+LBInternalNullExtention.m */; };
+		407F850622F153ED000CC777 /* LBSystemPhotoPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 407F850422F153ED000CC777 /* LBSystemPhotoPicker.m */; };
 		408847D222E6C954002A25BD /* LBVerticalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 408847D022E6C954002A25BD /* LBVerticalButton.m */; };
 		4091C17422816CAF00C09FE6 /* LBCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4091C17222816CAF00C09FE6 /* LBCodeView.m */; };
 		40BEB3DB221E43BF005A8481 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 40BEB3DA221E43BF005A8481 /* main.m */; };
@@ -84,6 +85,8 @@
 		406DAFE7222E2DE1000A7BE9 /* NSString+LBToDate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+LBToDate.m"; sourceTree = "<group>"; };
 		406DAFEA222E31B8000A7BE9 /* NSNull+LBInternalNullExtention.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNull+LBInternalNullExtention.m"; sourceTree = "<group>"; };
 		406DAFEB222E31B8000A7BE9 /* NSNull+LBInternalNullExtention.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNull+LBInternalNullExtention.h"; sourceTree = "<group>"; };
+		407F850422F153ED000CC777 /* LBSystemPhotoPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBSystemPhotoPicker.m; sourceTree = "<group>"; };
+		407F850522F153ED000CC777 /* LBSystemPhotoPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBSystemPhotoPicker.h; sourceTree = "<group>"; };
 		408847D022E6C954002A25BD /* LBVerticalButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBVerticalButton.m; sourceTree = "<group>"; };
 		408847D122E6C954002A25BD /* LBVerticalButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBVerticalButton.h; sourceTree = "<group>"; };
 		4091C17222816CAF00C09FE6 /* LBCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBCodeView.m; sourceTree = "<group>"; };
@@ -187,6 +190,7 @@
 		4012EBFB22202D22006510F3 /* NSObjects */ = {
 			isa = PBXGroup;
 			children = (
+				407F850322F153ED000CC777 /* LBSystemPhotoPicker */,
 				40C6F09922D33582005770E9 /* LBUserModel */,
 				4012EBFC22202D22006510F3 /* LBCustemPresentTransitions */,
 				4012EC0222202D22006510F3 /* LBEncrypt */,
@@ -336,6 +340,15 @@
 				406DAFEB222E31B8000A7BE9 /* NSNull+LBInternalNullExtention.h */,
 			);
 			path = "NSNull+InternalNullExtention";
+			sourceTree = "<group>";
+		};
+		407F850322F153ED000CC777 /* LBSystemPhotoPicker */ = {
+			isa = PBXGroup;
+			children = (
+				407F850522F153ED000CC777 /* LBSystemPhotoPicker.h */,
+				407F850422F153ED000CC777 /* LBSystemPhotoPicker.m */,
+			);
+			path = LBSystemPhotoPicker;
 			sourceTree = "<group>";
 		};
 		408847CF22E6C954002A25BD /* LBVerticalButton */ = {
@@ -553,6 +566,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				407F850622F153ED000CC777 /* LBSystemPhotoPicker.m in Sources */,
 				4012EC1B22202D22006510F3 /* UIView+LBInit.m in Sources */,
 				40F69D8D22E57C9300EEA23A /* LBRichTextView.m in Sources */,
 				4091C17422816CAF00C09FE6 /* LBCodeView.m in Sources */,

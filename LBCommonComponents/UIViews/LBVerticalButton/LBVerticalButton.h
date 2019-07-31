@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LBVerticalButton : UIButton
 @property (nonatomic,assign)CGFloat lineSpacing;//default 5.f
-@property (nonatomic,assign)NSUInteger iconBadgeNumber;
+@property (nonatomic,strong,readonly)UIButton *badgeButton;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'LBCommonComponents'
-  s.version          = '0.2.8'
+  s.version          = '0.2.9'
   s.summary          = 'CommonComponents of my project.'
   s.description      = <<-DESC
 TODO: Add long description of the pod here.
@@ -58,6 +58,10 @@ TODO: Add long description of the pod here.
 
     ss.subspec 'LBUserModel' do |sss|
       sss.source_files = 'LBCommonComponents/NSObjects/LBUserModel/**/*'
+    end
+
+    ss.subspec 'LBSystemPhotoPicker' do |sss|
+      sss.source_files = 'LBCommonComponents/NSObjects/LBSystemPhotoPicker/**/*'
     end
 
 

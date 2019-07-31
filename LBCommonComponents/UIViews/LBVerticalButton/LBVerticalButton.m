@@ -9,7 +9,6 @@
 #import "LBVerticalButton.h"
 
 @interface LBVerticalButton()
-@property (nonatomic,strong)UILabel *badgeNumberLabel;
 
 @end
 
@@ -33,34 +32,20 @@
         
         [self.imageView addObserver:self forKeyPath:NSStringFromSelector(@selector(frame)) options:NSKeyValueObservingOptionNew context:nil];
         
-        self.lineSpacing = 5;
+        _lineSpacing = 5;
         
-        self.badgeNumberLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 17, 17)];
-        self.badgeNumberLabel.textAlignment = NSTextAlignmentCenter;
-        self.badgeNumberLabel.hidden = YES;
-        self.badgeNumberLabel.clipsToBounds = YES;
-        self.badgeNumberLabel.font = [UIFont systemFontOfSize:11];
-        self.badgeNumberLabel.textColor = [UIColor whiteColor];
-        self.badgeNumberLabel.backgroundColor = [UIColor redColor];
-        self.badgeNumberLabel.layer.cornerRadius = CGRectGetHeight(self.badgeNumberLabel.frame)/2;
-        [self addSubview:self.badgeNumberLabel];
+        _badgeButton = [[UIButton alloc] init];
+        _badgeButton.hidden = YES;
+        _badgeButton.clipsToBounds = YES;
+        _badgeButton.titleLabel.font = [UIFont systemFontOfSize:11];
+        [_badgeButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        _badgeButton.backgroundColor = [UIColor redColor];
+        [self addSubview:_badgeButton];
+        
+        [_badgeButton.titleLabel addObserver:self forKeyPath:NSStringFromSelector(@selector(text)) options:NSKeyValueObservingOptionNew context:nil];
+        [_badgeButton.imageView addObserver:self forKeyPath:NSStringFromSelector(@selector(image)) options:NSKeyValueObservingOptionNew context:nil];
     }
     return self;
-}
--(void)setIconBadgeNumber:(NSUInteger)iconBadgeNumber{
-    _iconBadgeNumber = iconBadgeNumber;
-    self.badgeNumberLabel.hidden = !iconBadgeNumber;
-    
-    NSString *iconBadgeNumberString = [NSString stringWithFormat:@"%ld",iconBadgeNumber];
-    if (iconBadgeNumber > 99) {
-        iconBadgeNumberString = @"99+";
-    }
-    self.badgeNumberLabel.text = iconBadgeNumberString;
-    
-    CGSize iconBadgeNumberSize = [self.badgeNumberLabel sizeThatFits:CGSizeMake(MAXFLOAT, CGRectGetHeight(self.badgeNumberLabel.frame))];
-    if (iconBadgeNumberSize.width > CGRectGetHeight(self.badgeNumberLabel.frame)) {
-        self.badgeNumberLabel.frame = CGRectMake(CGRectGetMinX(self.badgeNumberLabel.frame), CGRectGetMinY(self.badgeNumberLabel.frame), iconBadgeNumberSize.width, CGRectGetHeight(self.badgeNumberLabel.frame));
-    }
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
@@ -70,9 +55,36 @@
             self.titleEdgeInsets = UIEdgeInsetsMake(CGRectGetHeight(self.frame)/2+self.lineSpacing/2, (CGRectGetWidth(self.frame)-[self.titleLabel sizeThatFits:CGSizeMake(CGRectGetWidth(self.frame), 30)].width)/2-CGRectGetWidth(self.imageView.frame), 0, 0);
             
             
-            
-            self.badgeNumberLabel.frame = CGRectMake(CGRectGetMaxX(self.imageView.frame)-CGRectGetWidth(self.badgeNumberLabel.frame)/2, CGRectGetMinY(self.imageView.frame)-CGRectGetHeight(self.badgeNumberLabel.frame)/2, CGRectGetWidth(self.badgeNumberLabel.frame), CGRectGetHeight(self.badgeNumberLabel.frame));
         }
+    }else if (object == _badgeButton.imageView || object == _badgeButton.titleLabel){
+        [_badgeButton sizeToFit];
+        
+        _badgeButton.hidden = (!CGRectIsEmpty(_badgeButton.imageView.bounds) && !CGRectIsEmpty(_badgeButton.titleLabel.bounds));
+        
+        CGSize iconBadgeBtnSize;
+        if (!CGRectIsEmpty(_badgeButton.imageView.bounds) && !CGRectIsEmpty(_badgeButton.titleLabel.bounds)) {
+            CGFloat width = CGRectGetWidth(_badgeButton.imageView.bounds) > CGRectGetWidth(_badgeButton.titleLabel.bounds)?CGRectGetWidth(_badgeButton.imageView.bounds):CGRectGetWidth(_badgeButton.titleLabel.bounds);
+            CGFloat height = CGRectGetHeight(_badgeButton.imageView.bounds) > CGRectGetHeight(_badgeButton.titleLabel.bounds)?CGRectGetHeight(_badgeButton.imageView.bounds):CGRectGetHeight(_badgeButton.titleLabel.bounds);
+            iconBadgeBtnSize = CGSizeMake(width, height);
+        }else if (!CGRectIsEmpty(_badgeButton.imageView.bounds)) {
+            iconBadgeBtnSize = CGSizeMake(CGRectGetWidth(_badgeButton.imageView.bounds), CGRectGetHeight(_badgeButton.imageView.bounds));
+        }else if (!CGRectIsEmpty(_badgeButton.titleLabel.bounds)){
+            iconBadgeBtnSize = CGSizeMake(CGRectGetWidth(_badgeButton.titleLabel.bounds), CGRectGetHeight(_badgeButton.titleLabel.bounds));
+        }
+        
+        if (iconBadgeBtnSize.width < 17) {
+            iconBadgeBtnSize.width = 17;
+        }
+        if (iconBadgeBtnSize.height < 17) {
+            iconBadgeBtnSize.height = 17;
+        }
+        
+        _badgeButton.frame = CGRectMake(0, 0, iconBadgeBtnSize.width, iconBadgeBtnSize.height);
+        
+        _badgeButton.center = CGPointMake(CGRectGetMaxX(self.imageView.frame), CGRectGetMinY(self.imageView.frame));
+        
+        _badgeButton.layer.cornerRadius = CGRectGetHeight(_badgeButton.frame)/2;
+
     }
     
 }
