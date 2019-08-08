@@ -10,18 +10,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-#pragma mark 协议
-//自定义view协议
-@protocol LBTextAttachmentViewProtocol <NSObject>
+@protocol LBTextAttachmentViewProtocol <NSObject>//自定义view协议
 @required
-/*自定义View携带的内容data，它将被作为唯一标识类似于ID使用*/
-@property (nonatomic,strong)NSData *contens;
+@property (nonatomic,strong)NSString *lb_identifier;//自定义View的唯一标识
 @optional
 @property (nonatomic,strong)NSParagraphStyle *paragraphStyle;
 @end
 
-//富文本对象协议
-@protocol LBRichTextProtocol <NSObject>
+
+@protocol LBRichTextProtocol <NSObject>//富文本对象协议
 //attachmentView优先使用，也就是当attachmentView不为空的时候attributedString无效。
 //属性必须有一个不为空
 @required
@@ -32,11 +29,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark 自定义便利View,你不是必须用该类，只是提供给我们比较懒的程序员用
 @interface LBTextAttachmentView : UIButton<LBTextAttachmentViewProtocol>
-@property (nonatomic,strong)NSData *contens;
+@property (nonatomic,strong)NSString *lb_identifier;
 @property (nonatomic,strong)NSParagraphStyle *paragraphStyle;
 @end
 
-/*你不是必须用该类，只是提供一个便利类以在你不想创建自己的类的时候用*/
 @interface LBRichTextObject : NSObject<LBRichTextProtocol>
 @property (nonatomic,strong)NSAttributedString *attributedString;
 @property (nonatomic,strong)UIView<LBTextAttachmentViewProtocol> *attachmentView;

@@ -41,7 +41,7 @@
         
         if (obj.attachmentView) {
             NSTextAttachment *textAttachment = [[NSTextAttachment alloc] init];
-            textAttachment.contents = obj.attachmentView.contens;
+            textAttachment.contents = [obj.attachmentView.lb_identifier dataUsingEncoding:NSUTF8StringEncoding];
             textAttachment.bounds = CGRectMake(0, 0, CGRectGetWidth(obj.attachmentView.bounds), CGRectGetHeight(obj.attachmentView.bounds));
             NSMutableAttributedString *attachmentAttributedString = [[NSMutableAttributedString alloc] initWithAttributedString:[NSAttributedString attributedStringWithAttachment:textAttachment]];
             if (obj.attachmentView.paragraphStyle) {
@@ -84,7 +84,7 @@
             
             
             richText = [weakSelf.richTextArray filteredArrayUsingPredicate:[NSPredicate predicateWithBlock:^BOOL(NSObject<LBRichTextProtocol> *evaluatedObject, NSDictionary<NSString *,id> * _Nullable bindings) {
-                return [evaluatedObject.attachmentView.contens isEqual:attachment.contents];
+                return [[evaluatedObject.attachmentView.lb_identifier dataUsingEncoding:NSUTF8StringEncoding] isEqual:attachment.contents];
             }]].firstObject;
             if (richText.attachmentView) {
                 rect.size.width = CGRectGetWidth(richText.attachmentView.bounds);
@@ -110,7 +110,7 @@
     
     
     [textView.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        if ([obj respondsToSelector:@selector(contens)]) {
+        if ([obj respondsToSelector:@selector(lb_identifier)]) {//先要判定是自定义view
             if (![subViews containsObject:obj]) {
                 [obj removeFromSuperview];
             }
