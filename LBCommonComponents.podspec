@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'LBCommonComponents'
-  s.version          = '0.3.1'
+  s.version          = '0.3.2'
   s.summary          = 'CommonComponents of my project.'
   s.description      = <<-DESC
 TODO: Add long description of the pod here.
@@ -64,6 +64,9 @@ TODO: Add long description of the pod here.
       sss.source_files = 'LBCommonComponents/NSObjects/LBSystemPhotoPicker/**/*'
     end
 
+    ss.subspec 'LBLunarFormatter' do |sss|
+      sss.source_files = 'LBCommonComponents/NSObjects/LBLunarFormatter/**/*'
+    end
 
   end
 
@@ -134,6 +137,15 @@ TODO: Add long description of the pod here.
    ss.subspec 'LBSubtitleButton' do |sss|
       sss.source_files = 'LBCommonComponents/UIViews/LBSubtitleButton/**/*'
    end
+
+   ss.subspec 'LBTableViewCell' do |sss|
+      sss.source_files = 'LBCommonComponents/UIViews/LBTableViewCell/**/*'
+   end
+
+   ss.subspec 'LBTitleFrontImageBehindButton' do |sss|
+      sss.source_files = 'LBCommonComponents/UIViews/LBTitleFrontImageBehindButton/**/*'
+   end
+
 
   end
 
