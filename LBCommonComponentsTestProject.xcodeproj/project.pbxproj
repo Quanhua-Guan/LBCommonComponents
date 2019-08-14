@@ -366,8 +366,8 @@
 		408847CF22E6C954002A25BD /* LBVerticalButton */ = {
 			isa = PBXGroup;
 			children = (
-				408847D022E6C954002A25BD /* LBVerticalButton.m */,
 				408847D122E6C954002A25BD /* LBVerticalButton.h */,
+				408847D022E6C954002A25BD /* LBVerticalButton.m */,
 			);
 			path = LBVerticalButton;
 			sourceTree = "<group>";
