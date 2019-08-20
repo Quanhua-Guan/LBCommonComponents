@@ -21,21 +21,49 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong, nonatomic,readonly) NSArray<NSString *> *chineseGanZiDays;
 @property (strong, nonatomic,readonly) NSDictionary<NSString *,NSString *> *chineseZodiac;
 
--(NSString *)chineseFirstDayIsMonthDayOfDate:(NSDate *)date;
+/*
+ 农历几号，和chineseDayOfDate不同的是初一用农历月份替代
+ */
+-(NSString *)chineseTheMonthDayOfDate:(NSDate *)date;
 
+/*
+ 农历几号
+ */
 -(NSString *)chineseDayOfDate:(NSDate *)date;
 
+/*
+ 农历几月
+ */
 -(NSString *)chineseMonthOfDate:(NSDate *)date;
 
+/*
+ 中文星期几
+ */
 -(NSString *)chineseWeekDayOfDate:(NSDate *)date;
 
+/*
+ 干支记年
+ */
 -(NSString *)chineseGanZiYearOfDate:(NSDate *)date;
 
+/*
+ 干支记月
+ */
 -(NSString*)chineseGanZiMonthOfDate:(NSDate *)date;
 
+/*
+ 干支记日
+ */
 -(NSString *)chineseGanZiDayOfDate:(NSDate *)date;
 
+/*
+ 获取属相
+ */
 -(NSString *)chineseZodiacOfDate:(NSDate *)date;
+/*
+ 获取星座
+ */
++(NSString *)astroOfDate:(NSDate *)date;
 @end
 
 NS_ASSUME_NONNULL_END
