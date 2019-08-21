@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'LBCommonComponents'
-  s.version          = '0.3.8'
+  s.version          = '0.3.9'
   s.summary          = 'CommonComponents of my project.'
   s.description      = <<-DESC
 TODO: Add long description of the pod here.
@@ -45,8 +45,8 @@ TODO: Add long description of the pod here.
       sss.source_files = 'LBCommonComponents/Category/UIColor+ConvertToImage/**/*.{h,m}'
     end
 
-    ss.subspec 'UIView+LBGeometry' do |sss|
-      sss.source_files = 'LBCommonComponents/Category/UIView+LBGeometry/**/*.{h,m}'
+    ss.subspec 'UIView+Geometry' do |sss|
+      sss.source_files = 'LBCommonComponents/Category/UIView+Geometry/**/*.{h,m}'
     end
 
   end
