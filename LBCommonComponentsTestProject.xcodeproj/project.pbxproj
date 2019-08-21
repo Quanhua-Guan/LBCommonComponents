@@ -22,6 +22,9 @@
 		4012EC2522202D23006510F3 /* LBWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012EC1122202D22006510F3 /* LBWebViewController.m */; };
 		4012EC2722202D23006510F3 /* LBAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012EC1722202D22006510F3 /* LBAlertController.m */; };
 		401998C6224CA1B4009EA79C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 401998C5224CA1B4009EA79C /* Images.xcassets */; };
+		4047E93F230CDD3200A9FF80 /* LBPhotoPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4047E93C230CDD3200A9FF80 /* LBPhotoPreviewController.m */; };
+		4047E940230CDD3200A9FF80 /* lbphoto_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4047E93D230CDD3200A9FF80 /* lbphoto_back@2x.png */; };
+		4047E941230CDD3200A9FF80 /* lbphoto_delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4047E93E230CDD3200A9FF80 /* lbphoto_delete@2x.png */; };
 		4069AF68230BD13E0074C2E6 /* UIView+LBGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 4069AF66230BD13E0074C2E6 /* UIView+LBGeometry.m */; };
 		406DAFD5222E2C22000A7BE9 /* UIColor+LBConvertToImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 406DAFD4222E2C22000A7BE9 /* UIColor+LBConvertToImage.m */; };
 		406DAFE5222E2DCD000A7BE9 /* NSDate+LBToString.m in Sources */ = {isa = PBXBuildFile; fileRef = 406DAFE4222E2DCD000A7BE9 /* NSDate+LBToString.m */; };
@@ -78,6 +81,10 @@
 		4012EC2B22205469006510F3 /* LBSystemMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBSystemMacro.h; sourceTree = "<group>"; };
 		4012EC2C22205469006510F3 /* LBUIMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBUIMacro.h; sourceTree = "<group>"; };
 		401998C5224CA1B4009EA79C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		4047E93B230CDD3200A9FF80 /* LBPhotoPreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBPhotoPreviewController.h; sourceTree = "<group>"; };
+		4047E93C230CDD3200A9FF80 /* LBPhotoPreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBPhotoPreviewController.m; sourceTree = "<group>"; };
+		4047E93D230CDD3200A9FF80 /* lbphoto_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lbphoto_back@2x.png"; sourceTree = "<group>"; };
+		4047E93E230CDD3200A9FF80 /* lbphoto_delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lbphoto_delete@2x.png"; sourceTree = "<group>"; };
 		4069AF66230BD13E0074C2E6 /* UIView+LBGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LBGeometry.m"; sourceTree = "<group>"; };
 		4069AF67230BD13E0074C2E6 /* UIView+LBGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LBGeometry.h"; sourceTree = "<group>"; };
 		406DAFD3222E2C22000A7BE9 /* UIColor+LBConvertToImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+LBConvertToImage.h"; sourceTree = "<group>"; };
@@ -248,6 +255,7 @@
 		4012EC0922202D22006510F3 /* UIViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				4047E93A230CDD3200A9FF80 /* LBPhotoPreviewController */,
 				40C6F0A422D34417005770E9 /* LBYearMonthPickerVC */,
 				4012EC0A22202D22006510F3 /* LBItemsSelectViewController */,
 				4012EC0D22202D22006510F3 /* LBWebViewController */,
@@ -293,6 +301,17 @@
 				4012EC2C22205469006510F3 /* LBUIMacro.h */,
 			);
 			path = Macros;
+			sourceTree = "<group>";
+		};
+		4047E93A230CDD3200A9FF80 /* LBPhotoPreviewController */ = {
+			isa = PBXGroup;
+			children = (
+				4047E93B230CDD3200A9FF80 /* LBPhotoPreviewController.h */,
+				4047E93C230CDD3200A9FF80 /* LBPhotoPreviewController.m */,
+				4047E93D230CDD3200A9FF80 /* lbphoto_back@2x.png */,
+				4047E93E230CDD3200A9FF80 /* lbphoto_delete@2x.png */,
+			);
+			path = LBPhotoPreviewController;
 			sourceTree = "<group>";
 		};
 		4069AF65230BD13E0074C2E6 /* UIView+Geometry */ = {
@@ -591,8 +610,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4012EC2422202D23006510F3 /* ic_back.png in Resources */,
+				4047E940230CDD3200A9FF80 /* lbphoto_back@2x.png in Resources */,
 				401998C6224CA1B4009EA79C /* Images.xcassets in Resources */,
 				4012EC2322202D23006510F3 /* ic_forward.png in Resources */,
+				4047E941230CDD3200A9FF80 /* lbphoto_delete@2x.png in Resources */,
 				40E061B2221FCB5D00DB89E3 /* LBCommonComponents.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -631,6 +652,7 @@
 				4012EC1922202D22006510F3 /* LBTitleAndInputCell.m in Sources */,
 				40C6F0A322D34344005770E9 /* LBUnderlineSegmentedControl.m in Sources */,
 				40C6F0A722D34417005770E9 /* LBYearMonthPickerVC.m in Sources */,
+				4047E93F230CDD3200A9FF80 /* LBPhotoPreviewController.m in Sources */,
 				40BEB3DB221E43BF005A8481 /* main.m in Sources */,
 				40C6F09822D3345A005770E9 /* LBUnderlineButton.m in Sources */,
 				406DAFE8222E2DE1000A7BE9 /* NSString+LBToDate.m in Sources */,

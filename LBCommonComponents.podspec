@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'LBCommonComponents'
-  s.version          = '0.3.4'
+  s.version          = '0.3.5'
   s.summary          = 'CommonComponents of my project.'
   s.description      = <<-DESC
 TODO: Add long description of the pod here.
@@ -45,8 +45,8 @@ TODO: Add long description of the pod here.
       sss.source_files = 'LBCommonComponents/Category/UIColor+ConvertToImage/**/*.{h,m}'
     end
 
-    ss.subspec 'UIView+Geometry' do |sss|
-      sss.source_files = 'LBCommonComponents/Category/UIView+Geometry/**/*.{h,m}'
+    ss.subspec 'UIView+LBGeometry' do |sss|
+      sss.source_files = 'LBCommonComponents/Category/UIView+LBGeometry/**/*.{h,m}'
     end
 
   end
@@ -94,6 +94,13 @@ TODO: Add long description of the pod here.
       sss.dependency 'LBCommonComponents/NSObjects/LBCustemPresentTransitions'
       sss.source_files = 'LBCommonComponents/UIViewControllers/LBYearMonthPickerVC/**/*'
     end
+
+    ss.subspec 'LBPhotoPreviewController' do |sss|
+       sss.source_files = 'LBCommonComponents/UIViewControllers/LBPhotoPreviewController/**/*.{h,m}'
+       sss.resource = 'LBCommonComponents/UIViewControllers/LBPhotoPreviewController/**/*.png'
+    end
+
+
   end
 
 

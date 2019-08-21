@@ -10,15 +10,15 @@
 
 @interface UIView (LBGeometry)
 
-@property (nonatomic, assign) CGFloat height;
-@property (nonatomic, assign) CGFloat width;
-@property (nonatomic, assign) CGFloat top;
-@property (nonatomic, assign) CGFloat left;
-@property (nonatomic, assign) CGFloat bottom;
-@property (nonatomic, assign) CGFloat right;
-@property (nonatomic, assign) CGFloat centerX;
-@property (nonatomic, assign) CGFloat centerY;
-@property (nonatomic, assign) CGPoint origin;
-@property (nonatomic, assign) CGSize size;
+@property (nonatomic, assign) CGFloat lb_height;
+@property (nonatomic, assign) CGFloat lb_width;
+@property (nonatomic, assign) CGFloat lb_top;
+@property (nonatomic, assign) CGFloat lb_left;
+@property (nonatomic, assign) CGFloat lb_bottom;
+@property (nonatomic, assign) CGFloat lb_right;
+@property (nonatomic, assign) CGFloat lb_centerX;
+@property (nonatomic, assign) CGFloat lb_centerY;
+@property (nonatomic, assign) CGPoint lb_origin;
+@property (nonatomic, assign) CGSize  lb_size;
 
 @end

@@ -10,121 +10,120 @@
 
 @implementation UIView (LBGeometry)
 
-- (CGPoint)origin
+- (CGPoint)lb_origin
 {
     return self.frame.origin;
 }
 
-- (void)setOrigin:(CGPoint)origin
+- (void)setLb_origin:(CGPoint)lb_origin
 {
     CGRect rect = self.frame;
-    rect.origin = origin;
+    rect.origin = lb_origin;
     self.frame = rect;
 }
 
-- (CGSize)size
+- (CGSize)lb_size
 {
     return self.frame.size;
 }
 
-- (void)setSize:(CGSize)size
+- (void)setLb_size:(CGSize)lb_size
 {
     CGRect rect = self.frame;
-    rect.size = size;
+    rect.size = lb_size;
     self.frame = rect;
 }
 
-- (CGFloat)height
+- (CGFloat)lb_height
 {
-    return self.frame.size.height;
+    return CGRectGetHeight(self.bounds);
 }
 
-- (void)setHeight:(CGFloat)height
+- (void)setLb_height:(CGFloat)lb_height
 {
     CGRect rect = self.frame;
-    rect.size.height = height;
+    rect.size.height = lb_height;
     self.frame = rect;
 }
 
-- (CGFloat)width
+- (CGFloat)lb_width
 {
-    return self.frame.size.width;
+    return CGRectGetWidth(self.bounds);
 }
 
-- (void)setWidth:(CGFloat)width
+- (void)setLb_width:(CGFloat)lb_width
 {
     CGRect rect = self.frame;
-    rect.size.width = width;
+    rect.size.width = lb_width;
     self.frame = rect;
 }
 
-- (CGFloat)top
+- (CGFloat)lb_top
 {
-    return self.frame.origin.y;
+    return CGRectGetMinY(self.frame);
 }
 
-- (void)setTop:(CGFloat)top
+- (void)setLb_top:(CGFloat)lb_top
 {
     CGRect rect = self.frame;
-    rect.origin.y = top;
+    rect.origin.y = lb_top;
     self.frame = rect;
 }
 
-- (CGFloat)left
+- (CGFloat)lb_left
 {
-    return self.frame.origin.x;
+    return CGRectGetMinX(self.frame);
 }
 
-- (void)setLeft:(CGFloat)left
+- (void)setLb_left:(CGFloat)lb_left
 {
     CGRect rect = self.frame;
-    rect.origin.x = left;
+    rect.origin.x = lb_left;
     self.frame = rect;
 }
 
-- (CGFloat)bottom
+- (CGFloat)lb_bottom
 {
-    return self.frame.origin.y + self.frame.size.height;
+    return CGRectGetMaxY(self.frame);
 }
 
-- (void)setBottom:(CGFloat)bottom
+- (void)setLb_bottom:(CGFloat)lb_bottom
 {
     CGRect rect = self.frame;
-    rect.origin.y = bottom - self.frame.size.height;
+    rect.origin.y = lb_bottom - CGRectGetHeight(self.bounds);
     self.frame = rect;
 }
 
-- (CGFloat)right
+- (CGFloat)lb_right
 {
-    return self.frame.origin.x + self.frame.size.width;
+    return CGRectGetMaxX(self.frame);
 }
 
-- (void)setRight:(CGFloat)right
+- (void)setLb_right:(CGFloat)lb_right
 {
-    CGFloat delta = right - (self.frame.origin.x + self.frame.size.width);
     CGRect rect = self.frame;
-    rect.origin.x += delta ;
+    rect.origin.x = lb_right - CGRectGetWidth(self.bounds) ;
     self.frame = rect;
 }
 
-- (CGFloat)centerX
+- (CGFloat)lb_centerX
 {
-    return self.center.x;
+    return CGRectGetMidX(self.frame);
 }
 
-- (void)setCenterX:(CGFloat)centerX
+- (void)setLb_centerX:(CGFloat)lb_centerX
 {
     CGPoint center = self.center;
-    center.x = centerX;
+    center.x = lb_centerX;
     self.center = center;
 }
 
-- (CGFloat)centerY
+- (CGFloat)lb_centerY
 {
-    return self.center.y;
+    return CGRectGetMidY(self.frame);
 }
 
-- (void)setCenterY:(CGFloat)centerY
+- (void)setLb_centerY:(CGFloat)centerY
 {
     CGPoint center = self.center;
     center.y = centerY;

@@ -55,29 +55,30 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
     if (object == _badgeButton.imageView || object == _badgeButton.titleLabel){
-        [_badgeButton sizeToFit];
+        [_badgeButton.imageView sizeToFit];
+        [_badgeButton.titleLabel sizeToFit];
         
         _badgeButton.hidden = (!CGRectIsEmpty(_badgeButton.imageView.bounds) && !CGRectIsEmpty(_badgeButton.titleLabel.bounds));
-        
-        CGRect badgeBtnFrame = _badgeButton.frame;
+
+        CGRect badgeBtnFrame;
         badgeBtnFrame.size.height = CGRectGetHeight(_badgeButton.imageView.bounds);
         if (CGRectGetHeight(_badgeButton.imageView.bounds) < CGRectGetHeight(_badgeButton.titleLabel.bounds)) {
             badgeBtnFrame.size.height = CGRectGetHeight(_badgeButton.titleLabel.bounds);
         }
         badgeBtnFrame.size.width = CGRectGetWidth(_badgeButton.imageView.bounds)+CGRectGetWidth(_badgeButton.titleLabel.bounds);
-        
+
         if (CGRectGetWidth(badgeBtnFrame) < 17) {
             badgeBtnFrame.size.width = 17;
         }
         if (CGRectGetHeight(badgeBtnFrame) < 17) {
             badgeBtnFrame.size.height = 17;
         }
-        
+
         badgeBtnFrame.origin.x = CGRectGetMaxX(self.imageView.frame)-CGRectGetWidth(badgeBtnFrame)/2;
         badgeBtnFrame.origin.y = CGRectGetMinY(self.imageView.frame)-CGRectGetHeight(badgeBtnFrame)/2;
-        _badgeButton.frame = badgeBtnFrame;
         _badgeButton.layer.cornerRadius = CGRectGetHeight(badgeBtnFrame)/2;
 
+        _badgeButton.frame = badgeBtnFrame;
     }
 }
 
