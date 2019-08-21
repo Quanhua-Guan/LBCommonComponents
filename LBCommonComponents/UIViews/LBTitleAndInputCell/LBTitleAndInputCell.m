@@ -50,7 +50,7 @@
         _titleLabel.text = nil;
         _titleLabel.frame = CGRectMake(MAXFLOAT, MAXFLOAT, _longestTitleWidth, MAXFLOAT);
         
-        _inputTextField = [[LBFunctionalTextField alloc] initWithFrame:CGRectMake(MAXFLOAT, MAXFLOAT, MAXFLOAT, MAXFLOAT)];
+        _inputTextField = [[LBTextField alloc] initWithFrame:CGRectMake(MAXFLOAT, MAXFLOAT, MAXFLOAT, MAXFLOAT)];
         _inputTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
         _inputTextField.textColor = [UIColor blackColor];
         _inputTextField.font = [UIFont systemFontOfSize:_font.pointSize-1];

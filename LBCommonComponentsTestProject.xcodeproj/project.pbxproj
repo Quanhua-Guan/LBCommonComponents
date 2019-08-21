@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4012EC1822202D22006510F3 /* LBFunctionalTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012EBEC22202D22006510F3 /* LBFunctionalTextField.m */; };
 		4012EC1922202D22006510F3 /* LBTitleAndInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012EBEF22202D22006510F3 /* LBTitleAndInputCell.m */; };
 		4012EC1A22202D22006510F3 /* LBCodeGetButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012EBF322202D22006510F3 /* LBCodeGetButton.m */; };
 		4012EC1B22202D22006510F3 /* UIView+LBInit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012EBF722202D22006510F3 /* UIView+LBInit.m */; };
@@ -22,6 +21,7 @@
 		4012EC2522202D23006510F3 /* LBWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012EC1122202D22006510F3 /* LBWebViewController.m */; };
 		4012EC2722202D23006510F3 /* LBAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012EC1722202D22006510F3 /* LBAlertController.m */; };
 		401998C6224CA1B4009EA79C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 401998C5224CA1B4009EA79C /* Images.xcassets */; };
+		4027374B230D28B200F81FA0 /* LBTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 40273749230D28B200F81FA0 /* LBTextField.m */; };
 		4047E93F230CDD3200A9FF80 /* LBPhotoPreviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4047E93C230CDD3200A9FF80 /* LBPhotoPreviewController.m */; };
 		4047E940230CDD3200A9FF80 /* lbphoto_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4047E93D230CDD3200A9FF80 /* lbphoto_back@2x.png */; };
 		4047E941230CDD3200A9FF80 /* lbphoto_delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4047E93E230CDD3200A9FF80 /* lbphoto_delete@2x.png */; };
@@ -51,8 +51,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4012EBEC22202D22006510F3 /* LBFunctionalTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBFunctionalTextField.m; sourceTree = "<group>"; };
-		4012EBED22202D22006510F3 /* LBFunctionalTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBFunctionalTextField.h; sourceTree = "<group>"; };
 		4012EBEF22202D22006510F3 /* LBTitleAndInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBTitleAndInputCell.m; sourceTree = "<group>"; };
 		4012EBF022202D22006510F3 /* LBTitleAndInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBTitleAndInputCell.h; sourceTree = "<group>"; };
 		4012EBF222202D22006510F3 /* LBCodeGetButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBCodeGetButton.h; sourceTree = "<group>"; };
@@ -81,6 +79,8 @@
 		4012EC2B22205469006510F3 /* LBSystemMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBSystemMacro.h; sourceTree = "<group>"; };
 		4012EC2C22205469006510F3 /* LBUIMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBUIMacro.h; sourceTree = "<group>"; };
 		401998C5224CA1B4009EA79C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		40273749230D28B200F81FA0 /* LBTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBTextField.m; sourceTree = "<group>"; };
+		4027374A230D28B200F81FA0 /* LBTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBTextField.h; sourceTree = "<group>"; };
 		4047E93B230CDD3200A9FF80 /* LBPhotoPreviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBPhotoPreviewController.h; sourceTree = "<group>"; };
 		4047E93C230CDD3200A9FF80 /* LBPhotoPreviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBPhotoPreviewController.m; sourceTree = "<group>"; };
 		4047E93D230CDD3200A9FF80 /* lbphoto_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lbphoto_back@2x.png"; sourceTree = "<group>"; };
@@ -148,6 +148,7 @@
 		4012EBEA22202D22006510F3 /* UIViews */ = {
 			isa = PBXGroup;
 			children = (
+				40273748230D28B200F81FA0 /* LBTextField */,
 				40A83B622304037A00D3FE90 /* LBTableViewCell */,
 				40A83B652304037A00D3FE90 /* LBTitleFrontImageBehindButton */,
 				408847CF22E6C954002A25BD /* LBVerticalButton */,
@@ -156,21 +157,11 @@
 				40C6F09522D3345A005770E9 /* LBUnderlineButton */,
 				4091C17122816CAF00C09FE6 /* LBCodeView */,
 				40F82ECB2276BE4E000259A3 /* LBPlaceholderTextView */,
-				4012EBEB22202D22006510F3 /* LBFunctionalTextField */,
 				4012EBEE22202D22006510F3 /* LBTitleAndInputCell */,
 				4012EBF122202D22006510F3 /* LBCodeGetButton */,
 				4012EBF422202D22006510F3 /* UIViewInit */,
 			);
 			path = UIViews;
-			sourceTree = "<group>";
-		};
-		4012EBEB22202D22006510F3 /* LBFunctionalTextField */ = {
-			isa = PBXGroup;
-			children = (
-				4012EBED22202D22006510F3 /* LBFunctionalTextField.h */,
-				4012EBEC22202D22006510F3 /* LBFunctionalTextField.m */,
-			);
-			path = LBFunctionalTextField;
 			sourceTree = "<group>";
 		};
 		4012EBEE22202D22006510F3 /* LBTitleAndInputCell */ = {
@@ -301,6 +292,15 @@
 				4012EC2C22205469006510F3 /* LBUIMacro.h */,
 			);
 			path = Macros;
+			sourceTree = "<group>";
+		};
+		40273748230D28B200F81FA0 /* LBTextField */ = {
+			isa = PBXGroup;
+			children = (
+				4027374A230D28B200F81FA0 /* LBTextField.h */,
+				40273749230D28B200F81FA0 /* LBTextField.m */,
+			);
+			path = LBTextField;
 			sourceTree = "<group>";
 		};
 		4047E93A230CDD3200A9FF80 /* LBPhotoPreviewController */ = {
@@ -629,7 +629,6 @@
 				4012EC1B22202D22006510F3 /* UIView+LBInit.m in Sources */,
 				40F69D8D22E57C9300EEA23A /* LBRichTextView.m in Sources */,
 				4091C17422816CAF00C09FE6 /* LBCodeView.m in Sources */,
-				4012EC1822202D22006510F3 /* LBFunctionalTextField.m in Sources */,
 				406DAFE5222E2DCD000A7BE9 /* NSDate+LBToString.m in Sources */,
 				40C6F09E22D33583005770E9 /* LBUserModel+TempOperateInfo.m in Sources */,
 				40F82ECE2276BE4E000259A3 /* LBPlaceholderTextView.m in Sources */,
@@ -645,6 +644,7 @@
 				4012EC1C22202D22006510F3 /* UIButton+LBInit.m in Sources */,
 				40BEB3E8221E4469005A8481 /* LBCommonComponentsTestVC.m in Sources */,
 				4012EC1D22202D22006510F3 /* UILabel+LBInit.m in Sources */,
+				4027374B230D28B200F81FA0 /* LBTextField.m in Sources */,
 				40C6F09F22D33583005770E9 /* LBUserModel.m in Sources */,
 				40BEB3E7221E4469005A8481 /* AppDelegate.m in Sources */,
 				4012EC2522202D23006510F3 /* LBWebViewController.m in Sources */,

@@ -122,7 +122,7 @@ TODO: Add long description of the pod here.
     end
    
    ss.subspec 'LBTitleAndInputCell' do |sss|
-      sss.dependency 'LBCommonComponents/UIViews/LBFunctionalTextField'
+      sss.dependency 'LBCommonComponents/UIViews/LBTextField'
       sss.source_files = 'LBCommonComponents/UIViews/LBTitleAndInputCell/**/*'
    end
 

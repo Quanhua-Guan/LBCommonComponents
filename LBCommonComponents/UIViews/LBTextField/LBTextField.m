@@ -1,18 +1,19 @@
 //
-//  FunctionalTextField.m
-//  FunctionalTextField
+//  FLBTextField.m
+//  LBTextField
 //
 //  Created by 刘彬 on 16/3/28.
 //  Copyright © 2016年 刘彬. All rights reserved.
 //
 
-#import "LBFunctionalTextField.h"
+#import "LBTextField.h"
 
-@interface LBFunctionalTextField ()
-@property (nonatomic,assign)BOOL hasSetMaxLength;;
+@interface LBTextField ()
+@property (nonatomic,assign)BOOL setMaxLength;
+@property (nonatomic,strong)NSString *beforePastingText;
 @end
 
-@implementation LBFunctionalTextField
+@implementation LBTextField
 
 - (instancetype)init
 {
@@ -26,84 +27,86 @@
     if (self) {
         self.clearButtonMode = UITextFieldViewModeWhileEditing;
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldTextDidChange:) name:UITextFieldTextDidChangeNotification object:self];
-        
-        _hasSetMaxLength = NO;
     }
     return self;
 }
 
--(BOOL)canPerformAction:(SEL)action withSender:(id)sender{
-    if (self.f_inputType == FCVV2Input) {
-        if (action == @selector(paste:))//禁止粘贴
-            return NO;
-        if (action == @selector(select:))// 禁止选择
-            return NO;
-        if (action == @selector(selectAll:))// 禁止全选
-            return NO;
+-(void)setKeyboardType:(UIKeyboardType)keyboardType{
+    [super setKeyboardType:keyboardType];
+    if (keyboardType == UIKeyboardTypeNumberPad) {
+        self.lb_inputPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",@"[0-9]*"];
     }
-    
+}
+
+-(BOOL)canPerformAction:(SEL)action withSender:(id)sender{
+    if (action == @selector(paste:)) {//粘贴
+        _beforePastingText = self.text;
+    }
+    if ([self.unablePerformActions containsObject:NSStringFromSelector(action)]) {
+        return NO;
+    }
     return [super canPerformAction:action withSender:sender];
 }
 
-- (void)setF_maxLength:(NSUInteger)f_maxLength{
-    _f_maxLength = f_maxLength;
-    _hasSetMaxLength = YES;
+- (void)setLb_maxLength:(NSUInteger)lb_maxLength{
+    _lb_maxLength = lb_maxLength;
+    _setMaxLength = YES;
 }
 
--(void)setF_inputType:(FTextFieldInputType)lb_inputType{
-    _f_inputType = lb_inputType;
+-(void)setLb_inputType:(LBInputType)lb_inputType{
+    _lb_inputType = lb_inputType;
     switch (lb_inputType) {
-        case FPhoneNumberInput:
-            if (!_hasSetMaxLength) {
-                self.f_maxLength = 11;
+        case LBMobileInput:
+            if (!_setMaxLength) {
+                self.lb_maxLength = 11;
             }
             self.keyboardType = UIKeyboardTypeNumberPad;
             break;
-        case FBankCardNumberInput:
-            if (!_hasSetMaxLength) {
-                self.f_maxLength = 19;
+        case LBBankCardInput:
+            if (!_setMaxLength) {
+                self.lb_maxLength = 19;
             }
             self.keyboardType = UIKeyboardTypeNumberPad;
             break;
-        case FCVV2Input:
-            if (!_hasSetMaxLength) {
-                self.f_maxLength = 3;
+        case LBCVV2Input:
+            if (!_setMaxLength) {
+                self.lb_maxLength = 3;
             }
             self.keyboardType = UIKeyboardTypeNumberPad;
             break;
-        case FCodeInput:
-            if (!_hasSetMaxLength) {
-                self.f_maxLength = 6;
+        case LBCodeInput:
+            if (!_setMaxLength) {
+                self.lb_maxLength = 6;
             }
             self.keyboardType = UIKeyboardTypeNumberPad;
             break;
-        case FPayPasswordInput:
-            if (!_hasSetMaxLength) {
-                self.f_maxLength = 6;
+        case LBPayPasswordInput:
+            if (!_setMaxLength) {
+                self.lb_maxLength = 6;
             }
             self.keyboardType = UIKeyboardTypeNumberPad;
             break;
-        case FIndateInput:
-            if (!_hasSetMaxLength) {
-                self.f_maxLength = 4;
+        case LBIndateInput:
+            if (!_setMaxLength) {
+                self.lb_maxLength = 4;
             }
             self.keyboardType = UIKeyboardTypeNumberPad;
             break;
-        case FPercentInput:
-            if (!_hasSetMaxLength) {
-                self.f_maxLength = 3;
+        case LBPercentInput:
+            if (!_setMaxLength) {
+                self.lb_maxLength = 3;
             }
             self.keyboardType = UIKeyboardTypeNumberPad;
             break;
-        case FMoneyInput:
-            if (!_hasSetMaxLength) {
-                self.f_maxLength = 15;
+        case LBMoneyInput:
+            if (!_setMaxLength) {
+                self.lb_maxLength = 15;
             }
             self.keyboardType = UIKeyboardTypeDecimalPad;
             break;
-        case FPasswordInput:
-            if (!_hasSetMaxLength) {
-                self.f_maxLength = 16;
+        case LBPasswordInput:
+            if (!_setMaxLength) {
+                self.lb_maxLength = 16;
             }
             self.keyboardType = UIKeyboardTypeASCIICapable;
             break;
@@ -111,57 +114,57 @@
             break;
     }
 }
--(NSError *)f_inputError{
+-(NSError *)lb_inputError{
     NSString *errorDescription = nil;
     if (!self.text.length){
         errorDescription = [self.placeholder rangeOfString:@"输入"].length?self.placeholder:[NSString stringWithFormat:@"请输入%@",self.placeholder];
     }else{
-        switch (self.f_inputType) {
-            case FBankCardNumberInput:
-                if (!_f_inputPredicate) {
-                    _f_inputPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",@"^(\\d{14,20})"];
+        switch (self.lb_inputType) {
+            case LBBankCardInput:
+                if (!_lb_inputPredicate) {
+                    _lb_inputPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",@"^(\\d{14,20})"];
                 }
-                if (![_f_inputPredicate evaluateWithObject:self.text]){
+                if (![_lb_inputPredicate evaluateWithObject:self.text]){
                     errorDescription = @"请输入正确的银行卡号";
                 }
                 break;
-            case FMoneyInput:
-                if (!_f_inputPredicate) {
-                    _f_inputPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",@"^[0-9]+(.[0-9]{1,2})?$"];
+            case LBMoneyInput:
+                if (!_lb_inputPredicate) {
+                    _lb_inputPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",@"^[0-9]+(.[0-9]{1,2})?$"];
                 }
-                if (![self.text floatValue] || ![_f_inputPredicate evaluateWithObject:self.text]) {
+                if (![self.text floatValue] || ![_lb_inputPredicate evaluateWithObject:self.text]) {
                     errorDescription = @"请输入有效金额";
                 }
                 break;
-            case FIDCardNumberInput:
-                if (!_f_inputPredicate) {
-                    _f_inputPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",@"^(\\d{14}|\\d{17})(\\d|[xX])$"];
+            case LBIDCardInput:
+                if (!_lb_inputPredicate) {
+                    _lb_inputPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",@"^(\\d{14}|\\d{17})(\\d|[xX])$"];
                 }
-                if (![_f_inputPredicate evaluateWithObject:self.text]){
+                if (![_lb_inputPredicate evaluateWithObject:self.text]){
                     errorDescription = @"请输入正确的身份证号码";
                 }
                 break;
-            case FPhoneNumberInput:
-                if (!_f_inputPredicate) {
-                    _f_inputPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"^1(\\d{10})"];
+            case LBMobileInput:
+                if (!_lb_inputPredicate) {
+                    _lb_inputPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"^1(\\d{10})"];
                 }
-                if (![_f_inputPredicate evaluateWithObject:self.text]){
+                if (![_lb_inputPredicate evaluateWithObject:self.text]){
                     errorDescription = @"请输入正确的手机号码";
                 }
                 break;
-            case FCodeInput:
-                if (!_f_inputPredicate) {
-                    _f_inputPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", [NSString stringWithFormat:@"\\d{%lu}",_f_maxLength]];
+            case LBCodeInput:
+                if (!_lb_inputPredicate) {
+                    _lb_inputPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", [NSString stringWithFormat:@"\\d{%lu}",_lb_maxLength]];
                 }
-                if (![_f_inputPredicate evaluateWithObject:self.text]){
-                    errorDescription = [NSString stringWithFormat:@"请输入%lu位验证码",_f_maxLength];
+                if (![_lb_inputPredicate evaluateWithObject:self.text]){
+                    errorDescription = [NSString stringWithFormat:@"请输入%lu位验证码",_lb_maxLength];
                 }
                 break;
-            case FIndateInput:
+            case LBIndateInput:
             {
                 bool inputError = YES;
-                if (_f_inputPredicate) {
-                    inputError = ![_f_inputPredicate evaluateWithObject:self.text];
+                if (_lb_inputPredicate) {
+                    inputError = ![_lb_inputPredicate evaluateWithObject:self.text];
                 }else{
                     inputError = (self.text.length < 4 || [[self.text substringToIndex:2] integerValue] > 12 || [[self.text substringToIndex:2] integerValue] == 0 || [[self.text substringFromIndex:2] integerValue] > 31 || [[self.text substringFromIndex:2] integerValue] == 0);
                 }
@@ -170,11 +173,11 @@
                 }
             }
                 break;
-            case FCVV2Input:
+            case LBCVV2Input:
             {
                 bool inputError = YES;
-                if (_f_inputPredicate) {
-                    inputError = ![_f_inputPredicate evaluateWithObject:self.text];
+                if (_lb_inputPredicate) {
+                    inputError = ![_lb_inputPredicate evaluateWithObject:self.text];
                 }else{
                     inputError = (self.text.length < 3);
                 }
@@ -183,22 +186,22 @@
                 }
             }
                 break;
-            case FPasswordInput:
+            case LBPasswordInput:
             {
-                if (!_f_inputPredicate) {
-                    _f_inputPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"^(?![a-zA-Z0-9]+$)(?![^a-zA-Z/D]+$)(?![^0-9/D]+$).{8,16}$"];
+                if (!_lb_inputPredicate) {
+                    _lb_inputPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"^(?![a-zA-Z0-9]+$)(?![^a-zA-Z/D]+$)(?![^0-9/D]+$).{8,16}$"];
                 }
-                if (![_f_inputPredicate evaluateWithObject:self.text]) {
+                if (![_lb_inputPredicate evaluateWithObject:self.text]) {
                     errorDescription = @"密码必须由8-16位字母、数字和特殊字符组成";
                 }
             }
                 break;
-            case FPayPasswordInput:
+            case LBPayPasswordInput:
             {
                 
                 bool inputError = YES;
-                if (_f_inputPredicate) {
-                    inputError = ![_f_inputPredicate evaluateWithObject:self.text];
+                if (_lb_inputPredicate) {
+                    inputError = ![_lb_inputPredicate evaluateWithObject:self.text];
                 }else{
                     NSUInteger index = 0;
                     BOOL isNotAllEnqual = NO;
@@ -240,7 +243,7 @@
             }
                 break;
             default:
-                if (_f_inputPredicate && ![_f_inputPredicate evaluateWithObject:self.text]){
+                if (_lb_inputPredicate && ![_lb_inputPredicate evaluateWithObject:self.text]){
                     errorDescription = @"输入格式错误";
                 }
                 break;
@@ -255,7 +258,7 @@
 }
 
 -(NSString *)text{
-    if (_f_numberFormated) {
+    if (_lb_numberFormated) {
         return [[super text] stringByReplacingOccurrencesOfString:@" " withString:@""];
     }
     return [super text];
@@ -263,11 +266,14 @@
 
 
 -(void)textFieldTextDidChange:(NSNotification *)notification{
-    if (_hasSetMaxLength && (self.text.length>_f_maxLength)){
-        self.text = [self.text substringToIndex:_f_maxLength];
+    if (_lb_inputPredicate && ![_lb_inputPredicate evaluateWithObject:self.text]){
+        self.text = _beforePastingText;
+    }else if (_setMaxLength && (self.text.length>_lb_maxLength)){
+        self.text = [self.text substringToIndex:_lb_maxLength];
     }
-    if (self.f_inputType == FBankCardNumberInput) {
-        if (_f_numberFormated) {
+    
+    if (self.lb_inputType == LBBankCardInput) {
+        if (_lb_numberFormated) {
             NSMutableString *string = [self.text mutableCopy];
             while ([[string componentsSeparatedByString:@" "] lastObject].length > 4) {
                 NSUInteger spaceNumber = [string componentsSeparatedByString:@" "].count-1;
@@ -275,8 +281,8 @@
             }
             self.text = string;
         }
-    }else if (self.f_inputType == FPhoneNumberInput){
-        if (_f_numberFormated) {
+    }else if (self.lb_inputType == LBMobileInput){
+        if (_lb_numberFormated) {
             NSMutableString *string = [self.text mutableCopy];
             while ([[string componentsSeparatedByString:@" "] lastObject].length > ((string.length<7)?3:4)) {
                 NSUInteger spaceNumber = [string componentsSeparatedByString:@" "].count-1;
@@ -289,23 +295,23 @@
             }
             self.text = string;
         }
-    }else if (self.f_inputType == FMoneyInput){
+    }else if (self.lb_inputType == LBMoneyInput){
         if ([self.text rangeOfString:@"."].length && [[self.text componentsSeparatedByString:@"."] lastObject].length >2) {
             self.text = [self.text substringToIndex:4];
         }
-    }else if (self.f_inputType == FPercentInput){
+    }else if (self.lb_inputType == LBPercentInput){
         if (self.text.integerValue > 100) {
             self.text = @"100";
         }
     }
 }
 
-+(BOOL)textField:(LBFunctionalTextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
-    if (![textField isKindOfClass:[UITextField class]]) {
-        return YES;
-    }
-    if (string.length && [textField isKindOfClass:[LBFunctionalTextField class]]) {
-        if (textField.f_inputType == FMoneyInput){
++(BOOL)textField:(LBTextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    if ([textField isKindOfClass:[LBTextField class]] && string.length) {
+        if (textField.lb_inputPredicate && ![textField.lb_inputPredicate evaluateWithObject:[textField.text stringByAppendingString:string]]){
+            return NO;
+        }
+        else if (textField.lb_inputType == LBMoneyInput){
             if ([textField.text isEqualToString:@"0"] && ![string isEqualToString:@"."]) {
                 return NO;
             }else if (!textField.text.length && [string isEqualToString:@"."]){
@@ -318,12 +324,12 @@
                     return NO;
                 }
             }
-        }else if (textField.f_inputType == FPercentInput){
+        }else if (textField.lb_inputType == LBPercentInput){
             if (textField.text.integerValue >= 100) {
                 return NO;
             }
         }else{
-            if (textField.hasSetMaxLength && (textField.text.length>(textField.f_maxLength-1))) {
+            if (textField.setMaxLength && (textField.text.length>(textField.lb_maxLength-1))) {
                 return NO;
             }
         }
@@ -340,16 +346,22 @@
 @implementation UIResponder (TextFieldDelegateResolveInvocation)
 -(BOOL)respondsToSelector:(SEL)aSelector{
     if (aSelector == @selector(textField:shouldChangeCharactersInRange:replacementString:)) {
-        return YES;
+        
+        return [super respondsToSelector:aSelector]
+        ||[LBTextField respondsToSelector:aSelector];
+        
     }
     return [super respondsToSelector:aSelector];
 }
-//当delegate未实现代理方法的时候将会走将forwardingTargetForSelector，此时让自定义对象去实现
+//当delegate未实现代理方法的时候让LBTextField类方法实现
 - (id)forwardingTargetForSelector:(SEL)aSelector
 {
     if (aSelector == @selector(textField:shouldChangeCharactersInRange:replacementString:)) {
-        if ([LBFunctionalTextField respondsToSelector: aSelector]) {
-            return LBFunctionalTextField.self;
+        
+        if (![super respondsToSelector:aSelector] && [LBTextField respondsToSelector:aSelector]) {
+            
+            return LBTextField.self;
+            
         }
     }
     return [super forwardingTargetForSelector: aSelector];

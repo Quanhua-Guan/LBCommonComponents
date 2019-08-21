@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LBFunctionalTextField.h"
+#import "LBTextField.h"
 
 @interface LBTitleAndInputCell : UITableViewCell
 
 @property(nonatomic,strong)UILabel *titleLabel;
-@property(nonatomic,strong)LBFunctionalTextField *inputTextField;
+@property(nonatomic,strong)LBTextField *inputTextField;
 
 -(instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier titleArray:(NSArray *)array font:(UIFont *)font;
 @end
