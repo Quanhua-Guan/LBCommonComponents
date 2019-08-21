@@ -63,14 +63,24 @@
     }
     [self.view addSubview:_scrollView];
     
+    CGFloat safeAreaInsetsTop = 20;
+    if (@available(iOS 11.0, *)) {
+        safeAreaInsetsTop = [[[UIApplication sharedApplication] delegate] window].safeAreaInsets.top;
+        if(self.navigationController && !self.navigationController.navigationBar.hidden){
+            safeAreaInsetsTop += CGRectGetHeight(self.navigationController.navigationBar.frame);
+        }
+    }else if(self.navigationController && !self.navigationController.navigationBar.hidden){
+        safeAreaInsetsTop = CGRectGetMaxY(self.navigationController.navigationBar.frame);
+    }
     
-    _titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), 44+SafeAreaInsetsTop)];
+    
+    _titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), 44+safeAreaInsetsTop)];
     _titleView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
     [self.view addSubview:_titleView];
     
     // 返回按钮
     UIImage * image = [UIImage imageNamed:@"lbphoto_back"];
-    UIButton * backBtn = [[UIButton alloc] initWithFrame:CGRectMake(10, SafeAreaInsetsTop, 44, 44)];
+    UIButton * backBtn = [[UIButton alloc] initWithFrame:CGRectMake(10, safeAreaInsetsTop, 44, 44)];
     [backBtn setImage:image forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(backAction) forControlEvents:UIControlEventTouchUpInside];
     [_titleView addSubview:backBtn];
