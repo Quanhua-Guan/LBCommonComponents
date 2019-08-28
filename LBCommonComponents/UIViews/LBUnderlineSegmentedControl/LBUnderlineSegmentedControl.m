@@ -26,7 +26,8 @@
         _newsPoint.clipsToBounds = YES;
         _newsPoint.hidden = YES;
         [self addSubview:_newsPoint];
-        [self addObserver:self forKeyPath:@"titleLabel.frame" options:NSKeyValueObservingOptionNew context:nil];
+        
+        [self addObserver:self forKeyPath:[NSString stringWithFormat:@"%@.%@",NSStringFromSelector(@selector(titleLabel)),NSStringFromSelector(@selector(frame))] options:NSKeyValueObservingOptionNew context:nil];
         
         _underLineView = [[UIView alloc] init];
         [self addSubview:_underLineView];
@@ -134,5 +135,9 @@
     [self setSelectedSegmentIndex:[_privateItemsBtnArray indexOfObject:sender]];
     typeof(self) __weak weakSelf = self;
     _itemSeletedBlock?_itemSeletedBlock(weakSelf.sliderButton,YES):NULL;
+}
+
+-(void)dealloc{
+    [self removeObserver:self forKeyPath:[NSString stringWithFormat:@"%@.%@",NSStringFromSelector(@selector(titleLabel)),NSStringFromSelector(@selector(frame))]];
 }
 @end

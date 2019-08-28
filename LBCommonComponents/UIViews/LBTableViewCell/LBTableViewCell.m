@@ -8,18 +8,12 @@
 
 #import "LBTableViewCell.h"
 @interface LBTableViewCell ()
-@property (nonatomic,assign)CGRect imageFrame;
-@property (nonatomic,assign)CGFloat imageViewCornerRadius;
-@property (nonatomic,assign)CGRect textLabelFrame;
-@property (nonatomic,assign)CGRect detailTextLabelFrame;
-@property (nonatomic,assign)NSTextAlignment textLabelTextAlignment;
-@property (nonatomic,assign)NSTextAlignment detailTextLabelTextAlignment;
-@property (nonatomic,assign)dispatch_once_t imageViewFrameOnceToken;
-@property (nonatomic,assign)dispatch_once_t imageViewLayerOnceToken;
-@property (nonatomic,assign)dispatch_once_t textLabelOnceToken;
-@property (nonatomic,assign)dispatch_once_t detailTextLabelOnceToken;
-@property (nonatomic,assign)dispatch_once_t textLabelAlignmentOnceToken;
-@property (nonatomic,assign)dispatch_once_t detailTextLabelAlignmentOnceToken;
+@property (nonatomic,strong)NSString *imageFrameString;
+@property (nonatomic,strong)NSNumber *imageViewCornerRadius;
+@property (nonatomic,strong)NSString *textLabelFrameString;
+@property (nonatomic,strong)NSString *detailTextLabelFrameString;
+@property (nonatomic,strong)NSNumber *textLabelTextAlignment;
+@property (nonatomic,strong)NSNumber *detailTextLabelTextAlignment;
 @end
 @implementation LBTableViewCell
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -42,12 +36,12 @@
 
 -(void)layoutSubviews{
     [super layoutSubviews];
-    self.imageView.frame = _imageFrame;
-    self.imageView.layer.cornerRadius = _imageViewCornerRadius;
-    self.textLabel.frame = _textLabelFrame;
-    self.detailTextLabel.frame = _detailTextLabelFrame;
-    self.textLabel.textAlignment = _textLabelTextAlignment;
-    self.detailTextLabel.textAlignment = _detailTextLabelTextAlignment;
+    self.imageView.frame = CGRectFromString(_imageFrameString);
+    self.imageView.layer.cornerRadius = _imageViewCornerRadius.floatValue;
+    self.textLabel.frame = CGRectFromString(_textLabelFrameString);
+    self.detailTextLabel.frame = CGRectFromString(_detailTextLabelFrameString);
+    self.textLabel.textAlignment = _textLabelTextAlignment.integerValue;
+    self.detailTextLabel.textAlignment = _detailTextLabelTextAlignment.integerValue;
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
@@ -55,39 +49,46 @@
     if (object == self.imageView) {
         
         if ([keyPath isEqualToString:NSStringFromSelector(@selector(frame))]) {
-            dispatch_once(&_imageViewFrameOnceToken, ^{
-                weakSelf.imageFrame = self.imageView.frame;
-            });
+            if (!_imageFrameString) {
+                _imageFrameString = NSStringFromCGRect(self.imageView.frame);
+            }
         }else if ([keyPath isEqualToString:[NSString stringWithFormat:@"%@.%@",NSStringFromSelector(@selector(layer)),NSStringFromSelector(@selector(cornerRadius))]]){
-            dispatch_once(&_imageViewLayerOnceToken, ^{
-                weakSelf.imageViewCornerRadius = self.imageView.layer.cornerRadius;
-            });
+            if (!_imageViewCornerRadius) {
+                _imageViewCornerRadius = @(self.imageView.layer.cornerRadius);
+            }
         }
         
     }else if (object == self.textLabel){
         if ([keyPath isEqualToString:NSStringFromSelector(@selector(frame))]) {
-            dispatch_once(&_textLabelOnceToken, ^{
-                weakSelf.textLabelFrame = self.textLabel.frame;
-                
-            });
+            if (!_textLabelFrameString) {
+                _textLabelFrameString = NSStringFromCGRect(self.textLabel.frame);
+            }
         }else if ([keyPath isEqualToString:NSStringFromSelector(@selector(textAlignment))]){
-            dispatch_once(&_textLabelAlignmentOnceToken, ^{
-                weakSelf.textLabelTextAlignment = self.textLabel.textAlignment;
-            });
+            if (!_textLabelTextAlignment) {
+                _textLabelTextAlignment = @(self.textLabel.textAlignment);
+            }
         }
         
     }else if (object == self.detailTextLabel){
         if ([keyPath isEqualToString:NSStringFromSelector(@selector(frame))]) {
-            dispatch_once(&_detailTextLabelOnceToken, ^{
-                weakSelf.detailTextLabelFrame = self.detailTextLabel.frame;
-            });
+            if (!_detailTextLabelFrameString) {
+                _detailTextLabelFrameString = NSStringFromCGRect(self.detailTextLabel.frame);
+            }
         }else if ([keyPath isEqualToString:NSStringFromSelector(@selector(textAlignment))]){
-            dispatch_once(&_detailTextLabelAlignmentOnceToken, ^{
-                weakSelf.detailTextLabelTextAlignment = self.detailTextLabel.textAlignment;
-                
-            });
+            if (!_detailTextLabelTextAlignment) {
+                _detailTextLabelTextAlignment = @(self.detailTextLabel.textAlignment);
+            }
         }
     }
+}
+
+-(void)dealloc{
+    [self.imageView removeObserver:self forKeyPath:NSStringFromSelector(@selector(frame))];
+    [self.imageView removeObserver:self forKeyPath:[NSString stringWithFormat:@"%@.%@",NSStringFromSelector(@selector(layer)),NSStringFromSelector(@selector(cornerRadius))]];
+    [self.textLabel removeObserver:self forKeyPath:NSStringFromSelector(@selector(frame))];
+    [self.textLabel removeObserver:self forKeyPath:NSStringFromSelector(@selector(textAlignment))];
+    [self.detailTextLabel removeObserver:self forKeyPath:NSStringFromSelector(@selector(frame))];
+    [self.detailTextLabel removeObserver:self forKeyPath:NSStringFromSelector(@selector(textAlignment))];
 }
 
 @end

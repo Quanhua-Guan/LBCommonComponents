@@ -88,5 +88,9 @@
     }
     return [super hitTest:point withEvent:event];
 }
+-(void)dealloc{
+    [_badgeButton.titleLabel removeObserver:self forKeyPath:NSStringFromSelector(@selector(text))];
+    [_badgeButton.imageView removeObserver:self forKeyPath:NSStringFromSelector(@selector(image))];
+}
 
 @end

@@ -366,5 +366,8 @@
     }
     return [super forwardingTargetForSelector: aSelector];
 }
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 @end
 

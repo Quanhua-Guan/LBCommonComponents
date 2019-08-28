@@ -93,4 +93,8 @@
     [self textDidChange];
     return NO;
 }
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self removeObserver:self forKeyPath:NSStringFromSelector(@selector(frame))];
+}
 @end
