@@ -27,7 +27,7 @@
         _newsPoint.hidden = YES;
         [self addSubview:_newsPoint];
         
-        [self addObserver:self forKeyPath:[NSString stringWithFormat:@"%@.%@",NSStringFromSelector(@selector(titleLabel)),NSStringFromSelector(@selector(frame))] options:NSKeyValueObservingOptionNew context:nil];
+        [self.titleLabel addObserver:self forKeyPath:NSStringFromSelector(@selector(frame)) options:NSKeyValueObservingOptionNew context:nil];
         
         _underLineView = [[UIView alloc] init];
         [self addSubview:_underLineView];
@@ -36,7 +36,7 @@
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
-    if ([keyPath isEqualToString:@"titleLabel.frame"]) {
+    if ([object isEqual:self.titleLabel] && [keyPath isEqualToString:NSStringFromSelector(@selector(frame))]) {
         _newsPoint.frame = CGRectMake(CGRectGetMaxX(self.titleLabel.frame)-CGRectGetWidth(_newsPoint.frame)/2, CGRectGetMinY(self.titleLabel.frame)-CGRectGetHeight(_newsPoint.frame)/2, CGRectGetWidth(_newsPoint.frame), CGRectGetHeight(_newsPoint.frame));
         
         _underLineView.frame = CGRectMake(self.titleLabel.center.x-CGRectGetWidth(self.titleLabel.frame)/2, CGRectGetMaxY(self.titleLabel.frame), CGRectGetWidth(self.titleLabel.frame), _lineHeight);
@@ -46,6 +46,10 @@
 -(void)setLineHeight:(CGFloat)lineHeight{
     _lineHeight = lineHeight;
     [self observeValueForKeyPath:@"titleLabel.frame" ofObject:self change:nil context:nil];
+}
+
+-(void)dealloc{
+    [self.titleLabel removeObserver:self forKeyPath:NSStringFromSelector(@selector(frame))];
 }
 @end
 
@@ -137,7 +141,4 @@
     _itemSeletedBlock?_itemSeletedBlock(weakSelf.sliderButton,YES):NULL;
 }
 
--(void)dealloc{
-    [self removeObserver:self forKeyPath:[NSString stringWithFormat:@"%@.%@",NSStringFromSelector(@selector(titleLabel)),NSStringFromSelector(@selector(frame))]];
-}
 @end

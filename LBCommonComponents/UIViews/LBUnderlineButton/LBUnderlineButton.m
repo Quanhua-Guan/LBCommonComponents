@@ -22,14 +22,14 @@
     self = [super initWithFrame:frame];
     if (self) {
         _lineHeight = 0.5;
-        [self addObserver:self forKeyPath:@"titleLabel.frame" options:NSKeyValueObservingOptionNew context:nil];
+        [self.titleLabel addObserver:self forKeyPath:NSStringFromSelector(@selector(frame)) options:NSKeyValueObservingOptionNew context:nil];
         _underline = [[UIView alloc] init];
         [self addSubview:_underline];
     }
     return self;
 }
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
-    if ([keyPath isEqualToString:@"titleLabel.frame"]) {
+    if ([object isEqual:self.titleLabel] && [keyPath isEqualToString:NSStringFromSelector(@selector(frame))]) {
         _underline.frame = CGRectMake(self.titleLabel.center.x-CGRectGetWidth(self.titleLabel.frame)/2, CGRectGetMaxY(self.titleLabel.frame), CGRectGetWidth(self.titleLabel.frame), _lineHeight);
     }
 }
@@ -49,5 +49,9 @@
     if (state == UIControlStateNormal) {
         _underline.backgroundColor = [self currentTitleColor];
     }
+}
+
+-(void)dealloc{
+    [self.titleLabel removeObserver:self forKeyPath:NSStringFromSelector(@selector(frame))];
 }
 @end

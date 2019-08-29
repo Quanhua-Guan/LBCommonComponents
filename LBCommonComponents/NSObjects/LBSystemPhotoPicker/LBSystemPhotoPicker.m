@@ -74,15 +74,11 @@
     self.didFinishPickingMedia?
     self.didFinishPickingMedia(info,nil):NULL;
     
-//    UIImage *image = info[UIImagePickerControllerOriginalImage];
-//    NSData * imageData = UIImageJPEGRepresentation(image,1.0);
-//    int size = (int)[imageData length]/1024;
-//    if (size < 100) {
-//        imageData = UIImageJPEGRepresentation(image, 0.5);
-//    } else {
-//        imageData = UIImageJPEGRepresentation(image, 0.1);
-//    }
-//    image = [UIImage imageWithData:imageData];
+    //    UIImage *image = info[UIImagePickerControllerOriginalImage];
+    //    NSData * imageData = UIImageJPEGRepresentation(image,1.0);
+    //    while ([imageData length]/1024 > 400) {
+    //        imageData = UIImageJPEGRepresentation([UIImage imageWithData:imageData], 0.1);
+    //    }
 }
 
 -(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
