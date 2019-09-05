@@ -9,7 +9,9 @@
 #import "LBVerticalButton.h"
 
 @interface LBVerticalButton()
-
+@property (nonatomic,strong)NSString *badgeButtonBoundsString;
+@property (nonatomic,strong)NSString *imageViewBoundsString;
+@property (nonatomic,strong)NSString *titleLabelBoundsString;
 @end
 
 @implementation LBVerticalButton
@@ -34,13 +36,19 @@
         
         [_badgeButton.titleLabel addObserver:self forKeyPath:NSStringFromSelector(@selector(text)) options:NSKeyValueObservingOptionNew context:nil];
         [_badgeButton.imageView addObserver:self forKeyPath:NSStringFromSelector(@selector(image)) options:NSKeyValueObservingOptionNew context:nil];
+        
+        [_badgeButton addObserver:self forKeyPath:NSStringFromSelector(@selector(bounds)) options:NSKeyValueObservingOptionNew context:nil];
+
+        [self.imageView addObserver:self forKeyPath:NSStringFromSelector(@selector(bounds)) options:NSKeyValueObservingOptionNew context:nil];
+        [self.titleLabel addObserver:self forKeyPath:NSStringFromSelector(@selector(bounds)) options:NSKeyValueObservingOptionNew context:nil];
     }
     return self;
 }
 -(void)layoutSubviews{
     [super layoutSubviews];
-    CGRect imageViewFrame = self.imageView.frame;
-    CGRect titleLabelFrame = self.titleLabel.frame;
+    
+    CGRect imageViewFrame = _imageViewBoundsString?CGRectFromString(_imageViewBoundsString):self.imageView.frame;
+    CGRect titleLabelFrame = _titleLabelBoundsString?CGRectFromString(_titleLabelBoundsString):self.titleLabel.frame;
     CGFloat minY = (CGRectGetHeight(self.bounds)-(CGRectGetHeight(titleLabelFrame)+CGRectGetHeight(imageViewFrame)+self.lineSpacing))/2;
     imageViewFrame.origin.y = minY;
     imageViewFrame.origin.x = (CGRectGetWidth(self.bounds)-CGRectGetWidth(imageViewFrame))/2;
@@ -51,6 +59,11 @@
 
     self.titleLabel.frame = titleLabelFrame;
     self.imageView.frame = imageViewFrame;
+    
+    CGRect badgeButtonBounds = CGRectFromString(self.badgeButtonBoundsString);
+    _badgeButton.layer.cornerRadius = CGRectGetHeight(badgeButtonBounds)/2;
+
+    self.badgeButton.frame = CGRectMake(CGRectGetMaxX(self.imageView.frame)-CGRectGetWidth(badgeButtonBounds)/2, CGRectGetMinY(self.imageView.frame)-CGRectGetHeight(badgeButtonBounds)/2, CGRectGetWidth(badgeButtonBounds), CGRectGetHeight(badgeButtonBounds));
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
@@ -74,11 +87,22 @@
             badgeBtnFrame.size.height = 17;
         }
 
-        badgeBtnFrame.origin.x = CGRectGetMaxX(self.imageView.frame)-CGRectGetWidth(badgeBtnFrame)/2;
-        badgeBtnFrame.origin.y = CGRectGetMinY(self.imageView.frame)-CGRectGetHeight(badgeBtnFrame)/2;
-        _badgeButton.layer.cornerRadius = CGRectGetHeight(badgeBtnFrame)/2;
-
-        _badgeButton.frame = badgeBtnFrame;
+        if (!_badgeButtonBoundsString) {
+            _badgeButtonBoundsString = NSStringFromCGRect(CGRectMake(0, 0, CGRectGetWidth(badgeBtnFrame), CGRectGetHeight(badgeBtnFrame)));
+        }
+        [self setNeedsLayout];
+    }else if ([object isEqual:_badgeButton]){
+        if (!_badgeButtonBoundsString) {
+            _badgeButtonBoundsString = NSStringFromCGRect(_badgeButton.frame);
+        }
+    }else if ([object isEqual:self.imageView]){
+        if (!_imageViewBoundsString) {
+            _imageViewBoundsString = NSStringFromCGRect(self.imageView.frame);
+        }
+    }else if ([object isEqual:self.titleLabel]){
+        if (!_titleLabelBoundsString) {
+            _titleLabelBoundsString = NSStringFromCGRect(self.titleLabel.frame);
+        }
     }
 }
 
@@ -88,9 +112,14 @@
     }
     return [super hitTest:point withEvent:event];
 }
+
+
 -(void)dealloc{
     [_badgeButton.titleLabel removeObserver:self forKeyPath:NSStringFromSelector(@selector(text))];
     [_badgeButton.imageView removeObserver:self forKeyPath:NSStringFromSelector(@selector(image))];
+    [_badgeButton removeObserver:self forKeyPath:NSStringFromSelector(@selector(bounds))];
+    [self.imageView removeObserver:self forKeyPath:NSStringFromSelector(@selector(bounds))];
+    [self.titleLabel removeObserver:self forKeyPath:NSStringFromSelector(@selector(bounds))];
 }
 
 @end
