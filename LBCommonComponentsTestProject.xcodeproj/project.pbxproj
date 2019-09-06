@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2145DB75A15F62F0BB4325F7 /* libPods-LBCommonComponentsTestProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1522CACBFC08DF221B33410F /* libPods-LBCommonComponentsTestProject.a */; };
 		4012EC1922202D22006510F3 /* LBTitleAndInputCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012EBEF22202D22006510F3 /* LBTitleAndInputCell.m */; };
 		4012EC1A22202D22006510F3 /* LBCodeGetButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012EBF322202D22006510F3 /* LBCodeGetButton.m */; };
 		4012EC1B22202D22006510F3 /* UIView+LBInit.m in Sources */ = {isa = PBXBuildFile; fileRef = 4012EBF722202D22006510F3 /* UIView+LBInit.m */; };
@@ -45,12 +46,15 @@
 		40C6F0A322D34344005770E9 /* LBUnderlineSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C6F0A222D34344005770E9 /* LBUnderlineSegmentedControl.m */; };
 		40C6F0A722D34417005770E9 /* LBYearMonthPickerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 40C6F0A622D34417005770E9 /* LBYearMonthPickerVC.m */; };
 		40E061B2221FCB5D00DB89E3 /* LBCommonComponents.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 40E061B1221FCB5D00DB89E3 /* LBCommonComponents.podspec */; };
+		40ECB5BC23225D0B00AC48B8 /* LBReusableScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40ECB5BA23225D0B00AC48B8 /* LBReusableScrollView.m */; };
 		40F69D8D22E57C9300EEA23A /* LBRichTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F69D8B22E57C9300EEA23A /* LBRichTextView.m */; };
 		40F69D9422E5B64C00EEA23A /* UIImage+LBChangeColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F69D9322E5B64C00EEA23A /* UIImage+LBChangeColor.m */; };
 		40F82ECE2276BE4E000259A3 /* LBPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 40F82ECD2276BE4E000259A3 /* LBPlaceholderTextView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1522CACBFC08DF221B33410F /* libPods-LBCommonComponentsTestProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LBCommonComponentsTestProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3ED8077D0FAB1027D13E3C0E /* Pods-LBCommonComponentsTestProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBCommonComponentsTestProject.debug.xcconfig"; path = "Target Support Files/Pods-LBCommonComponentsTestProject/Pods-LBCommonComponentsTestProject.debug.xcconfig"; sourceTree = "<group>"; };
 		4012EBEF22202D22006510F3 /* LBTitleAndInputCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBTitleAndInputCell.m; sourceTree = "<group>"; };
 		4012EBF022202D22006510F3 /* LBTitleAndInputCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBTitleAndInputCell.h; sourceTree = "<group>"; };
 		4012EBF222202D22006510F3 /* LBCodeGetButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBCodeGetButton.h; sourceTree = "<group>"; };
@@ -126,12 +130,15 @@
 		40C6F0A622D34417005770E9 /* LBYearMonthPickerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBYearMonthPickerVC.m; sourceTree = "<group>"; };
 		40E061B1221FCB5D00DB89E3 /* LBCommonComponents.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LBCommonComponents.podspec; sourceTree = "<group>"; };
 		40E061B7221FD36E00DB89E3 /* LBCommonComponentsTestProject.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LBCommonComponentsTestProject.pch; sourceTree = "<group>"; };
+		40ECB5BA23225D0B00AC48B8 /* LBReusableScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBReusableScrollView.m; sourceTree = "<group>"; };
+		40ECB5BB23225D0B00AC48B8 /* LBReusableScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBReusableScrollView.h; sourceTree = "<group>"; };
 		40F69D8B22E57C9300EEA23A /* LBRichTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBRichTextView.m; sourceTree = "<group>"; };
 		40F69D8C22E57C9300EEA23A /* LBRichTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBRichTextView.h; sourceTree = "<group>"; };
 		40F69D9222E5B64C00EEA23A /* UIImage+LBChangeColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+LBChangeColor.h"; sourceTree = "<group>"; };
 		40F69D9322E5B64C00EEA23A /* UIImage+LBChangeColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+LBChangeColor.m"; sourceTree = "<group>"; };
 		40F82ECC2276BE4E000259A3 /* LBPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBPlaceholderTextView.h; sourceTree = "<group>"; };
 		40F82ECD2276BE4E000259A3 /* LBPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBPlaceholderTextView.m; sourceTree = "<group>"; };
+		FBC05F474BDF1440E868FF62 /* Pods-LBCommonComponentsTestProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LBCommonComponentsTestProject.release.xcconfig"; path = "Target Support Files/Pods-LBCommonComponentsTestProject/Pods-LBCommonComponentsTestProject.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +146,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2145DB75A15F62F0BB4325F7 /* libPods-LBCommonComponentsTestProject.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +156,7 @@
 		4012EBEA22202D22006510F3 /* UIViews */ = {
 			isa = PBXGroup;
 			children = (
+				40ECB5B923225D0B00AC48B8 /* LBReusableScrollView */,
 				40273748230D28B200F81FA0 /* LBTextField */,
 				40A83B622304037A00D3FE90 /* LBTableViewCell */,
 				40A83B652304037A00D3FE90 /* LBTitleFrontImageBehindButton */,
@@ -432,6 +441,8 @@
 				40E061B1221FCB5D00DB89E3 /* LBCommonComponents.podspec */,
 				40BEB3CA221E43BE005A8481 /* LBCommonComponentsTestProject */,
 				40BEB3C9221E43BE005A8481 /* Products */,
+				8BD463A2882E61A1AAA649FC /* Pods */,
+				668382ECC1E79DE120C6FFED /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -525,6 +536,15 @@
 			path = LBCommonComponents;
 			sourceTree = SOURCE_ROOT;
 		};
+		40ECB5B923225D0B00AC48B8 /* LBReusableScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				40ECB5BA23225D0B00AC48B8 /* LBReusableScrollView.m */,
+				40ECB5BB23225D0B00AC48B8 /* LBReusableScrollView.h */,
+			);
+			path = LBReusableScrollView;
+			sourceTree = "<group>";
+		};
 		40F69D8A22E57C9300EEA23A /* LBRichTextView */ = {
 			isa = PBXGroup;
 			children = (
@@ -552,6 +572,23 @@
 			path = LBPlaceholderTextView;
 			sourceTree = "<group>";
 		};
+		668382ECC1E79DE120C6FFED /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1522CACBFC08DF221B33410F /* libPods-LBCommonComponentsTestProject.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8BD463A2882E61A1AAA649FC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3ED8077D0FAB1027D13E3C0E /* Pods-LBCommonComponentsTestProject.debug.xcconfig */,
+				FBC05F474BDF1440E868FF62 /* Pods-LBCommonComponentsTestProject.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -559,6 +596,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 40BEB3DE221E43BF005A8481 /* Build configuration list for PBXNativeTarget "LBCommonComponentsTestProject" */;
 			buildPhases = (
+				8C8059E2BF291A66D8E01CB5 /* [CP] Check Pods Manifest.lock */,
 				40BEB3C4221E43BE005A8481 /* Sources */,
 				40BEB3C5221E43BE005A8481 /* Frameworks */,
 				40BEB3C6221E43BE005A8481 /* Resources */,
@@ -620,6 +658,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8C8059E2BF291A66D8E01CB5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LBCommonComponentsTestProject-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		40BEB3C4221E43BE005A8481 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -649,6 +712,7 @@
 				40BEB3E7221E4469005A8481 /* AppDelegate.m in Sources */,
 				4012EC2522202D23006510F3 /* LBWebViewController.m in Sources */,
 				4012EC1E22202D23006510F3 /* LBCustemPresentTransitions.m in Sources */,
+				40ECB5BC23225D0B00AC48B8 /* LBReusableScrollView.m in Sources */,
 				4012EC1922202D22006510F3 /* LBTitleAndInputCell.m in Sources */,
 				40C6F0A322D34344005770E9 /* LBUnderlineSegmentedControl.m in Sources */,
 				40C6F0A722D34417005770E9 /* LBYearMonthPickerVC.m in Sources */,
@@ -780,6 +844,7 @@
 		};
 		40BEB3DF221E43BF005A8481 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3ED8077D0FAB1027D13E3C0E /* Pods-LBCommonComponentsTestProject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -800,6 +865,7 @@
 		};
 		40BEB3E0221E43BF005A8481 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FBC05F474BDF1440E868FF62 /* Pods-LBCommonComponentsTestProject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

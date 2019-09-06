@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'LBCommonComponents'
-  s.version          = '0.4.2'
+  s.version          = '0.4.3'
   s.summary          = 'CommonComponents of my project.'
   s.description      = <<-DESC
 TODO: Add long description of the pod here.
@@ -96,8 +96,10 @@ TODO: Add long description of the pod here.
     end
 
     ss.subspec 'LBPhotoPreviewController' do |sss|
-       sss.source_files = 'LBCommonComponents/UIViewControllers/LBPhotoPreviewController/**/*.{h,m}'
-       sss.resource = 'LBCommonComponents/UIViewControllers/LBPhotoPreviewController/**/*.png'
+      sss.dependency 'SDWebImage'
+      sss.dependency 'LBCommonComponents/UIViews/LBReusableScrollView'
+      sss.source_files = 'LBCommonComponents/UIViewControllers/LBPhotoPreviewController/**/*.{h,m}'
+      sss.resource = 'LBCommonComponents/UIViewControllers/LBPhotoPreviewController/**/*.png'
     end
 
 
@@ -152,6 +154,10 @@ TODO: Add long description of the pod here.
 
    ss.subspec 'LBTitleFrontImageBehindButton' do |sss|
       sss.source_files = 'LBCommonComponents/UIViews/LBTitleFrontImageBehindButton/**/*'
+   end
+
+   ss.subspec 'LBReusableScrollView' do |sss|
+      sss.source_files = 'LBCommonComponents/UIViews/LBReusableScrollView/**/*'
    end
 
 
