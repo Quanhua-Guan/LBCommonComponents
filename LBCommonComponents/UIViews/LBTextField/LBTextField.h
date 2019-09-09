@@ -13,7 +13,7 @@ typedef NS_ENUM(NSUInteger, LBInputType) {
     LBMoneyInput,
     LBIDCardInput,
     LBMobileInput,
-    LBIndateInput,
+    LBIndateInput,//1212(12月12日)
     LBCVV2Input,
     LBCodeInput,
     LBPasswordInput,

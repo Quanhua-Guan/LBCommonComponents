@@ -126,7 +126,6 @@
         case LBIndateInput:
             _lb_textPredicate?NULL:(_lb_textPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", [NSString stringWithFormat:@"\\d{%lu}",_lb_maxLength.unsignedIntegerValue]]);
             break;
-            
         default:
             break;
     }
@@ -136,39 +135,39 @@
     _lb_inputType = lb_inputType;
     switch (lb_inputType) {
         case LBMobileInput:
-            _lb_maxLength?NULL:(_lb_maxLength = @(11));
+            _lb_maxLength?NULL:(self.lb_maxLength = @(11));
             _lb_textPredicate?NULL:(_lb_textPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"^1(\\d{10})"]);
             break;
         case LBBankCardInput:
-            _lb_maxLength?NULL:(_lb_maxLength = @(20));
+            _lb_maxLength?NULL:(self.lb_maxLength = @(20));
             _lb_textPredicate?NULL:(_lb_textPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",@"^(\\d{14,20})"]);
             break;
         case LBCVV2Input:
-            _lb_maxLength?NULL:(_lb_maxLength = @(3));
+            _lb_maxLength?NULL:(self.lb_maxLength = @(3));
             break;
         case LBCodeInput:
-            _lb_maxLength?NULL:(_lb_maxLength = @(6));
+            _lb_maxLength?NULL:(self.lb_maxLength = @(6));
             break;
         case LBPayPasswordInput:
-            _lb_maxLength?NULL:(_lb_maxLength = @(6));
+            _lb_maxLength?NULL:(self.lb_maxLength = @(6));
             break;
         case LBIndateInput:
-            _lb_maxLength?NULL:(_lb_maxLength = @(4));
+            _lb_maxLength?NULL:(self.lb_maxLength = @(4));
             break;
         case LBPercentInput:
-            _lb_maxLength?NULL:(_lb_maxLength = @(3));
+            _lb_maxLength?NULL:(self.lb_maxLength = @(3));
             _lb_textPredicate?NULL:(_lb_textPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",@"^(\\d?\\d(\\.\\d*)?|100)$"]);
             break;
         case LBMoneyInput:
-            _lb_maxLength?NULL:(_lb_maxLength = @(15));
+            _lb_maxLength?NULL:(self.lb_maxLength = @(15));
             _lb_textPredicate?NULL:(_lb_textPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",@"^[0-9]+(.[0-9]{1,2})?$"]);
             break;
         case LBPasswordInput:
-            _lb_maxLength?NULL:(_lb_maxLength = @(16));
+            _lb_maxLength?NULL:(self.lb_maxLength = @(16));
             _lb_textPredicate?NULL:(_lb_textPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"^(?![a-zA-Z0-9]+$)(?![^a-zA-Z/D]+$)(?![^0-9/D]+$).{8,16}$"]);
             break;
         case LBIDCardInput:
-            _lb_maxLength?NULL:(_lb_maxLength = @(18));
+            _lb_maxLength?NULL:(self.lb_maxLength = @(18));
             _lb_textPredicate?NULL:(_lb_textPredicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",@"^(\\d{14}|\\d{17})(\\d|[xX])$"]);
             break;
         default:
@@ -184,71 +183,52 @@
     }else{
         switch (self.lb_inputType) {
             case LBBankCardInput:
-                if (![_lb_textPredicate evaluateWithObject:text]){
-                    errorDescription = @"请输入正确的银行卡号";
+                if (_lb_textPredicate && ![_lb_textPredicate evaluateWithObject:text]){
+                    errorDescription = @"银行卡号格式错误";
                 }
                 break;
             case LBMoneyInput:
-                if (![text floatValue] || ![_lb_textPredicate evaluateWithObject:text]) {
+                if (![text floatValue] || (_lb_textPredicate && ![_lb_textPredicate evaluateWithObject:text])) {
                     errorDescription = @"请输入有效金额";
                 }
                 break;
             case LBIDCardInput:
-                if (![_lb_textPredicate evaluateWithObject:text]){
-                    errorDescription = @"请输入正确的身份证号码";
+                if (_lb_textPredicate && ![_lb_textPredicate evaluateWithObject:text]){
+                    errorDescription = @"身份证号码格式错误";
                 }
                 break;
             case LBMobileInput:
-                if (![_lb_textPredicate evaluateWithObject:text]){
-                    errorDescription = @"请输入正确的手机号码";
+                if (_lb_textPredicate && ![_lb_textPredicate evaluateWithObject:text]){
+                    errorDescription = @"手机号码格式错误";
                 }
                 break;
             case LBCodeInput:
-            {
-                if (![_lb_textPredicate evaluateWithObject:text]){
-                    errorDescription = [NSString stringWithFormat:@"请输入%lu位验证码",_lb_maxLength.unsignedIntegerValue];
+                if (_lb_textPredicate && ![_lb_textPredicate evaluateWithObject:text]){
+                    errorDescription = @"验证码格式错误";
                 }
-            }
                 break;
             case LBIndateInput:
-            {
-                bool inputError = YES;
-                if (_lb_textPredicate) {
-                    inputError = ![_lb_textPredicate evaluateWithObject:text];
-                }else{
-                    inputError = (text.length < 4 || [[text substringToIndex:2] integerValue] > 12 || [[text substringToIndex:2] integerValue] == 0 || [[text substringFromIndex:2] integerValue] > 31 || [[text substringFromIndex:2] integerValue] == 0);
+                if (_lb_textPredicate && ![_lb_textPredicate evaluateWithObject:text]) {
+                    errorDescription = @"有效期格式错误";
+                }else if ((text.length < 4 || [[text substringToIndex:2] integerValue] > 12 || [[text substringToIndex:2] integerValue] == 0 || [[text substringFromIndex:2] integerValue] > 31 || [[text substringFromIndex:2] integerValue] == 0)){
+                    errorDescription = @"有效期格式错误";
                 }
-                if (inputError){
-                    errorDescription = @"请输入正确的有效期";
-                }
-            }
                 break;
             case LBCVV2Input:
-            {
-                bool inputError = YES;
-                if (_lb_textPredicate) {
-                    inputError = ![_lb_textPredicate evaluateWithObject:text];
-                }else{
-                    inputError = (text.length < 3);
+                if (_lb_textPredicate && ![_lb_textPredicate evaluateWithObject:text]) {
+                    errorDescription = @"安全码格式错误";
+                }else if (text.length < 3){
+                    errorDescription = @"安全码格式错误";
                 }
-                if (inputError){
-                    errorDescription = @"请输入3位安全码";
-                }
-            }
                 break;
             case LBPasswordInput:
-            {
-                if (![_lb_textPredicate evaluateWithObject:text]) {
-                    errorDescription = @"密码必须由8-16位字母、数字和特殊字符组成";
+                if (_lb_textPredicate && ![_lb_textPredicate evaluateWithObject:text]) {
+                    errorDescription = @"密码格式错误";
                 }
-            }
                 break;
             case LBPayPasswordInput:
-            {
-                
-                bool inputError = YES;
-                if (_lb_textPredicate) {
-                    inputError = ![_lb_textPredicate evaluateWithObject:text];
+                if (_lb_textPredicate && ![_lb_textPredicate evaluateWithObject:text]) {
+                    errorDescription = @"支付密码格式错误";
                 }else{
                     NSUInteger index = 0;
                     BOOL isNotAllEnqual = NO;
@@ -280,14 +260,11 @@
                         }
                     }
                     
-                    inputError = (!isNotAllEnqual || !isNotAscending || !isNotDescending || [text isEqualToString:@"123456"] ||  [text isEqualToString:@"654321"]);
-                    
+                    if ((!isNotAllEnqual || !isNotAscending || !isNotDescending || [text isEqualToString:@"123456"] ||  [text isEqualToString:@"654321"])) {
+                        errorDescription = @"为了您的账户安全，请避免输入过于简单的支付密码";
+                    }
                 }
                 
-                if (inputError) {
-                    errorDescription = @"为了您的账户安全，请避免输入过于简单的支付密码";
-                }
-            }
                 break;
             default:
                 if (_lb_textPredicate && ![_lb_textPredicate evaluateWithObject:text]){
