@@ -198,7 +198,7 @@
 
 - (void)backAction
 {
-    if (self.presentedViewController) {
+    if (self.presentingViewController) {
         [self dismissViewControllerAnimated:YES completion:NULL];
     }else{
         [self.navigationController popViewControllerAnimated:YES];
