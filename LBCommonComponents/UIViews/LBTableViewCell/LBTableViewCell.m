@@ -45,7 +45,6 @@
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
-    __weak typeof(self) weakSelf = self;
     if (object == self.imageView) {
         
         if ([keyPath isEqualToString:NSStringFromSelector(@selector(frame))]) {
