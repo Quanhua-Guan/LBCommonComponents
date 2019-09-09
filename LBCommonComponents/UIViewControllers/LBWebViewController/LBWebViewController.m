@@ -9,16 +9,22 @@
 #import "LBWebViewController.h"
 
 @interface LBWebViewController ()
-@property(nonatomic,strong)NSString *urlString;
-
 @end
 
 @implementation LBWebViewController
-- (instancetype)initWithUrlString:(NSString *)urlString
+- (instancetype)init
 {
     self = [super init];
     if (self) {
-        _urlString = urlString;
+        _webView = [[WKWebView alloc] init];
+        self.webView.layer.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;
+        self.webView.navigationDelegate = self;
+        [self.webView addObserver:self forKeyPath:NSStringFromSelector(@selector(estimatedProgress)) options:NSKeyValueObservingOptionNew context:NULL];
+        
+        _loadingProgressView = [[UIProgressView alloc]initWithProgressViewStyle:UIProgressViewStyleBar];
+        self.loadingProgressView.progressTintColor = [UIColor greenColor];
+        self.loadingProgressView.trackTintColor = [UIColor whiteColor];
+
     }
     return self;
 }
@@ -27,18 +33,6 @@
     // Do any additional setup after loading the view.
     self.title = self.customTitle;
     
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:_urlString]];
-    
-    _webView = [[WKWebView alloc] init];
-    _webView.layer.backgroundColor = [UIColor groupTableViewBackgroundColor].CGColor;
-    _webView.navigationDelegate = self;
-    
-        
-    [_webView addObserver:self forKeyPath:NSStringFromSelector(@selector(estimatedProgress)) options:NSKeyValueObservingOptionNew context:NULL];
-    
-    _loadingProgressView = [[UIProgressView alloc]initWithProgressViewStyle:UIProgressViewStyleBar];
-    _loadingProgressView.progressTintColor = [UIColor greenColor];
-    _loadingProgressView.trackTintColor = [UIColor whiteColor];
     //导航栏自定义的话UIScrollView内容将不实用系统的自动向下偏移
     if ([self.navigationController.navigationBar backgroundImageForBarMetrics:UIBarMetricsDefault]) {
         _webView.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), CGRectGetHeight(self.view.bounds)-CGRectGetMaxY(self.navigationController.navigationBar.frame));
@@ -89,17 +83,12 @@
         UIBarButtonItem *forwardItem = [[UIBarButtonItem alloc]initWithCustomView:forwardBtn];
         self.navigationItem.rightBarButtonItems = @[refreshItem,forwardItem,backItem];
     }
-    
-    [_webView loadRequest:request];
-    
 }
 
 -(void)setCustomTitle:(NSString *)customTitle{
     _customTitle = customTitle;
     self.title = customTitle;
 }
-
-
 
 - (void)goBack:(UIButton*)sender
 {
@@ -120,7 +109,7 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
-    if ([keyPath isEqual:@"estimatedProgress"]) {
+    if ([keyPath isEqualToString:NSStringFromSelector(@selector(estimatedProgress))]) {
         [_loadingProgressView setProgress:_webView.estimatedProgress animated:YES];
     } else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
@@ -156,7 +145,6 @@
         }
         decisionHandler(WKNavigationActionPolicyAllow);
     }
-    
 }
 
 

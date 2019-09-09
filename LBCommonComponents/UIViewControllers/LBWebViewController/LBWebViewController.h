@@ -12,8 +12,7 @@
 @interface LBWebViewController : UIViewController<WKNavigationDelegate>
 @property (nonatomic,strong)NSString *customTitle;
 @property (nonatomic,assign)BOOL showFunctionMenu;
-@property (nonatomic,strong)WKWebView *webView;
-@property (nonatomic,strong)UIProgressView *loadingProgressView;
+@property (nonatomic,strong,readonly)WKWebView *webView;
+@property (nonatomic,strong,readonly)UIProgressView *loadingProgressView;
 
-- (instancetype)initWithUrlString:(NSString *)urlString;
 @end
