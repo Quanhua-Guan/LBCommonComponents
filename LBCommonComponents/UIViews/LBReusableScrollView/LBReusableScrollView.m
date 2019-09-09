@@ -13,6 +13,11 @@
 @end
 
 @implementation LBReusableScrollView
+
+- (instancetype)init
+{
+    return [[self.class alloc] initWithFrame:CGRectZero];
+}
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -45,9 +50,20 @@
     NSUInteger currentPage = 0;
     if (isHorizontal){
         currentPage = scrollView.contentOffset.x/CGRectGetWidth(scrollView.bounds);
+        if (currentPage < _currentPage) {//当是向前滚动的时候要滚到前一页的一半才重新刷新页面
+            if (scrollView.contentOffset.x-CGRectGetWidth(scrollView.bounds)*currentPage > CGRectGetWidth(scrollView.bounds)/2) {
+                currentPage = _currentPage;
+            }
+        }
     }else{
         currentPage = scrollView.contentOffset.y/CGRectGetHeight(scrollView.bounds);
+        if (currentPage < _currentPage) {//当是向前滚动的时候要滚到前一页的一半才重新刷新页面
+            if (scrollView.contentOffset.y-CGRectGetHeight(scrollView.bounds)*currentPage > CGRectGetHeight(scrollView.bounds)/2) {
+                currentPage = _currentPage;
+            }
+        }
     }
+    
     
     if (_currentPage != currentPage) {
         _currentPage = currentPage;
@@ -60,6 +76,9 @@
     }
 }
 
+/**
+ 加载当前的三个页面
+ */
 -(void)loadCurrentPagesContent{
     [_pageViews enumerateObjectsUsingBlock:^(UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         [obj removeFromSuperview];

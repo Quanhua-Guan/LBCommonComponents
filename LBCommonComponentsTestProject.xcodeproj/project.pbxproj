@@ -539,8 +539,8 @@
 		40ECB5B923225D0B00AC48B8 /* LBReusableScrollView */ = {
 			isa = PBXGroup;
 			children = (
-				40ECB5BA23225D0B00AC48B8 /* LBReusableScrollView.m */,
 				40ECB5BB23225D0B00AC48B8 /* LBReusableScrollView.h */,
+				40ECB5BA23225D0B00AC48B8 /* LBReusableScrollView.m */,
 			);
 			path = LBReusableScrollView;
 			sourceTree = "<group>";
