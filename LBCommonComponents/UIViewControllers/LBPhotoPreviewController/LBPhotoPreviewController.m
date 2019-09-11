@@ -73,11 +73,8 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor blackColor];
 
-    
-
     self.previewScrollView.frame = self.view.bounds;
     [self.view addSubview:_previewScrollView];
-    
     
     CGFloat safeAreaInsetsTop = 20;
     if (@available(iOS 11.0, *)) {
@@ -119,6 +116,8 @@
     [deleteBtn addTarget:self action:@selector(deleteAction) forControlEvents:UIControlEventTouchUpInside];
     [titleView addSubview:deleteBtn];
     _deleteBtn = deleteBtn;
+    
+    [_previewScrollView reloadData];
 }
 -(void)setImageObjectArray:(NSArray<NSObject<LBImageProtocol> *> *)imageObjectArray{
     _imageObjectArray = imageObjectArray;
