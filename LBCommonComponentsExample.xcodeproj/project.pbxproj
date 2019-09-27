@@ -23,8 +23,6 @@
 		4046AB16233E10D600299809 /* NSNull+LBSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 4046AAFF233E10D600299809 /* NSNull+LBSafe.m */; };
 		4046AB17233E10D600299809 /* NSString+LBToDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4046AB01233E10D600299809 /* NSString+LBToDate.m */; };
 		4046AB18233E10D600299809 /* UIColor+LBToImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4046AB04233E10D600299809 /* UIColor+LBToImage.m */; };
-		4046AB19233E10D600299809 /* LBUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4046AB0C233E10D600299809 /* LBUserModel.m */; };
-		4046AB1A233E10D600299809 /* LBUserModel+TempOperateInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 4046AB0D233E10D600299809 /* LBUserModel+TempOperateInfo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,10 +59,6 @@
 		4046AB07233E10D600299809 /* LBFunctionMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBFunctionMacro.h; sourceTree = "<group>"; };
 		4046AB08233E10D600299809 /* LBSystemMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBSystemMacro.h; sourceTree = "<group>"; };
 		4046AB09233E10D600299809 /* LBUIMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBUIMacro.h; sourceTree = "<group>"; };
-		4046AB0C233E10D600299809 /* LBUserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBUserModel.m; sourceTree = "<group>"; };
-		4046AB0D233E10D600299809 /* LBUserModel+TempOperateInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "LBUserModel+TempOperateInfo.m"; sourceTree = "<group>"; };
-		4046AB0E233E10D600299809 /* LBUserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBUserModel.h; sourceTree = "<group>"; };
-		4046AB0F233E10D600299809 /* LBUserModel+TempOperateInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "LBUserModel+TempOperateInfo.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +112,6 @@
 			children = (
 				4046AB06233E10D600299809 /* Macros */,
 				4046AAEC233E10D600299809 /* Category */,
-				4046AB0A233E10D600299809 /* NSObjects */,
 			);
 			path = LBCommonComponents;
 			sourceTree = SOURCE_ROOT;
@@ -214,25 +207,6 @@
 			path = Macros;
 			sourceTree = "<group>";
 		};
-		4046AB0A233E10D600299809 /* NSObjects */ = {
-			isa = PBXGroup;
-			children = (
-				4046AB0B233E10D600299809 /* LBUserModel */,
-			);
-			path = NSObjects;
-			sourceTree = "<group>";
-		};
-		4046AB0B233E10D600299809 /* LBUserModel */ = {
-			isa = PBXGroup;
-			children = (
-				4046AB0C233E10D600299809 /* LBUserModel.m */,
-				4046AB0D233E10D600299809 /* LBUserModel+TempOperateInfo.m */,
-				4046AB0E233E10D600299809 /* LBUserModel.h */,
-				4046AB0F233E10D600299809 /* LBUserModel+TempOperateInfo.h */,
-			);
-			path = LBUserModel;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -309,11 +283,9 @@
 				4046AB11233E10D600299809 /* NSDate+LBToString.m in Sources */,
 				4046AB18233E10D600299809 /* UIColor+LBToImage.m in Sources */,
 				4046AB17233E10D600299809 /* NSString+LBToDate.m in Sources */,
-				4046AB19233E10D600299809 /* LBUserModel.m in Sources */,
 				4046AAA0233E0E7700299809 /* AppDelegate.m in Sources */,
 				4046AAB1233E0E7B00299809 /* main.m in Sources */,
 				4046AB15233E10D600299809 /* UIView+LBGeometry.m in Sources */,
-				4046AB1A233E10D600299809 /* LBUserModel+TempOperateInfo.m in Sources */,
 				4046AAA3233E0E7700299809 /* SceneDelegate.m in Sources */,
 				4046AB12233E10D600299809 /* UILabel+LBInit.m in Sources */,
 				4046AB16233E10D600299809 /* NSNull+LBSafe.m in Sources */,
