@@ -1,5 +1,5 @@
 //
-//  NSString+LBToDate.h
+//  NSNull+LBInternalNullExtention.h
 //  CommonComponentsTestProject
 //
 //  Created by 刘彬 on 2019/3/5.
@@ -10,8 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NSString (LBToDate)
-- (NSDate *)dateWithFormat:(NSString *)format;
+@interface NSNull (LBSafe)
+
 @end
 
 NS_ASSUME_NONNULL_END
