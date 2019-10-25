@@ -18,39 +18,39 @@
 #define SCREEN_HEIGHT CGRectGetHeight([UIScreen mainScreen].bounds)
 
 
-#define SafeAreaInsetsTop \
+#define SafeAreaInsetsTop(vc) \
 ({\
 CGFloat safeAreaInsetsTop = 20;\
 if (@available(iOS 11.0, *)) {\
 safeAreaInsetsTop = [[[UIApplication sharedApplication] delegate] window].safeAreaInsets.top;\
-if(self.navigationController && !self.navigationController.navigationBar.hidden){\
-safeAreaInsetsTop += CGRectGetHeight(self.navigationController.navigationBar.frame);\
+if(vc.navigationController && !vc.navigationController.navigationBar.hidden){\
+safeAreaInsetsTop += CGRectGetHeight(vc.navigationController.navigationBar.frame);\
 }\
-}else if(self.navigationController && !self.navigationController.navigationBar.hidden){\
-safeAreaInsetsTop = CGRectGetMaxY(self.navigationController.navigationBar.frame);\
+}else if(vc.navigationController && !vc.navigationController.navigationBar.hidden){\
+safeAreaInsetsTop = CGRectGetMaxY(vc.navigationController.navigationBar.frame);\
 }\
 safeAreaInsetsTop;\
 })
 
 
-#define SafeAreaInsetsBottom \
+#define SafeAreaInsetsBottom(vc) \
 ({\
 CGFloat safeAreaInsetsBottom = 0;\
 if (@available(iOS 11.0, *)) {\
 safeAreaInsetsBottom = [[[UIApplication sharedApplication] delegate] window].safeAreaInsets.bottom;\
-if(self.tabBarController && !self.tabBarController.tabBar.hidden && !self.hidesBottomBarWhenPushed){\
-safeAreaInsetsBottom  = CGRectGetHeight(self.tabBarController.tabBar.frame);\
+if(vc.tabBarController && !vc.tabBarController.tabBar.hidden && !vc.hidesBottomBarWhenPushed){\
+safeAreaInsetsBottom  = CGRectGetHeight(vc.tabBarController.tabBar.frame);\
 }\
-}else if(self.tabBarController && !self.tabBarController.tabBar.hidden && !self.hidesBottomBarWhenPushed){\
-safeAreaInsetsBottom = CGRectGetHeight(self.tabBarController.tabBar.frame);\
+}else if(vc.tabBarController && !vc.tabBarController.tabBar.hidden && !vc.hidesBottomBarWhenPushed){\
+safeAreaInsetsBottom = CGRectGetHeight(vc.tabBarController.tabBar.frame);\
 }\
 safeAreaInsetsBottom;\
 })
 
 
-#define SafeAreaInsetsTopAndBottom \
+#define SafeAreaInsetsTopAndBottom(vc) \
 ({\
-SafeAreaInsetsTop + SafeAreaInsetsBottom;\
+SafeAreaInsetsTop(vc) + SafeAreaInsetsBottom(vc);\
 })
 
 
