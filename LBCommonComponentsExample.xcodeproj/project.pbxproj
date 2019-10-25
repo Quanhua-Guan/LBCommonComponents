@@ -22,6 +22,7 @@
 		4046AB18233E10D600299809 /* UIColor+LBToImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4046AB04233E10D600299809 /* UIColor+LBToImage.m */; };
 		4071DE3F2362DD04007EF36A /* LBBaseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4071DE3B2362DD04007EF36A /* LBBaseButton.m */; };
 		4071DE402362DD04007EF36A /* LBBaseLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4071DE3E2362DD04007EF36A /* LBBaseLabel.m */; };
+		4071DE472362E205007EF36A /* UIButton+LBAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4071DE462362E205007EF36A /* UIButton+LBAction.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,8 @@
 		4071DE3C2362DD04007EF36A /* LBBaseLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBBaseLabel.h; sourceTree = "<group>"; };
 		4071DE3D2362DD04007EF36A /* LBBaseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBBaseButton.h; sourceTree = "<group>"; };
 		4071DE3E2362DD04007EF36A /* LBBaseLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBBaseLabel.m; sourceTree = "<group>"; };
+		4071DE452362E205007EF36A /* UIButton+LBAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+LBAction.h"; sourceTree = "<group>"; };
+		4071DE462362E205007EF36A /* UIButton+LBAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+LBAction.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +118,7 @@
 		4046AAEC233E10D600299809 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				4071DE412362E1D6007EF36A /* UIButton+Action */,
 				4046AAF3233E10D600299809 /* UIView+Copy */,
 				4046AAFD233E10D600299809 /* NSNull+Safe */,
 				4046AAED233E10D600299809 /* UIImage+ChangedColor */,
@@ -218,6 +222,15 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		4071DE412362E1D6007EF36A /* UIButton+Action */ = {
+			isa = PBXGroup;
+			children = (
+				4071DE452362E205007EF36A /* UIButton+LBAction.h */,
+				4071DE462362E205007EF36A /* UIButton+LBAction.m */,
+			);
+			path = "UIButton+Action";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -295,6 +308,7 @@
 				4046AB18233E10D600299809 /* UIColor+LBToImage.m in Sources */,
 				4046AB17233E10D600299809 /* NSString+LBToDate.m in Sources */,
 				4046AAA0233E0E7700299809 /* AppDelegate.m in Sources */,
+				4071DE472362E205007EF36A /* UIButton+LBAction.m in Sources */,
 				4046AAB1233E0E7B00299809 /* main.m in Sources */,
 				4046AB15233E10D600299809 /* UIView+LBGeometry.m in Sources */,
 				4071DE402362DD04007EF36A /* LBBaseLabel.m in Sources */,

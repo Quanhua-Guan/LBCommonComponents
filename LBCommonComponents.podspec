@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'LBCommonComponents'
-  s.version          = '1.0.2'
+  s.version          = '1.0.3'
   s.summary          = 'CommonComponents of your project.'
   s.description      = '项目中用到的让开发更快速的一些宏定义，以及常用View的快速初始化方法，和其他转换的工具类。'
   s.homepage         = 'https://github.com/A1129434577/LBCommonComponents'
@@ -26,6 +26,11 @@ Pod::Spec.new do |s|
     ss.subspec 'UIView+Copy' do |sss|
       sss.source_files = 'LBCommonComponents/Category/UIView+Copy/**/*.{h,m}'
     end
+    
+    ss.subspec 'UIButton+Action' do |sss|
+      sss.source_files = 'LBCommonComponents/Category/UIButton+Action/**/*.{h,m}'
+    end
+    
     ss.subspec 'NSNull+Safe' do |sss|
       sss.source_files = 'LBCommonComponents/Category/NSNull+Safe/**/*.{h,m}'
     end
