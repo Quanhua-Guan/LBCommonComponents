@@ -23,8 +23,8 @@ Pod::Spec.new do |s|
 
 
   s.subspec 'Category' do |ss|
-    ss.subspec 'UIView+Init' do |sss|
-      sss.source_files = 'LBCommonComponents/Category/UIView+Init/**/*.{h,m}'
+    ss.subspec 'UIView+Copy' do |sss|
+      sss.source_files = 'LBCommonComponents/Category/UIView+Copy/**/*.{h,m}'
     end
     ss.subspec 'NSNull+Safe' do |sss|
       sss.source_files = 'LBCommonComponents/Category/NSNull+Safe/**/*.{h,m}'
@@ -50,5 +50,11 @@ Pod::Spec.new do |s|
       sss.source_files = 'LBCommonComponents/Category/UIView+Geometry/**/*.{h,m}'
     end
 
+  end
+  
+  s.subspec 'Base' do |ss|
+    ss.subspec 'Views' do |sss|
+      sss.source_files = 'LBCommonComponents/Base/Views/**/*.{h,m}'
+    end
   end
 end
