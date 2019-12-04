@@ -20,14 +20,14 @@
 
 #define SafeAreaInsetsTop(vc) \
 ({\
-CGFloat safeAreaInsetsTop = 20;\
-if (@available(iOS 11.0, *)) {\
-safeAreaInsetsTop = [[[UIApplication sharedApplication] delegate] window].safeAreaInsets.top;\
-if(vc.navigationController && !vc.navigationController.navigationBar.hidden){\
-safeAreaInsetsTop += CGRectGetHeight(vc.navigationController.navigationBar.frame);\
+CGFloat safeAreaInsetsTop;\
+if (@available(iOS 13.0, *)) {\
+    safeAreaInsetsTop = CGRectGetMaxY([UIApplication sharedApplication].keyWindow.windowScene.statusBarManager.statusBarFrame);\
+}else{\
+    safeAreaInsetsTop = CGRectGetMaxY([UIApplication sharedApplication].statusBarFrame);\
 }\
-}else if(vc.navigationController && !vc.navigationController.navigationBar.hidden){\
-safeAreaInsetsTop = CGRectGetMaxY(vc.navigationController.navigationBar.frame);\
+if(vc.navigationController && !vc.navigationController.navigationBar.hidden){\
+    safeAreaInsetsTop += CGRectGetHeight(vc.navigationController.navigationBar.frame);\
 }\
 safeAreaInsetsTop;\
 })
