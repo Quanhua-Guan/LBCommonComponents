@@ -17,19 +17,34 @@
 #define SCREEN_WIDTH CGRectGetWidth([UIScreen mainScreen].bounds)
 #define SCREEN_HEIGHT CGRectGetHeight([UIScreen mainScreen].bounds)
 
+#define KEY_WINDOW \
+({\
+UIWindow *keyWidow;\
+if (@available(ios 13, *)) {\
+    for (UIWindowScene* windowScene in [UIApplication sharedApplication].connectedScenes){\
+        if (windowScene.activationState == UISceneActivationStateForegroundActive){\
+            keyWidow = windowScene.windows.firstObject;\
+            break;\
+        }\
+    }\
+}else{\
+    keyWidow = [UIApplication sharedApplication].keyWindow;\
+}\
+keyWidow;\
+})
 
 #define SafeAreaInsetsTop(vc) \
 ({\
-CGFloat safeAreaInsetsTop;\
-if (@available(iOS 13.0, *)) {\
-    safeAreaInsetsTop = CGRectGetMaxY([UIApplication sharedApplication].keyWindow.windowScene.statusBarManager.statusBarFrame);\
-}else{\
-    safeAreaInsetsTop = CGRectGetMaxY([UIApplication sharedApplication].statusBarFrame);\
-}\
-if(vc.navigationController && !vc.navigationController.navigationBar.hidden){\
-    safeAreaInsetsTop += CGRectGetHeight(vc.navigationController.navigationBar.frame);\
-}\
-safeAreaInsetsTop;\
+        CGFloat safeAreaInsetsTop = 0;\
+        if (@available(ios 13, *)) {\
+            safeAreaInsetsTop = CGRectGetMaxY(KEY_WINDOW.windowScene.statusBarManager.statusBarFrame);\
+        }else{\
+            safeAreaInsetsTop = CGRectGetMaxY([UIApplication sharedApplication].statusBarFrame);\
+        }\
+        if(vc.navigationController && !vc.navigationController.navigationBar.hidden && !vc.navigationController.navigationBarHidden){\
+            safeAreaInsetsTop += CGRectGetHeight(vc.navigationController.navigationBar.frame);\
+        }\
+        safeAreaInsetsTop;\
 })
 
 
@@ -37,21 +52,17 @@ safeAreaInsetsTop;\
 ({\
 CGFloat safeAreaInsetsBottom = 0;\
 if (@available(iOS 11.0, *)) {\
-safeAreaInsetsBottom = [[[UIApplication sharedApplication] delegate] window].safeAreaInsets.bottom;\
-if(vc.tabBarController && !vc.tabBarController.tabBar.hidden && !vc.hidesBottomBarWhenPushed){\
-safeAreaInsetsBottom  = CGRectGetHeight(vc.tabBarController.tabBar.frame);\
+    safeAreaInsetsBottom = KEY_WINDOW.safeAreaInsets.bottom;\
 }\
-}else if(vc.tabBarController && !vc.tabBarController.tabBar.hidden && !vc.hidesBottomBarWhenPushed){\
-safeAreaInsetsBottom = CGRectGetHeight(vc.tabBarController.tabBar.frame);\
+if(vc.tabBarController && !vc.tabBarController.tabBar.hidden && !vc.hidesBottomBarWhenPushed){\
+    safeAreaInsetsBottom  += CGRectGetHeight(vc.tabBarController.tabBar.frame);\
 }\
 safeAreaInsetsBottom;\
 })
-
 
 #define SafeAreaInsetsTopAndBottom(vc) \
 ({\
 SafeAreaInsetsTop(vc) + SafeAreaInsetsBottom(vc);\
 })
-
 
 #endif /* LBUIMacro_h */
