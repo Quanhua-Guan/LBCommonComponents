@@ -17,7 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSLog(@"%f",SafeAreaInsetsTopAndBottom(self));
+    NSLog(@"%f----%f",LB_SAFE_AREA_TOP_HEIGHT(self),LB_SAFE_AREA_BOTTOM_HEIGHT(self));
+    
 }
 
 
