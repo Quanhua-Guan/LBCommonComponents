@@ -9,7 +9,7 @@
 #ifndef LBFunctionMacro_h
 #define LBFunctionMacro_h
 
-#define WEAK(weakObject,Object) typeof(Object) __weak weakObject = Object;
-#define WEAKSELF WEAK(weakSelf,self);
+#define LB_WEAK(weakObject,Object) typeof(Object) __weak weakObject = Object;
+#define LB_WEAKSELF WEAK(weakSelf,self);
 
 #endif /* LBFunctionMacro_h */

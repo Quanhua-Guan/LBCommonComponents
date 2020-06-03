@@ -9,10 +9,10 @@
 #ifndef LBSystemMacro_h
 #define LBSystemMacro_h
 
-#define APP_VERSION [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
-#define BUNDLE_NAME [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"]
-#define BUNDLE_IDENTIFIER [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"]
-#define UUID_STRING [[[UIDevice currentDevice] identifierForVendor] UUIDString]
-#define SYSTEM_VERSION [UIDevice currentDevice].systemVersion
+#define LB_APP_VERSION [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"]
+#define LB_BUNDLE_NAME [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"]
+#define LB_BUNDLE_IDENTIFIER [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"]
+#define LB_UUID_STRING [[[UIDevice currentDevice] identifierForVendor] UUIDString]
+#define LB_SYSTEM_VERSION [UIDevice currentDevice].systemVersion
 
 #endif /* LBSystemMacro_h */
