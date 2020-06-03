@@ -13,13 +13,12 @@
 		4046AAAE233E0E7B00299809 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4046AAAC233E0E7B00299809 /* LaunchScreen.storyboard */; };
 		4046AAB1233E0E7B00299809 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4046AAB0233E0E7B00299809 /* main.m */; };
 		4046AAEA233E10CB00299809 /* LBCommonComponents.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 4046AAE9233E10CB00299809 /* LBCommonComponents.podspec */; };
-		4046AB10233E10D600299809 /* UIImage+LBChangedColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4046AAEE233E10D600299809 /* UIImage+LBChangedColor.m */; };
+		4046AB10233E10D600299809 /* UIImage+LBColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4046AAEE233E10D600299809 /* UIImage+LBColor.m */; };
 		4046AB11233E10D600299809 /* NSDate+LBToString.m in Sources */ = {isa = PBXBuildFile; fileRef = 4046AAF2233E10D600299809 /* NSDate+LBToString.m */; };
 		4046AB13233E10D600299809 /* UIView+LBCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4046AAF7233E10D600299809 /* UIView+LBCopy.m */; };
 		4046AB15233E10D600299809 /* UIView+LBGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = 4046AAFB233E10D600299809 /* UIView+LBGeometry.m */; };
 		4046AB16233E10D600299809 /* NSNull+LBSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 4046AAFF233E10D600299809 /* NSNull+LBSafe.m */; };
 		4046AB17233E10D600299809 /* NSString+LBToDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4046AB01233E10D600299809 /* NSString+LBToDate.m */; };
-		4046AB18233E10D600299809 /* UIColor+LBToImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 4046AB04233E10D600299809 /* UIColor+LBToImage.m */; };
 		40628F2A24873EC20053E7ED /* NSObject+LBTypeSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 40628F2924873EC20053E7ED /* NSObject+LBTypeSafe.m */; };
 		4071DE3F2362DD04007EF36A /* LBBaseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4071DE3B2362DD04007EF36A /* LBBaseButton.m */; };
 		4071DE402362DD04007EF36A /* LBBaseLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4071DE3E2362DD04007EF36A /* LBBaseLabel.m */; };
@@ -37,8 +36,8 @@
 		4046AAAF233E0E7B00299809 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4046AAB0233E0E7B00299809 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4046AAE9233E10CB00299809 /* LBCommonComponents.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LBCommonComponents.podspec; sourceTree = "<group>"; };
-		4046AAEE233E10D600299809 /* UIImage+LBChangedColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+LBChangedColor.m"; sourceTree = "<group>"; };
-		4046AAEF233E10D600299809 /* UIImage+LBChangedColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+LBChangedColor.h"; sourceTree = "<group>"; };
+		4046AAEE233E10D600299809 /* UIImage+LBColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+LBColor.m"; sourceTree = "<group>"; };
+		4046AAEF233E10D600299809 /* UIImage+LBColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+LBColor.h"; sourceTree = "<group>"; };
 		4046AAF1233E10D600299809 /* NSDate+LBToString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+LBToString.h"; sourceTree = "<group>"; };
 		4046AAF2233E10D600299809 /* NSDate+LBToString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+LBToString.m"; sourceTree = "<group>"; };
 		4046AAF5233E10D600299809 /* UIView+LBCopy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LBCopy.h"; sourceTree = "<group>"; };
@@ -49,8 +48,6 @@
 		4046AAFF233E10D600299809 /* NSNull+LBSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNull+LBSafe.m"; sourceTree = "<group>"; };
 		4046AB01233E10D600299809 /* NSString+LBToDate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LBToDate.m"; sourceTree = "<group>"; };
 		4046AB02233E10D600299809 /* NSString+LBToDate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LBToDate.h"; sourceTree = "<group>"; };
-		4046AB04233E10D600299809 /* UIColor+LBToImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+LBToImage.m"; sourceTree = "<group>"; };
-		4046AB05233E10D600299809 /* UIColor+LBToImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+LBToImage.h"; sourceTree = "<group>"; };
 		4046AB07233E10D600299809 /* LBFunctionMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBFunctionMacro.h; sourceTree = "<group>"; };
 		4046AB08233E10D600299809 /* LBSystemMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBSystemMacro.h; sourceTree = "<group>"; };
 		4046AB09233E10D600299809 /* LBUIMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBUIMacro.h; sourceTree = "<group>"; };
@@ -121,26 +118,25 @@
 		4046AAEC233E10D600299809 /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				40628F2724873EC20053E7ED /* NSObject+LBTypeSafe */,
+				40628F2724873EC20053E7ED /* NSObject+TypeSafe */,
 				4071DE412362E1D6007EF36A /* UIButton+Action */,
 				4046AAF3233E10D600299809 /* UIView+Copy */,
 				4046AAFD233E10D600299809 /* NSNull+Safe */,
-				4046AAED233E10D600299809 /* UIImage+ChangedColor */,
+				4046AAED233E10D600299809 /* UIImage+Color */,
 				4046AAF0233E10D600299809 /* NSDate+ToString */,
 				4046AB00233E10D600299809 /* NSString+ToDate */,
-				4046AB03233E10D600299809 /* UIColor+ToImage */,
 				4046AAFA233E10D600299809 /* UIView+Geometry */,
 			);
 			path = Category;
 			sourceTree = "<group>";
 		};
-		4046AAED233E10D600299809 /* UIImage+ChangedColor */ = {
+		4046AAED233E10D600299809 /* UIImage+Color */ = {
 			isa = PBXGroup;
 			children = (
-				4046AAEE233E10D600299809 /* UIImage+LBChangedColor.m */,
-				4046AAEF233E10D600299809 /* UIImage+LBChangedColor.h */,
+				4046AAEF233E10D600299809 /* UIImage+LBColor.h */,
+				4046AAEE233E10D600299809 /* UIImage+LBColor.m */,
 			);
-			path = "UIImage+ChangedColor";
+			path = "UIImage+Color";
 			sourceTree = "<group>";
 		};
 		4046AAF0233E10D600299809 /* NSDate+ToString */ = {
@@ -188,15 +184,6 @@
 			path = "NSString+ToDate";
 			sourceTree = "<group>";
 		};
-		4046AB03233E10D600299809 /* UIColor+ToImage */ = {
-			isa = PBXGroup;
-			children = (
-				4046AB04233E10D600299809 /* UIColor+LBToImage.m */,
-				4046AB05233E10D600299809 /* UIColor+LBToImage.h */,
-			);
-			path = "UIColor+ToImage";
-			sourceTree = "<group>";
-		};
 		4046AB06233E10D600299809 /* Macros */ = {
 			isa = PBXGroup;
 			children = (
@@ -207,13 +194,13 @@
 			path = Macros;
 			sourceTree = "<group>";
 		};
-		40628F2724873EC20053E7ED /* NSObject+LBTypeSafe */ = {
+		40628F2724873EC20053E7ED /* NSObject+TypeSafe */ = {
 			isa = PBXGroup;
 			children = (
 				40628F2824873EC20053E7ED /* NSObject+LBTypeSafe.h */,
 				40628F2924873EC20053E7ED /* NSObject+LBTypeSafe.m */,
 			);
-			path = "NSObject+LBTypeSafe";
+			path = "NSObject+TypeSafe";
 			sourceTree = "<group>";
 		};
 		4071DE332362DB2F007EF36A /* Base */ = {
@@ -315,11 +302,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				4071DE3F2362DD04007EF36A /* LBBaseButton.m in Sources */,
-				4046AB10233E10D600299809 /* UIImage+LBChangedColor.m in Sources */,
+				4046AB10233E10D600299809 /* UIImage+LBColor.m in Sources */,
 				40628F2A24873EC20053E7ED /* NSObject+LBTypeSafe.m in Sources */,
 				4046AAA6233E0E7700299809 /* ViewController.m in Sources */,
 				4046AB11233E10D600299809 /* NSDate+LBToString.m in Sources */,
-				4046AB18233E10D600299809 /* UIColor+LBToImage.m in Sources */,
 				4046AB17233E10D600299809 /* NSString+LBToDate.m in Sources */,
 				4046AAA0233E0E7700299809 /* AppDelegate.m in Sources */,
 				4071DE472362E205007EF36A /* UIButton+LBAction.m in Sources */,

@@ -27,7 +27,7 @@ Pod::Spec.new do |s|
       sss.source_files = 'LBCommonComponents/Category/UIView+Copy/**/*.{h,m}'
     end
     
-    ss.subspec 'NSObject+LBTypeSafe' do |sss|
+    ss.subspec 'NSObject+TypeSafe' do |sss|
       sss.source_files = 'LBCommonComponents/Category/NSObject+LBTypeSafe/**/*.{h,m}'
     end
     
@@ -39,7 +39,7 @@ Pod::Spec.new do |s|
       sss.source_files = 'LBCommonComponents/Category/NSNull+Safe/**/*.{h,m}'
     end
 
-    ss.subspec 'UIImage+ChangedColor' do |sss|
+    ss.subspec 'UIImage+LBColor' do |sss|
       sss.source_files = 'LBCommonComponents/Category/UIImage+ChangedColor/**/*.{h,m}'
     end
     
