@@ -19,7 +19,8 @@
 
 #define LB_KEY_WINDOW \
 ({\
-UIWindow *keyWindow = [UIApplication sharedApplication].delegate.window;\
+id<UIApplicationDelegate> delegate = [UIApplication sharedApplication].delegate;\
+UIWindow *keyWindow = [delegate respondsToSelector:@selector(window)]?delegate.window:nil;\
 if (keyWindow == nil) {\
     if (@available(ios 13, *)) {\
         for (UIWindowScene* windowScene in [UIApplication sharedApplication].connectedScenes){\

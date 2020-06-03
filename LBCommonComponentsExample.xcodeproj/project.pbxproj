@@ -76,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				4046AAE9233E10CB00299809 /* LBCommonComponents.podspec */,
+				4046AAEB233E10D600299809 /* LBCommonComponents */,
 				4046AA9D233E0E7700299809 /* LBCommonComponentsExample */,
 				4046AA9C233E0E7700299809 /* Products */,
 			);
@@ -92,7 +93,6 @@
 		4046AA9D233E0E7700299809 /* LBCommonComponentsExample */ = {
 			isa = PBXGroup;
 			children = (
-				4046AAEB233E10D600299809 /* LBCommonComponents */,
 				4046AA9E233E0E7700299809 /* AppDelegate.h */,
 				4046AA9F233E0E7700299809 /* AppDelegate.m */,
 				4046AAA4233E0E7700299809 /* ViewController.h */,
