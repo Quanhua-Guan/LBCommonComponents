@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'LBCommonComponents'
-  s.version          = '1.0.0'
+  s.version          = '1.0.1'
   s.summary          = 'CommonComponents of your project.'
   s.description      = '项目中用到的让开发更快速的一些宏定义，以及常用View的快速初始化方法，和其他转换的工具类。'
   s.homepage         = 'https://github.com/A1129434577/LBCommonComponents'
