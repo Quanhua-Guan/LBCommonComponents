@@ -28,7 +28,7 @@ Pod::Spec.new do |s|
     end
     
     ss.subspec 'NSObject+TypeSafe' do |sss|
-      sss.source_files = 'LBCommonComponents/Category/NSObject+LBTypeSafe/**/*.{h,m}'
+      sss.source_files = 'LBCommonComponents/Category/NSObject+TypeSafe/**/*.{h,m}'
     end
     
     ss.subspec 'UIButton+Action' do |sss|
@@ -39,8 +39,8 @@ Pod::Spec.new do |s|
       sss.source_files = 'LBCommonComponents/Category/NSNull+Safe/**/*.{h,m}'
     end
 
-    ss.subspec 'UIImage+LBColor' do |sss|
-      sss.source_files = 'LBCommonComponents/Category/UIImage+ChangedColor/**/*.{h,m}'
+    ss.subspec 'UIImage+Color' do |sss|
+      sss.source_files = 'LBCommonComponents/Category/UIImage+Color/**/*.{h,m}'
     end
     
     ss.subspec 'NSDate+ToString' do |sss|
@@ -49,10 +49,6 @@ Pod::Spec.new do |s|
 
     ss.subspec 'NSString+ToDate' do |sss|
       sss.source_files = 'LBCommonComponents/Category/NSString+ToDate/**/*.{h,m}'
-    end
-
-    ss.subspec 'UIColor+ToImage' do |sss|
-      sss.source_files = 'LBCommonComponents/Category/UIColor+ToImage/**/*.{h,m}'
     end
 
     ss.subspec 'UIView+Geometry' do |sss|
