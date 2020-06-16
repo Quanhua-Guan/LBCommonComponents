@@ -10,6 +10,6 @@
 #define LBFunctionMacro_h
 
 #define LB_WEAK(weakObject,Object) typeof(Object) __weak weakObject = Object;
-#define LB_WEAKSELF WEAK(weakSelf,self);
+#define LB_WEAKSELF LB_WEAK(weakSelf,self);
 
 #endif /* LBFunctionMacro_h */
