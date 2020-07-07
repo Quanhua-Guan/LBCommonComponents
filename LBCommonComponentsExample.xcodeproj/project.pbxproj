@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4043F82824B4A15F00D448C6 /* NSObject+LBTopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4043F82724B4A15F00D448C6 /* NSObject+LBTopViewController.m */; };
 		4046AAA0233E0E7700299809 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4046AA9F233E0E7700299809 /* AppDelegate.m */; };
 		4046AAA6233E0E7700299809 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4046AAA5233E0E7700299809 /* ViewController.m */; };
 		4046AAAB233E0E7B00299809 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4046AAAA233E0E7B00299809 /* Assets.xcassets */; };
@@ -26,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4043F82624B4A15F00D448C6 /* NSObject+LBTopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+LBTopViewController.h"; sourceTree = "<group>"; };
+		4043F82724B4A15F00D448C6 /* NSObject+LBTopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LBTopViewController.m"; sourceTree = "<group>"; };
 		4046AA9B233E0E7700299809 /* LBCommonComponentsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LBCommonComponentsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4046AA9E233E0E7700299809 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4046AA9F233E0E7700299809 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -72,6 +75,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4043F82924B4A18600D448C6 /* NSObject+TopViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4043F82624B4A15F00D448C6 /* NSObject+LBTopViewController.h */,
+				4043F82724B4A15F00D448C6 /* NSObject+LBTopViewController.m */,
+			);
+			path = "NSObject+TopViewController";
+			sourceTree = "<group>";
+		};
 		4046AA92233E0E7700299809 = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +130,7 @@
 		4046AAEC233E10D600299809 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				4043F82924B4A18600D448C6 /* NSObject+TopViewController */,
 				40628F2724873EC20053E7ED /* NSObject+TypeSafe */,
 				4071DE412362E1D6007EF36A /* UIButton+Action */,
 				4046AAF3233E10D600299809 /* UIView+Copy */,
@@ -305,6 +318,7 @@
 				4046AB10233E10D600299809 /* UIImage+LBColor.m in Sources */,
 				40628F2A24873EC20053E7ED /* NSObject+LBTypeSafe.m in Sources */,
 				4046AAA6233E0E7700299809 /* ViewController.m in Sources */,
+				4043F82824B4A15F00D448C6 /* NSObject+LBTopViewController.m in Sources */,
 				4046AB11233E10D600299809 /* NSDate+LBToString.m in Sources */,
 				4046AB17233E10D600299809 /* NSString+LBToDate.m in Sources */,
 				4046AAA0233E0E7700299809 /* AppDelegate.m in Sources */,
