@@ -24,6 +24,7 @@
 		4071DE3F2362DD04007EF36A /* LBBaseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4071DE3B2362DD04007EF36A /* LBBaseButton.m */; };
 		4071DE402362DD04007EF36A /* LBBaseLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4071DE3E2362DD04007EF36A /* LBBaseLabel.m */; };
 		4071DE472362E205007EF36A /* UIButton+LBAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4071DE462362E205007EF36A /* UIButton+LBAction.m */; };
+		40721E6024B6F5AF00FC7FC7 /* NSObject+LBMethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 40721E5F24B6F5AF00FC7FC7 /* NSObject+LBMethodSwizzling.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,8 @@
 		4071DE3E2362DD04007EF36A /* LBBaseLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBBaseLabel.m; sourceTree = "<group>"; };
 		4071DE452362E205007EF36A /* UIButton+LBAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+LBAction.h"; sourceTree = "<group>"; };
 		4071DE462362E205007EF36A /* UIButton+LBAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+LBAction.m"; sourceTree = "<group>"; };
+		40721E5E24B6F5AF00FC7FC7 /* NSObject+LBMethodSwizzling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+LBMethodSwizzling.h"; sourceTree = "<group>"; };
+		40721E5F24B6F5AF00FC7FC7 /* NSObject+LBMethodSwizzling.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LBMethodSwizzling.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +133,7 @@
 		4046AAEC233E10D600299809 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				40721E5D24B6F58800FC7FC7 /* NSObject+MethodSwizzling */,
 				4043F82924B4A18600D448C6 /* NSObject+TopViewController */,
 				40628F2724873EC20053E7ED /* NSObject+TypeSafe */,
 				4071DE412362E1D6007EF36A /* UIButton+Action */,
@@ -244,6 +248,15 @@
 			path = "UIButton+Action";
 			sourceTree = "<group>";
 		};
+		40721E5D24B6F58800FC7FC7 /* NSObject+MethodSwizzling */ = {
+			isa = PBXGroup;
+			children = (
+				40721E5E24B6F5AF00FC7FC7 /* NSObject+LBMethodSwizzling.h */,
+				40721E5F24B6F5AF00FC7FC7 /* NSObject+LBMethodSwizzling.m */,
+			);
+			path = "NSObject+MethodSwizzling";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -321,6 +334,7 @@
 				4043F82824B4A15F00D448C6 /* NSObject+LBTopViewController.m in Sources */,
 				4046AB11233E10D600299809 /* NSDate+LBToString.m in Sources */,
 				4046AB17233E10D600299809 /* NSString+LBToDate.m in Sources */,
+				40721E6024B6F5AF00FC7FC7 /* NSObject+LBMethodSwizzling.m in Sources */,
 				4046AAA0233E0E7700299809 /* AppDelegate.m in Sources */,
 				4071DE472362E205007EF36A /* UIButton+LBAction.m in Sources */,
 				4046AAB1233E0E7B00299809 /* main.m in Sources */,
