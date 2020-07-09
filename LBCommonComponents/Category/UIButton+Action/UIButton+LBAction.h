@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UIButton (LBAction)
-@property (nonatomic,copy)void (^action)(UIButton *sender);
+@property (nonatomic,copy)void (^lb_action)(UIButton *sender);
 - (instancetype)initWithFrame:(CGRect)frame action:(void (^_Nullable)(UIButton *sender))action;
 @end
 

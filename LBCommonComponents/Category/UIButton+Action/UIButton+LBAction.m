@@ -10,29 +10,29 @@
 #import <objc/runtime.h>
 
 @implementation UIButton (LBAction)
-@dynamic action;
+@dynamic lb_action;
 static NSString *LBButtonActionKey = @"LBButtonActionKey";
 - (instancetype)initWithFrame:(CGRect)frame action:(void (^_Nullable)(UIButton *sender))action;
 {
     self = [[self.class alloc] initWithFrame:frame];
     if (self) {
-        self.action = action;
+        self.lb_action = action;
         [self setTitleColor:[UIColor darkTextColor] forState:UIControlStateNormal];
         self.titleLabel.font = [UIFont systemFontOfSize:14];
         self.titleLabel.adjustsFontSizeToFitWidth = YES;
     }
     return self;
 }
--(void (^)(UIButton *_Nonnull))action{
+-(void (^)(UIButton *_Nonnull))lb_action{
     return objc_getAssociatedObject(self, &LBButtonActionKey);
 }
--(void)setAction:(void (^)(UIButton *_Nonnull))action{
+-(void)setLb_action:(void (^)(UIButton *_Nonnull))action{
     objc_setAssociatedObject(self, &LBButtonActionKey, action, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     [self addTarget:self action:@selector(buttonAction) forControlEvents:UIControlEventTouchUpInside];
 }
 -(void)buttonAction{
     __weak typeof(self) weakSelf = self;
-    self.action?self.action(weakSelf):NULL;
+    self.lb_action?self.lb_action(weakSelf):NULL;
 }
 
 @end
