@@ -27,24 +27,6 @@ Pod::Spec.new do |s|
       sss.source_files = 'LBCommonComponents/Category/UIView+Copy/**/*.{h,m}'
     end
     
-    ss.subspec 'NSObject+TypeSafe' do |sss|
-      sss.source_files = 'LBCommonComponents/Category/NSObject+Safe/NSObject+LBTypeSafe.{h,m}'
-    end
-    
-    ss.subspec 'NSNull+Safe' do |sss|
-      sss.source_files = 'LBCommonComponents/Category/NSObject+Safe/NSNull+LBSafe.{h,m}'
-    end
-    
-    ss.subspec 'NSArray+Safe' do |sss|
-      sss.dependency   "NSObject+MethodSwizzling"
-      sss.source_files = 'LBCommonComponents/Category/NSObject+Safe/NSArray+LBSafe.{h,m}'
-    end
-    
-    ss.subspec 'NSDictionary+Safe' do |sss|
-      sss.dependency   "NSObject+MethodSwizzling"
-      sss.source_files = 'LBCommonComponents/Category/NSObject+Safe/NSDictionary+LBSafe.{h,m}'
-    end
-    
     ss.subspec 'UIButton+Action' do |sss|
       sss.source_files = 'LBCommonComponents/Category/UIButton+Action/**/*.{h,m}'
     end
@@ -71,6 +53,24 @@ Pod::Spec.new do |s|
     
     ss.subspec 'NSObject+MethodSwizzling' do |sss|
       sss.source_files = 'LBCommonComponents/Category/NSObject+MethodSwizzling/**/*.{h,m}'
+    end
+    
+    ss.subspec 'NSObject+TypeSafe' do |sss|
+      sss.source_files = 'LBCommonComponents/Category/NSObject+Safe/NSObject+LBTypeSafe.{h,m}'
+    end
+    
+    ss.subspec 'NSNull+Safe' do |sss|
+      sss.source_files = 'LBCommonComponents/Category/NSObject+Safe/NSNull+LBSafe.{h,m}'
+    end
+    
+    ss.subspec 'NSArray+Safe' do |sss|
+      sss.dependency   "NSObject+MethodSwizzling"
+      sss.source_files = 'LBCommonComponents/Category/NSObject+Safe/NSArray+LBSafe.{h,m}'
+    end
+    
+    ss.subspec 'NSDictionary+Safe' do |sss|
+      sss.dependency   "NSObject+MethodSwizzling"
+      sss.source_files = 'LBCommonComponents/Category/NSObject+Safe/NSDictionary+LBSafe.{h,m}'
     end
   end
   
