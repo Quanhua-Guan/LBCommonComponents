@@ -36,10 +36,12 @@ Pod::Spec.new do |s|
     end
     
     ss.subspec 'NSArray+Safe' do |sss|
+      sss.dependency   "NSObject+MethodSwizzling"
       sss.source_files = 'LBCommonComponents/Category/NSObject+Safe/NSArray+LBSafe.{h,m}'
     end
     
     ss.subspec 'NSDictionary+Safe' do |sss|
+      sss.dependency   "NSObject+MethodSwizzling"
       sss.source_files = 'LBCommonComponents/Category/NSObject+Safe/NSDictionary+LBSafe.{h,m}'
     end
     
@@ -78,3 +80,4 @@ Pod::Spec.new do |s|
     end
   end
 end
+#--use-libraries
