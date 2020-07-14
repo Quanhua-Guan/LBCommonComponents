@@ -1,8 +1,8 @@
 Pod::Spec.new do |s|
   s.name             = 'LBCommonComponents'
-  s.version          = '1.0.5'
-  s.summary          = 'CommonComponents of your project.'
-  s.description      = '项目中用到的让开发更快速的一些宏定义，以及常用View的快速初始化方法，和其他转换的工具类。'
+  s.version          = '1.1.0'
+  s.summary          = '强大的项目基本工具类。'
+  s.description      = '项目中用到的让开发更快速的一些UI宏定义（如界面的安全区域）、函数宏（比如weak）、系统宏（比如系统版本），以及MethodSwizzling、类型安全、NSArray超界插入nil防crash、字典插入nil防crash、取顶部ViewController、UIButton的blockHandle、图片修改颜色（减小项目容量）、UIView的深拷贝、时间换算工具、UIView布局属性获取等。'
   s.homepage         = 'https://github.com/A1129434577/LBCommonComponents'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'A1129434577' => '1129434577@qq.com' }
@@ -37,6 +37,10 @@ Pod::Spec.new do |s|
     
     ss.subspec 'NSArray+Safe' do |sss|
       sss.source_files = 'LBCommonComponents/Category/NSObject+Safe/NSArray+LBSafe.{h,m}'
+    end
+    
+    ss.subspec 'NSDictionary+Safe' do |sss|
+      sss.source_files = 'LBCommonComponents/Category/NSObject+Safe/NSDictionary+LBSafe.{h,m}'
     end
     
     ss.subspec 'UIButton+Action' do |sss|

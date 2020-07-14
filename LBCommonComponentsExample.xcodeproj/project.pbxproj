@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4031BD2124BD957700F1F805 /* NSArray+LBSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 4031BD2024BD957700F1F805 /* NSArray+LBSafe.m */; };
+		4031BD2A24BDB76800F1F805 /* NSDictionary+LBSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 4031BD2924BDB76800F1F805 /* NSDictionary+LBSafe.m */; };
 		4043F82824B4A15F00D448C6 /* NSObject+LBTopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4043F82724B4A15F00D448C6 /* NSObject+LBTopViewController.m */; };
 		4046AAA0233E0E7700299809 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4046AA9F233E0E7700299809 /* AppDelegate.m */; };
 		4046AAA6233E0E7700299809 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4046AAA5233E0E7700299809 /* ViewController.m */; };
@@ -31,6 +32,8 @@
 /* Begin PBXFileReference section */
 		4031BD1F24BD957700F1F805 /* NSArray+LBSafe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+LBSafe.h"; sourceTree = "<group>"; };
 		4031BD2024BD957700F1F805 /* NSArray+LBSafe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+LBSafe.m"; sourceTree = "<group>"; };
+		4031BD2824BDB76800F1F805 /* NSDictionary+LBSafe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+LBSafe.h"; sourceTree = "<group>"; };
+		4031BD2924BDB76800F1F805 /* NSDictionary+LBSafe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+LBSafe.m"; sourceTree = "<group>"; };
 		4043F82624B4A15F00D448C6 /* NSObject+LBTopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+LBTopViewController.h"; sourceTree = "<group>"; };
 		4043F82724B4A15F00D448C6 /* NSObject+LBTopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LBTopViewController.m"; sourceTree = "<group>"; };
 		4046AA9B233E0E7700299809 /* LBCommonComponentsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LBCommonComponentsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -213,6 +216,8 @@
 				40628F2924873EC20053E7ED /* NSObject+LBTypeSafe.m */,
 				4031BD1F24BD957700F1F805 /* NSArray+LBSafe.h */,
 				4031BD2024BD957700F1F805 /* NSArray+LBSafe.m */,
+				4031BD2824BDB76800F1F805 /* NSDictionary+LBSafe.h */,
+				4031BD2924BDB76800F1F805 /* NSDictionary+LBSafe.m */,
 			);
 			path = "NSObject+Safe";
 			sourceTree = "<group>";
@@ -336,6 +341,7 @@
 				4046AAA0233E0E7700299809 /* AppDelegate.m in Sources */,
 				4071DE472362E205007EF36A /* UIButton+LBAction.m in Sources */,
 				4046AAB1233E0E7B00299809 /* main.m in Sources */,
+				4031BD2A24BDB76800F1F805 /* NSDictionary+LBSafe.m in Sources */,
 				4046AB15233E10D600299809 /* UIView+LBGeometry.m in Sources */,
 				4071DE402362DD04007EF36A /* LBBaseLabel.m in Sources */,
 				4046AB16233E10D600299809 /* NSNull+LBSafe.m in Sources */,

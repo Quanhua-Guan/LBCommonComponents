@@ -35,6 +35,16 @@
     [crashArray replaceObjectsInRange:NSMakeRange(1, 1) withObjectsFromArray:@[]];
     [crashArray replaceObjectsAtIndexes:[NSIndexSet indexSetWithIndex:1] withObjects:nil];
     [crashArray replaceObjectsInRange:NSMakeRange(1, 1) withObjectsFromArray:@[] range:NSMakeRange(1, 1)];
+    
+    NSString *nilString;
+    NSMutableDictionary *crashDic = @{@"crash_key":nilString};
+    [crashDic setObject:nil forKey:@"crash_key"];
+    
+//    [NSDictionary dictionaryWithObjects:<#(nonnull NSArray *)#> forKeys:<#(nonnull NSArray<id<NSCopying>> *)#>]
+    
+    
+    
 }
+
 
 @end
