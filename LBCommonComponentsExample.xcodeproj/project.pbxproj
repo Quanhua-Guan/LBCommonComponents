@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4031BD2124BD957700F1F805 /* NSArray+LBSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 4031BD2024BD957700F1F805 /* NSArray+LBSafe.m */; };
 		4043F82824B4A15F00D448C6 /* NSObject+LBTopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4043F82724B4A15F00D448C6 /* NSObject+LBTopViewController.m */; };
 		4046AAA0233E0E7700299809 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4046AA9F233E0E7700299809 /* AppDelegate.m */; };
 		4046AAA6233E0E7700299809 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4046AAA5233E0E7700299809 /* ViewController.m */; };
@@ -28,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4031BD1F24BD957700F1F805 /* NSArray+LBSafe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+LBSafe.h"; sourceTree = "<group>"; };
+		4031BD2024BD957700F1F805 /* NSArray+LBSafe.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+LBSafe.m"; sourceTree = "<group>"; };
 		4043F82624B4A15F00D448C6 /* NSObject+LBTopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+LBTopViewController.h"; sourceTree = "<group>"; };
 		4043F82724B4A15F00D448C6 /* NSObject+LBTopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LBTopViewController.m"; sourceTree = "<group>"; };
 		4046AA9B233E0E7700299809 /* LBCommonComponentsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LBCommonComponentsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,10 +138,9 @@
 			children = (
 				40721E5D24B6F58800FC7FC7 /* NSObject+MethodSwizzling */,
 				4043F82924B4A18600D448C6 /* NSObject+TopViewController */,
-				40628F2724873EC20053E7ED /* NSObject+TypeSafe */,
+				40628F2724873EC20053E7ED /* NSObject+Safe */,
 				4071DE412362E1D6007EF36A /* UIButton+Action */,
 				4046AAF3233E10D600299809 /* UIView+Copy */,
-				4046AAFD233E10D600299809 /* NSNull+Safe */,
 				4046AAED233E10D600299809 /* UIImage+Color */,
 				4046AAF0233E10D600299809 /* NSDate+ToString */,
 				4046AB00233E10D600299809 /* NSString+ToDate */,
@@ -183,15 +185,6 @@
 			path = "UIView+Geometry";
 			sourceTree = "<group>";
 		};
-		4046AAFD233E10D600299809 /* NSNull+Safe */ = {
-			isa = PBXGroup;
-			children = (
-				4046AAFE233E10D600299809 /* NSNull+LBSafe.h */,
-				4046AAFF233E10D600299809 /* NSNull+LBSafe.m */,
-			);
-			path = "NSNull+Safe";
-			sourceTree = "<group>";
-		};
 		4046AB00233E10D600299809 /* NSString+ToDate */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,13 +204,17 @@
 			path = Macros;
 			sourceTree = "<group>";
 		};
-		40628F2724873EC20053E7ED /* NSObject+TypeSafe */ = {
+		40628F2724873EC20053E7ED /* NSObject+Safe */ = {
 			isa = PBXGroup;
 			children = (
+				4046AAFE233E10D600299809 /* NSNull+LBSafe.h */,
+				4046AAFF233E10D600299809 /* NSNull+LBSafe.m */,
 				40628F2824873EC20053E7ED /* NSObject+LBTypeSafe.h */,
 				40628F2924873EC20053E7ED /* NSObject+LBTypeSafe.m */,
+				4031BD1F24BD957700F1F805 /* NSArray+LBSafe.h */,
+				4031BD2024BD957700F1F805 /* NSArray+LBSafe.m */,
 			);
-			path = "NSObject+TypeSafe";
+			path = "NSObject+Safe";
 			sourceTree = "<group>";
 		};
 		4071DE332362DB2F007EF36A /* Base */ = {
@@ -330,6 +327,7 @@
 				4071DE3F2362DD04007EF36A /* LBBaseButton.m in Sources */,
 				4046AB10233E10D600299809 /* UIImage+LBColor.m in Sources */,
 				40628F2A24873EC20053E7ED /* NSObject+LBTypeSafe.m in Sources */,
+				4031BD2124BD957700F1F805 /* NSArray+LBSafe.m in Sources */,
 				4046AAA6233E0E7700299809 /* ViewController.m in Sources */,
 				4043F82824B4A15F00D448C6 /* NSObject+LBTopViewController.m in Sources */,
 				4046AB11233E10D600299809 /* NSDate+LBToString.m in Sources */,

@@ -28,15 +28,19 @@ Pod::Spec.new do |s|
     end
     
     ss.subspec 'NSObject+TypeSafe' do |sss|
-      sss.source_files = 'LBCommonComponents/Category/NSObject+TypeSafe/**/*.{h,m}'
+      sss.source_files = 'LBCommonComponents/Category/NSObject+Safe/NSObject+LBTypeSafe.{h,m}'
+    end
+    
+    ss.subspec 'NSNull+Safe' do |sss|
+      sss.source_files = 'LBCommonComponents/Category/NSObject+Safe/NSNull+LBSafe.{h,m}'
+    end
+    
+    ss.subspec 'NSArray+Safe' do |sss|
+      sss.source_files = 'LBCommonComponents/Category/NSObject+Safe/NSArray+LBSafe.{h,m}'
     end
     
     ss.subspec 'UIButton+Action' do |sss|
       sss.source_files = 'LBCommonComponents/Category/UIButton+Action/**/*.{h,m}'
-    end
-    
-    ss.subspec 'NSNull+Safe' do |sss|
-      sss.source_files = 'LBCommonComponents/Category/NSNull+Safe/**/*.{h,m}'
     end
 
     ss.subspec 'UIImage+Color' do |sss|

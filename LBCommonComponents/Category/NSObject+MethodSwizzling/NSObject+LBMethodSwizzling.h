@@ -12,7 +12,20 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NSObject (LBMethodSwizzling)
-+(void)lb_swizzleInstance:(BOOL)isInstance class:(Class )originalClass withClass:(Class )swizzledClass method:(SEL )originalSelector withMethod:(SEL )swizzledSelector;
+
+/// SwizzlingMethod
+/// @param originalClass 被交换类
+/// @param originalSelector 被交换方法
+/// @param originalIsClassMethod 被交换方法是类方法
+/// @param swizzledClass 交换类
+/// @param swizzledSelector 交换方法
+/// @param swizzledIsClassMethod 交换方法是类方法
++(void)lb_swizzleMethodClass:(Class )originalClass
+                      method:(SEL )originalSelector
+       originalIsClassMethod:(BOOL)originalIsClassMethod
+                   withClass:(Class )swizzledClass
+                  withMethod:(SEL )swizzledSelector
+       swizzledIsClassMethod:(BOOL)swizzledIsClassMethod;
 @end
 
 NS_ASSUME_NONNULL_END

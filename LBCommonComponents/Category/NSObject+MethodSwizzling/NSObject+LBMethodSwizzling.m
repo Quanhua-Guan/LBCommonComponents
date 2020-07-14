@@ -9,40 +9,54 @@
 #import "NSObject+LBMethodSwizzling.h"
 
 @implementation NSObject (LBMethodSwizzling)
-+(void)lb_swizzleInstance:(BOOL)isInstance class:(Class )originalClass withClass:(Class )swizzledClass method:(SEL )originalSelector withMethod:(SEL )swizzledSelector{
-    
-    originalClass = isInstance?originalClass:object_getClass(originalClass);//关键
++(void)lb_swizzleMethodClass:(Class)originalClass
+                      method:(SEL)originalSelector
+       originalIsClassMethod:(BOOL)originalIsClassMethod
+                   withClass:(Class)swizzledClass
+                  withMethod:(SEL)swizzledSelector
+       swizzledIsClassMethod:(BOOL)swizzledIsClassMethod{
     
     Method originalMethod;
     Method swizzledMethod;
     
-    BOOL respondsMethod = NO;
-    if (isInstance) {
-        originalMethod = class_getInstanceMethod(originalClass, originalSelector);
-        swizzledMethod = class_getInstanceMethod(swizzledClass, swizzledSelector);
-        respondsMethod = [originalClass instancesRespondToSelector:swizzledSelector];
-    }else{
+    BOOL originalClassRespondSwizzledMethod = NO;
+    
+    if (originalIsClassMethod) {
+        originalClass = object_getClass(originalClass);
+        
         originalMethod = class_getClassMethod(originalClass, originalSelector);
-        swizzledMethod = class_getClassMethod(swizzledClass, swizzledSelector);
-        respondsMethod = [originalClass respondsToSelector:swizzledSelector];
+        originalClassRespondSwizzledMethod = [originalClass respondsToSelector:swizzledSelector];
+    }else{
+        originalMethod = class_getInstanceMethod(originalClass, originalSelector);
+        originalClassRespondSwizzledMethod = [originalClass instancesRespondToSelector:swizzledSelector];
     }
+    
+    if (swizzledIsClassMethod) {
+        swizzledClass = object_getClass(swizzledClass);
+        
+        swizzledMethod = class_getClassMethod(swizzledClass, swizzledSelector);
+    }else{
+        swizzledMethod = class_getInstanceMethod(swizzledClass, swizzledSelector);
+    }
+    
+    
     
     BOOL registerMethod = class_addMethod(originalClass,
-    swizzledSelector,
-    method_getImplementation(swizzledMethod),
-    method_getTypeEncoding(swizzledMethod));
+                                          swizzledSelector,
+                                          method_getImplementation(swizzledMethod),
+                                          method_getTypeEncoding(swizzledMethod));
     
-    if (respondsMethod == NO) {
-        respondsMethod = registerMethod;
+    if (originalClassRespondSwizzledMethod == NO) {
+        originalClassRespondSwizzledMethod = registerMethod;
     }
-    if (!respondsMethod) {
+    if (originalClassRespondSwizzledMethod == NO) {
         return;
     }
     
-    if (isInstance) {
-        swizzledMethod = class_getInstanceMethod(originalClass, swizzledSelector);
-    }else{
+    if (originalIsClassMethod) {
         swizzledMethod = class_getClassMethod(originalClass, swizzledSelector);
+    }else{
+        swizzledMethod = class_getInstanceMethod(originalClass, swizzledSelector);
     }
     
     if (!swizzledMethod) {

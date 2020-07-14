@@ -40,5 +40,4 @@
 -(NSMutableData *)safeMutableData{
     return [self isKindOfClass:NSMutableData.self]?(NSMutableData *)self:nil;
 }
-
 @end
