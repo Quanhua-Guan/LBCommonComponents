@@ -23,7 +23,7 @@
 
 -(NSMutableDictionary *)safeMutableDictionary;
 
--(NSDate *)safeDate;
+-(NSData *)safeData;
 
 -(NSMutableData *)safeMutableData;
 

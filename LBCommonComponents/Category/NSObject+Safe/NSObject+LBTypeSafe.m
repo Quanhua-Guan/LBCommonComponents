@@ -10,34 +10,58 @@
 
 @implementation NSObject (LBTypeSafe)
 -(NSString *)safeString{
-    return [self isKindOfClass:NSString.self]?(NSString *)self:nil;
+    return [self isKindOfClass:NSString.class]?(NSString *)self:@"";
 }
 
 -(NSMutableString *)safeMutableString{
-    return [self isKindOfClass:NSMutableString.self]?(NSMutableString *)self:nil;
+    if ([self isKindOfClass:NSMutableString.class]) {
+        return (NSMutableString *)self;
+    }else if ([self isKindOfClass:NSString.class]) {
+        return [(NSString *)self mutableCopy];
+    }else{
+        return @"".mutableCopy;
+    }
 }
 
 -(NSArray *)safeArray{
-    return [self isKindOfClass:NSArray.self]?(NSArray *)self:nil;
+    return [self isKindOfClass:NSArray.class]?(NSArray *)self:nil;
 }
 
 -(NSMutableArray *)safeMutableArray{
-    return [self isKindOfClass:NSMutableArray.self]?(NSMutableArray *)self:nil;
+    if ([self isKindOfClass:NSMutableArray.class]) {
+        return (NSMutableArray *)self;
+    }else if ([self isKindOfClass:NSArray.class]) {
+        return [(NSArray *)self mutableCopy];
+    }else{
+        return nil;
+    }
 }
 
 -(NSDictionary *)safeDictionary{
-    return [self isKindOfClass:NSDictionary.self]?(NSDictionary *)self:nil;
+    return [self isKindOfClass:NSDictionary.class]?(NSDictionary *)self:nil;
 }
 
 -(NSMutableDictionary *)safeMutableDictionary{
-    return [self isKindOfClass:NSMutableDictionary.self]?(NSMutableDictionary *)self:nil;
+    if ([self isKindOfClass:NSMutableDictionary.class]) {
+        return (NSMutableDictionary *)self;
+    }else if ([self isKindOfClass:NSDictionary.class]) {
+        return [(NSDictionary *)self mutableCopy];
+    }else{
+        return nil;
+    }
 }
 
--(NSDate *)safeDate{
-    return [self isKindOfClass:NSDate.self]?(NSDate *)self:nil;
+-(NSData *)safeData{
+    return [self isKindOfClass:NSData.class]?(NSData *)self:nil;
 }
 
 -(NSMutableData *)safeMutableData{
-    return [self isKindOfClass:NSMutableData.self]?(NSMutableData *)self:nil;
+    if ([self isKindOfClass:NSMutableData.class]) {
+        return (NSMutableData *)self;
+    }else if ([self isKindOfClass:NSData.class]) {
+        return [(NSData *)self mutableCopy];
+    }else{
+        return nil;
+    }
 }
 @end
