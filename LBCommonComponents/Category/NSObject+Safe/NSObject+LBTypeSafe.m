@@ -10,7 +10,13 @@
 
 @implementation NSObject (LBTypeSafe)
 -(NSString *)safeString{
-    return [self isKindOfClass:NSString.class]?(NSString *)self:@"";
+    if ([self isKindOfClass:NSString.class]) {
+        return (NSString *)self;
+    }else if ([self respondsToSelector:@selector(stringValue)]){
+        return ((NSNumber *)self).stringValue;
+    }else{
+        return @"";
+    }
 }
 
 -(NSMutableString *)safeMutableString{
@@ -18,6 +24,8 @@
         return (NSMutableString *)self;
     }else if ([self isKindOfClass:NSString.class]) {
         return [(NSString *)self mutableCopy];
+    }else if ([self respondsToSelector:@selector(stringValue)]){
+        return ((NSNumber *)self).stringValue.mutableCopy;
     }else{
         return @"".mutableCopy;
     }
