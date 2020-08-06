@@ -10,20 +10,20 @@
 #import "NSObject+LBMethodSwizzling.h"
 
 @implementation NSDictionary (LBSafe)
-+(void)load{
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        
-        Class __NSDictionaryM = NSClassFromString(@"__NSDictionaryM");
-        
-        [NSObject lb_swizzleMethodClass:__NSDictionaryM
-                                 method:@selector(setObject:forKey:)
-                  originalIsClassMethod:NO
-                              withClass:self
-                             withMethod:@selector(lb_setObject:forKey:)
-                  swizzledIsClassMethod:YES];
-    });
-}
+//+(void)load{
+//    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken, ^{
+//
+//        Class __NSDictionaryM = NSClassFromString(@"__NSDictionaryM");
+//
+//        [NSObject lb_swizzleMethodClass:__NSDictionaryM
+//                                 method:@selector(setObject:forKey:)
+//                  originalIsClassMethod:NO
+//                              withClass:self
+//                             withMethod:@selector(lb_setObject:forKey:)
+//                  swizzledIsClassMethod:YES];
+//    });
+//}
 + (void)lb_setObject:(id)anObject forKey:(id<NSCopying>)aKey{
     @try {
         [self lb_setObject:anObject forKey:aKey];
