@@ -12,7 +12,7 @@
 @implementation UIButton (LBAction)
 @dynamic lb_action;
 static NSString *LBButtonActionKey = @"LBButtonActionKey";
-- (instancetype)initWithFrame:(CGRect)frame action:(void (^_Nullable)(UIButton *sender))action;
+- (instancetype)initWithFrame:(CGRect)frame action:(void (^)(__kindof UIButton * _Nonnull))action;
 {
     self = [[self.class alloc] initWithFrame:frame];
     if (self) {
@@ -23,11 +23,11 @@ static NSString *LBButtonActionKey = @"LBButtonActionKey";
     }
     return self;
 }
--(void (^)(UIButton *_Nonnull))lb_action{
+-(void (^)(__kindof UIButton * _Nonnull))lb_action{
     return objc_getAssociatedObject(self, &LBButtonActionKey);
 }
--(void)setLb_action:(void (^)(UIButton *_Nonnull))action{
-    objc_setAssociatedObject(self, &LBButtonActionKey, action, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+-(void)setLb_action:(void (^)(__kindof UIButton * _Nonnull))lb_action{
+    objc_setAssociatedObject(self, &LBButtonActionKey, lb_action, OBJC_ASSOCIATION_COPY_NONATOMIC);
     [self addTarget:self action:@selector(buttonAction) forControlEvents:UIControlEventTouchUpInside];
 }
 -(void)buttonAction{
