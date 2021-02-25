@@ -30,6 +30,10 @@ Pod::Spec.new do |s|
     ss.subspec 'UIButton+Action' do |sss|
       sss.source_files = 'LBCommonComponents/Category/UIButton+Action/**/*.{h,m}'
     end
+    
+    ss.subspec 'UIControl+EventInterval' do |sss|
+      sss.source_files = 'LBCommonComponents/Category/UIControl+EventInterval/**/*.{h,m}'
+    end
 
     ss.subspec 'UIImage+Color' do |sss|
       sss.source_files = 'LBCommonComponents/Category/UIImage+Color/**/*.{h,m}'

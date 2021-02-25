@@ -153,7 +153,7 @@
 		4046AAEC233E10D600299809 /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				4087D8E825E7545300DAC735 /* UIControl+LBEventInterval */,
+				4087D8E825E7545300DAC735 /* UIControl+EventInterval */,
 				40721E5D24B6F58800FC7FC7 /* NSObject+MethodSwizzling */,
 				4043F82924B4A18600D448C6 /* NSObject+TopViewController */,
 				40628F2724873EC20053E7ED /* NSObject+Safe */,
@@ -275,13 +275,13 @@
 			path = "NSObject+MethodSwizzling";
 			sourceTree = "<group>";
 		};
-		4087D8E825E7545300DAC735 /* UIControl+LBEventInterval */ = {
+		4087D8E825E7545300DAC735 /* UIControl+EventInterval */ = {
 			isa = PBXGroup;
 			children = (
 				4087D8E925E7545300DAC735 /* UIControl+LBEventInterval.h */,
 				4087D8EA25E7545300DAC735 /* UIControl+LBEventInterval.m */,
 			);
-			path = "UIControl+LBEventInterval";
+			path = "UIControl+EventInterval";
 			sourceTree = "<group>";
 		};
 		4087D8ED25E7546A00DAC735 /* ViewControllers */ = {
