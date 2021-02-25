@@ -27,6 +27,10 @@
 		4071DE402362DD04007EF36A /* LBBaseLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4071DE3E2362DD04007EF36A /* LBBaseLabel.m */; };
 		4071DE472362E205007EF36A /* UIButton+LBAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4071DE462362E205007EF36A /* UIButton+LBAction.m */; };
 		40721E6024B6F5AF00FC7FC7 /* NSObject+LBMethodSwizzling.m in Sources */ = {isa = PBXBuildFile; fileRef = 40721E5F24B6F5AF00FC7FC7 /* NSObject+LBMethodSwizzling.m */; };
+		4087D8EB25E7545300DAC735 /* UIControl+LBEventInterval.m in Sources */ = {isa = PBXBuildFile; fileRef = 4087D8EA25E7545300DAC735 /* UIControl+LBEventInterval.m */; };
+		4087D8F225E754AC00DAC735 /* UIViewController+LBNavigationBarAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 4087D8F025E754AC00DAC735 /* UIViewController+LBNavigationBarAppearance.m */; };
+		4087D8F325E754AC00DAC735 /* LBBaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4087D8F125E754AC00DAC735 /* LBBaseNavigationController.m */; };
+		4087D8FA25E7979700DAC735 /* ViewControllerDefault.m in Sources */ = {isa = PBXBuildFile; fileRef = 4087D8F925E7979700DAC735 /* ViewControllerDefault.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +75,14 @@
 		4071DE462362E205007EF36A /* UIButton+LBAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+LBAction.m"; sourceTree = "<group>"; };
 		40721E5E24B6F5AF00FC7FC7 /* NSObject+LBMethodSwizzling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+LBMethodSwizzling.h"; sourceTree = "<group>"; };
 		40721E5F24B6F5AF00FC7FC7 /* NSObject+LBMethodSwizzling.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LBMethodSwizzling.m"; sourceTree = "<group>"; };
+		4087D8E925E7545300DAC735 /* UIControl+LBEventInterval.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+LBEventInterval.h"; sourceTree = "<group>"; };
+		4087D8EA25E7545300DAC735 /* UIControl+LBEventInterval.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+LBEventInterval.m"; sourceTree = "<group>"; };
+		4087D8EE25E754AC00DAC735 /* LBBaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBBaseNavigationController.h; sourceTree = "<group>"; };
+		4087D8EF25E754AC00DAC735 /* UIViewController+LBNavigationBarAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+LBNavigationBarAppearance.h"; sourceTree = "<group>"; };
+		4087D8F025E754AC00DAC735 /* UIViewController+LBNavigationBarAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LBNavigationBarAppearance.m"; sourceTree = "<group>"; };
+		4087D8F125E754AC00DAC735 /* LBBaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBBaseNavigationController.m; sourceTree = "<group>"; };
+		4087D8F825E7979700DAC735 /* ViewControllerDefault.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewControllerDefault.h; sourceTree = "<group>"; };
+		4087D8F925E7979700DAC735 /* ViewControllerDefault.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewControllerDefault.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +130,8 @@
 				4046AA9F233E0E7700299809 /* AppDelegate.m */,
 				4046AAA4233E0E7700299809 /* ViewController.h */,
 				4046AAA5233E0E7700299809 /* ViewController.m */,
+				4087D8F825E7979700DAC735 /* ViewControllerDefault.h */,
+				4087D8F925E7979700DAC735 /* ViewControllerDefault.m */,
 				4046AAAA233E0E7B00299809 /* Assets.xcassets */,
 				4046AAAC233E0E7B00299809 /* LaunchScreen.storyboard */,
 				4046AAAF233E0E7B00299809 /* Info.plist */,
@@ -139,6 +153,7 @@
 		4046AAEC233E10D600299809 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				4087D8E825E7545300DAC735 /* UIControl+LBEventInterval */,
 				40721E5D24B6F58800FC7FC7 /* NSObject+MethodSwizzling */,
 				4043F82924B4A18600D448C6 /* NSObject+TopViewController */,
 				40628F2724873EC20053E7ED /* NSObject+Safe */,
@@ -225,6 +240,7 @@
 		4071DE332362DB2F007EF36A /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				4087D8ED25E7546A00DAC735 /* ViewControllers */,
 				4071DE3A2362DD04007EF36A /* Views */,
 			);
 			path = Base;
@@ -257,6 +273,26 @@
 				40721E5F24B6F5AF00FC7FC7 /* NSObject+LBMethodSwizzling.m */,
 			);
 			path = "NSObject+MethodSwizzling";
+			sourceTree = "<group>";
+		};
+		4087D8E825E7545300DAC735 /* UIControl+LBEventInterval */ = {
+			isa = PBXGroup;
+			children = (
+				4087D8E925E7545300DAC735 /* UIControl+LBEventInterval.h */,
+				4087D8EA25E7545300DAC735 /* UIControl+LBEventInterval.m */,
+			);
+			path = "UIControl+LBEventInterval";
+			sourceTree = "<group>";
+		};
+		4087D8ED25E7546A00DAC735 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4087D8EE25E754AC00DAC735 /* LBBaseNavigationController.h */,
+				4087D8F125E754AC00DAC735 /* LBBaseNavigationController.m */,
+				4087D8EF25E754AC00DAC735 /* UIViewController+LBNavigationBarAppearance.h */,
+				4087D8F025E754AC00DAC735 /* UIViewController+LBNavigationBarAppearance.m */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -333,15 +369,19 @@
 				4046AB10233E10D600299809 /* UIImage+LBColor.m in Sources */,
 				40628F2A24873EC20053E7ED /* NSObject+LBTypeSafe.m in Sources */,
 				4031BD2124BD957700F1F805 /* NSArray+LBSafe.m in Sources */,
+				4087D8F325E754AC00DAC735 /* LBBaseNavigationController.m in Sources */,
 				4046AAA6233E0E7700299809 /* ViewController.m in Sources */,
 				4043F82824B4A15F00D448C6 /* NSObject+LBTopViewController.m in Sources */,
 				4046AB11233E10D600299809 /* NSDate+LBToString.m in Sources */,
+				4087D8EB25E7545300DAC735 /* UIControl+LBEventInterval.m in Sources */,
 				4046AB17233E10D600299809 /* NSString+LBToDate.m in Sources */,
 				40721E6024B6F5AF00FC7FC7 /* NSObject+LBMethodSwizzling.m in Sources */,
 				4046AAA0233E0E7700299809 /* AppDelegate.m in Sources */,
 				4071DE472362E205007EF36A /* UIButton+LBAction.m in Sources */,
 				4046AAB1233E0E7B00299809 /* main.m in Sources */,
+				4087D8F225E754AC00DAC735 /* UIViewController+LBNavigationBarAppearance.m in Sources */,
 				4031BD2A24BDB76800F1F805 /* NSDictionary+LBSafe.m in Sources */,
+				4087D8FA25E7979700DAC735 /* ViewControllerDefault.m in Sources */,
 				4046AB15233E10D600299809 /* UIView+LBGeometry.m in Sources */,
 				4071DE402362DD04007EF36A /* LBBaseLabel.m in Sources */,
 				4046AB16233E10D600299809 /* NSNull+LBSafe.m in Sources */,

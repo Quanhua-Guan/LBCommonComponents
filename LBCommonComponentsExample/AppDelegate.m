@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import "LBBaseNavigationController.h"
 @interface AppDelegate ()
 
 @end

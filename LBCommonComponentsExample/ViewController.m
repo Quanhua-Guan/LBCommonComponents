@@ -7,7 +7,9 @@
 //
 
 #import "ViewController.h"
+#import "ViewControllerDefault.h"
 #import "LBUIMacro.h"
+#import "UIViewController+LBNavigationBarAppearance.h"
 @interface ViewController ()
 
 @end
@@ -19,32 +21,17 @@
     // Do any additional setup after loading the view.
     NSLog(@"%f----%f",LB_SAFE_AREA_TOP_HEIGHT(self),LB_SAFE_AREA_BOTTOM_HEIGHT(self));
     
-    //数组保护测试
-    NSMutableArray *crashArray = [NSMutableArray array];
-    id objct = crashArray[1];
-    [crashArray objectsAtIndexes:[NSIndexSet indexSetWithIndex:1]];
-    [crashArray addObject:nil];
-    [crashArray insertObject:nil atIndex:3];
-    [crashArray removeObjectAtIndex:1];
-    [crashArray removeObjectsInRange:NSMakeRange(1, 1)];
-    [crashArray subarrayWithRange:NSMakeRange(0, 1)];
-    crashArray[1] = @"crash";
-    [crashArray setObject:@"" atIndexedSubscript:1];
+    self.view.backgroundColor = [UIColor magentaColor];
     
-    [crashArray replaceObjectAtIndex:1 withObject:nil];
-    [crashArray replaceObjectsInRange:NSMakeRange(1, 1) withObjectsFromArray:@[]];
-    [crashArray replaceObjectsAtIndexes:[NSIndexSet indexSetWithIndex:1] withObjects:nil];
-    [crashArray replaceObjectsInRange:NSMakeRange(1, 1) withObjectsFromArray:@[] range:NSMakeRange(1, 1)];
+    self.title = @"LBCommonComponents";
     
-    NSString *nilString;
-    NSMutableDictionary *crashDic = @{@"crash_key":nilString};
-    [crashDic setObject:nil forKey:@"crash_key"];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"下一页" style:UIBarButtonItemStylePlain target:self action:@selector(nextPage)];
     
-//    [NSDictionary dictionaryWithObjects:<#(nonnull NSArray *)#> forKeys:<#(nonnull NSArray<id<NSCopying>> *)#>]
-    
-    
-    
+    [self setNavigationBarAppearanceStyle:LBNavigationBarTransparent tintColor:[UIColor whiteColor]];
 }
 
-
+-(void)nextPage{
+    ViewControllerDefault *vc = [[ViewControllerDefault alloc] init];
+    [self.navigationController pushViewController:vc animated:YES];
+}
 @end
