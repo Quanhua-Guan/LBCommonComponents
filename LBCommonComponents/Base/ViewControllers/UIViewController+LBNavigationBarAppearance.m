@@ -23,7 +23,7 @@ static NSString *LBNavigationBarTintColorKey = @"LBNavigationBarTintColorKey";
                          method:@selector(viewDidLoad)
           originalIsClassMethod:NO
                       withClass:self
-                     withMethod:@selector(yc_appearance_viewDidLoad)
+                     withMethod:@selector(lb_navigationBarAppearance_viewDidLoad)
           swizzledIsClassMethod:NO];
     
     
@@ -31,7 +31,7 @@ static NSString *LBNavigationBarTintColorKey = @"LBNavigationBarTintColorKey";
                          method:@selector(viewWillAppear:)
           originalIsClassMethod:NO
                       withClass:self
-                     withMethod:@selector(yc_appearance_viewWillAppear:)
+                     withMethod:@selector(lb_navigationBarAppearance_viewWillAppear:)
           swizzledIsClassMethod:NO];
     
     
@@ -39,7 +39,7 @@ static NSString *LBNavigationBarTintColorKey = @"LBNavigationBarTintColorKey";
                          method:@selector(viewWillDisappear:)
           originalIsClassMethod:NO
                       withClass:self
-                     withMethod:@selector(yc_appearance_viewWillDisappear:)
+                     withMethod:@selector(lb_navigationBarAppearance_viewWillDisappear:)
           swizzledIsClassMethod:NO];
 }
 
@@ -64,7 +64,7 @@ static NSString *LBNavigationBarTintColorKey = @"LBNavigationBarTintColorKey";
     self.navigationBarTintColor = color;
 }
 
--(void)yc_appearance_viewDidLoad{
+-(void)lb_navigationBarAppearance_viewDidLoad{
     if ([NSStringFromClass(self.class) containsString:@"UI"] == NO) {
         if (@available(iOS 13.0, *)) {
             if ([UITraitCollection currentTraitCollection].userInterfaceStyle == UIUserInterfaceStyleLight) {
@@ -82,10 +82,10 @@ static NSString *LBNavigationBarTintColorKey = @"LBNavigationBarTintColorKey";
             }
         }
     }
-    [self yc_appearance_viewDidLoad];
+    [self lb_navigationBarAppearance_viewDidLoad];
 }
 
--(void)yc_appearance_viewWillAppear:(BOOL)animated{
+-(void)lb_navigationBarAppearance_viewWillAppear:(BOOL)animated{
     if ([NSStringFromClass(self.class) containsString:@"UI"] == NO){
         switch (self.navigationBarAppearanceStyle) {
             case LBNavigationBarTransparent:
@@ -129,11 +129,11 @@ static NSString *LBNavigationBarTintColorKey = @"LBNavigationBarTintColorKey";
         }
     }
     
-    [self yc_appearance_viewWillAppear:animated];
+    [self lb_navigationBarAppearance_viewWillAppear:animated];
     
 }
 
--(void)yc_appearance_viewWillDisappear:(BOOL)animated{
+-(void)lb_navigationBarAppearance_viewWillDisappear:(BOOL)animated{
     if ([NSStringFromClass(self.class) containsString:@"UI"] == NO){
         if (self.navigationBarAppearanceStyle == LBNavigationBarHidden) {
             self.navigationController.navigationBarHidden = NO;
@@ -157,6 +157,6 @@ static NSString *LBNavigationBarTintColorKey = @"LBNavigationBarTintColorKey";
             }
         }
     }
-    [self yc_appearance_viewWillDisappear:animated];
+    [self lb_navigationBarAppearance_viewWillDisappear:animated];
 }
 @end
