@@ -23,6 +23,7 @@
 		4046AB16233E10D600299809 /* NSNull+LBSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 4046AAFF233E10D600299809 /* NSNull+LBSafe.m */; };
 		4046AB17233E10D600299809 /* NSString+LBToDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4046AB01233E10D600299809 /* NSString+LBToDate.m */; };
 		40628F2A24873EC20053E7ED /* NSObject+LBTypeSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 40628F2924873EC20053E7ED /* NSObject+LBTypeSafe.m */; };
+		406B597A260DE6AA007BE1ED /* UIImage+LBDownSampling.m in Sources */ = {isa = PBXBuildFile; fileRef = 406B5979260DE6AA007BE1ED /* UIImage+LBDownSampling.m */; };
 		4071DE3F2362DD04007EF36A /* LBBaseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4071DE3B2362DD04007EF36A /* LBBaseButton.m */; };
 		4071DE402362DD04007EF36A /* LBBaseLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4071DE3E2362DD04007EF36A /* LBBaseLabel.m */; };
 		4071DE472362E205007EF36A /* UIButton+LBAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 4071DE462362E205007EF36A /* UIButton+LBAction.m */; };
@@ -67,6 +68,8 @@
 		4046AB09233E10D600299809 /* LBUIMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBUIMacro.h; sourceTree = "<group>"; };
 		40628F2824873EC20053E7ED /* NSObject+LBTypeSafe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+LBTypeSafe.h"; sourceTree = "<group>"; };
 		40628F2924873EC20053E7ED /* NSObject+LBTypeSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LBTypeSafe.m"; sourceTree = "<group>"; };
+		406B5978260DE6AA007BE1ED /* UIImage+LBDownSampling.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+LBDownSampling.h"; sourceTree = "<group>"; };
+		406B5979260DE6AA007BE1ED /* UIImage+LBDownSampling.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+LBDownSampling.m"; sourceTree = "<group>"; };
 		4071DE3B2362DD04007EF36A /* LBBaseButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBBaseButton.m; sourceTree = "<group>"; };
 		4071DE3C2362DD04007EF36A /* LBBaseLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBBaseLabel.h; sourceTree = "<group>"; };
 		4071DE3D2362DD04007EF36A /* LBBaseButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBBaseButton.h; sourceTree = "<group>"; };
@@ -153,6 +156,7 @@
 		4046AAEC233E10D600299809 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				406B5977260DE688007BE1ED /* UIImage+DownSampling */,
 				4087D8E825E7545300DAC735 /* UIControl+EventInterval */,
 				40721E5D24B6F58800FC7FC7 /* NSObject+MethodSwizzling */,
 				4043F82924B4A18600D448C6 /* NSObject+TopViewController */,
@@ -235,6 +239,15 @@
 				4031BD2924BDB76800F1F805 /* NSDictionary+LBSafe.m */,
 			);
 			path = "NSObject+Safe";
+			sourceTree = "<group>";
+		};
+		406B5977260DE688007BE1ED /* UIImage+DownSampling */ = {
+			isa = PBXGroup;
+			children = (
+				406B5978260DE6AA007BE1ED /* UIImage+LBDownSampling.h */,
+				406B5979260DE6AA007BE1ED /* UIImage+LBDownSampling.m */,
+			);
+			path = "UIImage+DownSampling";
 			sourceTree = "<group>";
 		};
 		4071DE332362DB2F007EF36A /* Base */ = {
@@ -375,6 +388,7 @@
 				4046AB11233E10D600299809 /* NSDate+LBToString.m in Sources */,
 				4087D8EB25E7545300DAC735 /* UIControl+LBEventInterval.m in Sources */,
 				4046AB17233E10D600299809 /* NSString+LBToDate.m in Sources */,
+				406B597A260DE6AA007BE1ED /* UIImage+LBDownSampling.m in Sources */,
 				40721E6024B6F5AF00FC7FC7 /* NSObject+LBMethodSwizzling.m in Sources */,
 				4046AAA0233E0E7700299809 /* AppDelegate.m in Sources */,
 				4071DE472362E205007EF36A /* UIButton+LBAction.m in Sources */,
