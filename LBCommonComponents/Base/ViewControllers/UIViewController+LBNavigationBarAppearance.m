@@ -74,11 +74,11 @@ static NSString *LBNavigationBarTintColorKey = @"LBNavigationBarTintColorKey";
 //            }
 //        }
         if (self.view.backgroundColor == nil) {
-#ifdef __IPHONE_13_0
-            self.view.backgroundColor = [UIColor systemGroupedBackgroundColor];
-#else
-            self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
-#endif
+            if (@available(iOS 13.0, *)) {
+                self.view.backgroundColor = [UIColor systemGroupedBackgroundColor];
+            } else {
+                self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+            }
         }
     }
     [self lb_navigationBarAppearance_viewDidLoad];
