@@ -15,7 +15,7 @@ typedef NS_ENUM(NSUInteger, LBNavigationBarAppearanceStyle) {
     LBNavigationBarHidden//隐藏
 };
 @interface UIViewController (LBNavigationBarAppearance)
--(void)setNavigationBarAppearanceStyle:(LBNavigationBarAppearanceStyle)style tintColor:(UIColor *)color;
+-(void)setNavigationBarAppearanceStyle:(LBNavigationBarAppearanceStyle)style tintColor:(nullable UIColor *)color;
 @end
 
 NS_ASSUME_NONNULL_END

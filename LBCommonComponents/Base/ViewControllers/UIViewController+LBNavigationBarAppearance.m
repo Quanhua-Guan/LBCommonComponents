@@ -13,7 +13,7 @@ static NSString *LBNavigationBarTintColorKey = @"LBNavigationBarTintColorKey";
 
 @interface UIViewController (LBNavigationBarAppearance)
 @property (nonatomic, assign) LBNavigationBarAppearanceStyle navigationBarAppearanceStyle;
-@property (nonatomic, strong) UIColor *navigationBarTintColor;
+@property (nonatomic, strong, nullable) UIColor *navigationBarTintColor;
 @end
 
 @implementation UIViewController (LBNavigationBarAppearance)
@@ -51,7 +51,7 @@ static NSString *LBNavigationBarTintColorKey = @"LBNavigationBarTintColorKey";
     objc_setAssociatedObject(self, &LBNavigationBarTintColorKey, navigationBarTintColor, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
--(void)setNavigationBarAppearanceStyle:(LBNavigationBarAppearanceStyle)style tintColor:(UIColor *)color{
+-(void)setNavigationBarAppearanceStyle:(LBNavigationBarAppearanceStyle)style tintColor:(nullable UIColor *)color{
     self.navigationBarAppearanceStyle = style;
     self.navigationBarTintColor = color;
 }
