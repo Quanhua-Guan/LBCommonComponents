@@ -58,26 +58,19 @@ static NSString *LBNavigationBarTintColorKey = @"LBNavigationBarTintColorKey";
 
 -(void)lb_navigationBarAppearance_viewDidLoad{
     if ([NSStringFromClass(self.class) containsString:@"UI"] == NO) {
-//        if (@available(iOS 13.0, *)) {
-//            if ([UITraitCollection currentTraitCollection].userInterfaceStyle == UIUserInterfaceStyleLight) {
-//                if (self.view.backgroundColor == nil) {
-//                    self.view.backgroundColor = [UIColor whiteColor];
-//                }
-//            }else{
-//                if (self.view.backgroundColor == nil) {
-//                    self.view.backgroundColor = [UIColor blackColor];
-//                }
-//            }
-//        }else{
-//            if (self.view.backgroundColor == nil) {
-//                self.view.backgroundColor = [UIColor whiteColor];
-//            }
-//        }
-        if (self.view.backgroundColor == nil) {
-            if (@available(iOS 13.0, *)) {
-                self.view.backgroundColor = [UIColor systemGroupedBackgroundColor];
-            } else {
-                self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+        if (@available(iOS 13.0, *)) {
+            if ([UITraitCollection currentTraitCollection].userInterfaceStyle == UIUserInterfaceStyleLight) {
+                if (self.view.backgroundColor == nil) {
+                    self.view.backgroundColor = [UIColor whiteColor];
+                }
+            }else{
+                if (self.view.backgroundColor == nil) {
+                    self.view.backgroundColor = [UIColor blackColor];
+                }
+            }
+        }else{
+            if (self.view.backgroundColor == nil) {
+                self.view.backgroundColor = [UIColor whiteColor];
             }
         }
     }
