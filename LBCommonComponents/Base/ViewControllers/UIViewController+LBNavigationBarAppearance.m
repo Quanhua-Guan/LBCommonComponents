@@ -39,9 +39,6 @@ static NSString *LBNavigationBarTintColorKey = @"LBNavigationBarTintColorKey";
     return [objc_getAssociatedObject(self, &LBNavigationBarAppearanceStyleKey) integerValue];
 }
 -(void)setNavigationBarAppearanceStyle:(LBNavigationBarAppearanceStyle)navigationBarAppearanceStyle{
-    if (navigationBarAppearanceStyle != LBNavigationBarHidden && self.navigationController.navigationBarHidden) {
-        self.navigationController.navigationBarHidden = NO;
-    }
     objc_setAssociatedObject(self, &LBNavigationBarAppearanceStyleKey, @(navigationBarAppearanceStyle), OBJC_ASSOCIATION_ASSIGN);
 }
 -(UIColor *)navigationBarTintColor{
@@ -92,7 +89,7 @@ static NSString *LBNavigationBarTintColorKey = @"LBNavigationBarTintColorKey";
             case LBNavigationBarTransparentShadowLine:
             {
                 if (self.navigationController.isNavigationBarHidden == YES) {
-                    self.navigationController.navigationBarHidden = NO;
+                    [self.navigationController setNavigationBarHidden:NO animated:YES];
                 }
                 
                 [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
@@ -118,11 +115,11 @@ static NSString *LBNavigationBarTintColorKey = @"LBNavigationBarTintColorKey";
             case LBNavigationBarHidden:
                 self.navigationController.navigationBar.barStyle = UIBarStyleDefault;  //状态栏改为默认
 
-                self.navigationController.navigationBarHidden = YES;
+                [self.navigationController setNavigationBarHidden:YES animated:YES];
                 break;
             default:
                 if (self.navigationController.isNavigationBarHidden == YES) {
-                    self.navigationController.navigationBarHidden = NO;
+                    [self.navigationController setNavigationBarHidden:NO animated:YES];
                 }
 
                 [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
