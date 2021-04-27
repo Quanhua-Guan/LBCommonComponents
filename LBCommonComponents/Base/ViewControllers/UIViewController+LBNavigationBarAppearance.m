@@ -39,6 +39,9 @@ static NSString *LBNavigationBarTintColorKey = @"LBNavigationBarTintColorKey";
     return [objc_getAssociatedObject(self, &LBNavigationBarAppearanceStyleKey) integerValue];
 }
 -(void)setNavigationBarAppearanceStyle:(LBNavigationBarAppearanceStyle)navigationBarAppearanceStyle{
+    if (navigationBarAppearanceStyle == LBNavigationBarHidden && self.navigationController.navigationBarHidden == NO) {
+        [self.navigationController setNavigationBarHidden:YES animated:YES];
+    }
     objc_setAssociatedObject(self, &LBNavigationBarAppearanceStyleKey, @(navigationBarAppearanceStyle), OBJC_ASSOCIATION_ASSIGN);
 }
 -(UIColor *)navigationBarTintColor{
