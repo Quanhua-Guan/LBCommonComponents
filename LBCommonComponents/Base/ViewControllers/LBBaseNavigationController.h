@@ -11,9 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface LBBaseNavigationController : UINavigationController
-#define UINavigationController LBBaseNavigationController
-@property (nonatomic, strong, nullable) UIImage *backIndicatorImage;
-
+@property (nonatomic, strong) NSString *backBarButtonItemTitle;
 @end
 
 NS_ASSUME_NONNULL_END

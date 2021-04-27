@@ -7,22 +7,12 @@
 //
 
 #import "LBBaseNavigationController.h"
+
 @interface LBBaseNavigationController ()
 
 @end
 
 @implementation LBBaseNavigationController
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    if (self.backIndicatorImage) {
-        self.navigationBar.backIndicatorImage = self.backIndicatorImage;
-        
-        [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(-200, 0) forBarMetrics:UIBarMetricsDefault];
-    }
-}
-
 
 #pragma mark 处理tabbar的显示隐藏
 -(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{

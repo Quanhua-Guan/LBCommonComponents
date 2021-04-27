@@ -6,6 +6,7 @@
 //
 
 #import "UIViewController+LBNavigationBarAppearance.h"
+#import "LBBaseNavigationController.h"
 #import "NSObject+LBMethodSwizzling.h"
 
 static NSString *LBNavigationBarAppearanceStyleKey = @"LBNavigationBarAppearanceStyleKey";
@@ -87,6 +88,19 @@ static NSString *LBNavigationBarTintColorKey = @"LBNavigationBarTintColorKey";
 -(void)lb_navigationBarAppearance_viewWillAppear:(BOOL)animated{
     if ([NSStringFromClass(self.class) containsString:@"UI"] == NO &&
         self.navigationController != nil){
+        
+        if ([self.navigationController isKindOfClass:LBBaseNavigationController.class]){
+            NSString *backBarButtonItemTitle = [(LBBaseNavigationController *)self.navigationController backBarButtonItemTitle];
+            if (backBarButtonItemTitle != self.navigationItem.backBarButtonItem.title) {
+                self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]
+                                                              initWithTitle:((LBBaseNavigationController *)self.navigationController).backBarButtonItemTitle
+                                                              style:UIBarButtonItemStylePlain
+                                                              target:self
+                                                              action:nil];
+            }
+        }
+        
+        
         switch (self.navigationBarAppearanceStyle) {
             case LBNavigationBarTransparent:
             case LBNavigationBarTransparentShadowLine:
