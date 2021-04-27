@@ -34,16 +34,27 @@ static NSString *LBNavigationBarTintColorKey = @"LBNavigationBarTintColorKey";
                       withClass:self
                      withMethod:@selector(lb_navigationBarAppearance_viewWillAppear:)
           swizzledIsClassMethod:NO];
+    
+    [self lb_swizzleMethodClass:self.class
+                         method:@selector(addChildViewController:)
+          originalIsClassMethod:NO
+                      withClass:self
+                     withMethod:@selector(lb_navigationBarAppearance_addChildViewController:)
+          swizzledIsClassMethod:NO];
 }
 
 -(LBNavigationBarAppearanceStyle)navigationBarAppearanceStyle{
     return [objc_getAssociatedObject(self, &LBNavigationBarAppearanceStyleKey) integerValue];
 }
 -(void)setNavigationBarAppearanceStyle:(LBNavigationBarAppearanceStyle)navigationBarAppearanceStyle{
+    objc_setAssociatedObject(self, &LBNavigationBarAppearanceStyleKey, @(navigationBarAppearanceStyle), OBJC_ASSOCIATION_ASSIGN);
+    
     if (navigationBarAppearanceStyle == LBNavigationBarHidden && self.navigationController.navigationBarHidden == NO) {
         [self.navigationController setNavigationBarHidden:YES animated:YES];
     }
-    objc_setAssociatedObject(self, &LBNavigationBarAppearanceStyleKey, @(navigationBarAppearanceStyle), OBJC_ASSOCIATION_ASSIGN);
+    else if (self.navigationController.navigationBarHidden == YES){
+        [self.navigationController setNavigationBarHidden:NO animated:YES];
+    }
 }
 -(UIColor *)navigationBarTintColor{
     return objc_getAssociatedObject(self, &LBNavigationBarTintColorKey);
@@ -162,4 +173,12 @@ static NSString *LBNavigationBarTintColorKey = @"LBNavigationBarTintColorKey";
     [self lb_navigationBarAppearance_viewWillAppear:animated];
     
 }
+-(void)lb_navigationBarAppearance_addChildViewController:(UIViewController *)childController{
+    if ([NSStringFromClass(self.class) containsString:@"UI"] == NO &&
+        self.navigationController != nil){
+        [childController setNavigationBarAppearanceStyle:self.navigationBarAppearanceStyle tintColor:self.navigationBarTintColor];
+    }
+    [self lb_navigationBarAppearance_addChildViewController:childController];
+}
+
 @end

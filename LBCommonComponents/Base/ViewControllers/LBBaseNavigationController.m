@@ -7,13 +7,13 @@
 //
 
 #import "LBBaseNavigationController.h"
+#import "NSObject+LBMethodSwizzling.h"
 
 @interface LBBaseNavigationController ()
 
 @end
 
 @implementation LBBaseNavigationController
-
 #pragma mark 处理tabbar的显示隐藏
 -(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated{
     if (self.viewControllers.count==1) {
