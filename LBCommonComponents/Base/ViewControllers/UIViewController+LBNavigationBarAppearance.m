@@ -69,7 +69,7 @@ static NSString *LBNavigationBarTintColorKey = @"LBNavigationBarTintColorKey";
 }
 
 -(void)lb_navigationBarAppearance_viewDidLoad{
-    if ([NSStringFromClass(self.class) containsString:@"UI"] == NO) {
+    if ([NSStringFromClass(self.class) hasPrefix:@"UI"] == NO) {
 //        if (@available(iOS 13.0, *)) {
 //            if ([UITraitCollection currentTraitCollection].userInterfaceStyle == UIUserInterfaceStyleLight) {
 //                if (self.view.backgroundColor == nil) {
@@ -97,7 +97,7 @@ static NSString *LBNavigationBarTintColorKey = @"LBNavigationBarTintColorKey";
 }
 
 -(void)lb_navigationBarAppearance_viewWillAppear:(BOOL)animated{
-    if ([NSStringFromClass(self.class) containsString:@"UI"] == NO &&
+    if ([NSStringFromClass(self.class) hasPrefix:@"UI"] == NO &&
         self.navigationController != nil){
         
         if ([self.navigationController isKindOfClass:LBBaseNavigationController.class]){
@@ -174,7 +174,7 @@ static NSString *LBNavigationBarTintColorKey = @"LBNavigationBarTintColorKey";
     
 }
 -(void)lb_navigationBarAppearance_addChildViewController:(UIViewController *)childController{
-    if ([NSStringFromClass(self.class) containsString:@"UI"] == NO &&
+    if ([NSStringFromClass(self.class) hasPrefix:@"UI"] == NO &&
         self.navigationController != nil){
         [childController setNavigationBarAppearanceStyle:self.navigationBarAppearanceStyle tintColor:self.navigationBarTintColor];
     }
