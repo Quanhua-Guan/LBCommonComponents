@@ -94,7 +94,7 @@ Pod::Spec.new do |s|
   
   s.subspec 'LBNavigationBarAppearance' do |ss|
     ss.dependency   "LBCommonComponents/Category/NSObject+MethodSwizzling"
-    ss.source_files = 'LBCommonComponents/LBNavigationBarAppearance/**/*.{h,m}'
+    ss.source_files = 'LBCommonComponents/LBNavigationBarAppearance/**/*'
   end
   
 end
