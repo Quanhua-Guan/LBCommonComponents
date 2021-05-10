@@ -23,7 +23,7 @@
     
     self.view.backgroundColor = [UIColor magentaColor];
     
-    self.title = @"LBCommonComponents";
+    self.title = @"导航栏透明";
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"下一页" style:UIBarButtonItemStylePlain target:self action:@selector(nextPage)];
     

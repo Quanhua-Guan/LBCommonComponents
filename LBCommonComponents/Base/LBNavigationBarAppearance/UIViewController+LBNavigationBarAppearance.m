@@ -6,8 +6,8 @@
 //
 
 #import "UIViewController+LBNavigationBarAppearance.h"
-#import "LBBaseNavigationController.h"
 #import "NSObject+LBMethodSwizzling.h"
+#import "UINavigationBar+LBAppearance.h"
 
 static NSString *LBNavigationBarAppearanceStyleKey = @"LBNavigationBarAppearanceStyleKey";
 static NSString *LBNavigationBarTintColorKey = @"LBNavigationBarTintColorKey";
@@ -100,74 +100,70 @@ static NSString *LBNavigationBarTintColorKey = @"LBNavigationBarTintColorKey";
     if ([NSStringFromClass(self.class) hasPrefix:@"UI"] == NO &&
         self.navigationController != nil){
         
-        if ([self.navigationController isKindOfClass:LBBaseNavigationController.class]){
-            NSString *backBarButtonItemTitle = [(LBBaseNavigationController *)self.navigationController backBarButtonItemTitle];
-            if (backBarButtonItemTitle != self.navigationItem.backBarButtonItem.title) {
-                self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc]
-                                                              initWithTitle:((LBBaseNavigationController *)self.navigationController).backBarButtonItemTitle
-                                                              style:UIBarButtonItemStylePlain
-                                                              target:self
-                                                              action:nil];
-            }
+        NSString *backBarButtonItemTitle = [UINavigationBar appearance].lb_backItemTitle;
+        if (backBarButtonItemTitle != self.navigationItem.backBarButtonItem.title) {
+            self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:backBarButtonItemTitle style:UIBarButtonItemStylePlain target:self action:nil];
         }
         
-        
-        switch (self.navigationBarAppearanceStyle) {
-            case LBNavigationBarTransparent:
-            case LBNavigationBarTransparentShadowLine:
-            {
-                if (self.navigationController.isNavigationBarHidden == YES) {
-                    [self.navigationController setNavigationBarHidden:NO animated:YES];
-                }
-                
-                [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-                
-                if (self.navigationBarAppearanceStyle != LBNavigationBarTransparentShadowLine) {
-                    [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-                }
-                
-                if (self.navigationBarTintColor) {
-                    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:self.navigationBarTintColor}];
-
-                    self.navigationController.navigationBar.tintColor = self.navigationBarTintColor;
-                }
-
-                if ([self.navigationBarTintColor isEqual:[UIColor whiteColor]]) {
-                    self.navigationController.navigationBar.barStyle = UIBarStyleBlack; //状态栏改为白色
-                }else{
-                    self.navigationController.navigationBar.barStyle = UIBarStyleDefault;  //状态栏改为默认
-                }
-            }
-                break;
-                break;
-            case LBNavigationBarHidden:
-                self.navigationController.navigationBar.barStyle = UIBarStyleDefault;  //状态栏改为默认
-
-                [self.navigationController setNavigationBarHidden:YES animated:YES];
-                break;
-            default:
-                if (self.navigationController.isNavigationBarHidden == YES) {
-                    [self.navigationController setNavigationBarHidden:NO animated:YES];
-                }
-
-                [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
-                [self.navigationController.navigationBar setShadowImage:nil];
-                [self.navigationController.navigationBar setTitleTextAttributes:nil];
-                
-                if (@available(iOS 13.0, *)) {
-                    if ([UITraitCollection currentTraitCollection].userInterfaceStyle == UIUserInterfaceStyleLight) {
-                        self.navigationController.navigationBar.tintColor = [UIColor blackColor];
-                    }else{
-                        self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+        if ([UINavigationBar appearance].lb_appearanceAvailable == YES) {
+            switch (self.navigationBarAppearanceStyle) {
+                case LBNavigationBarTransparent:
+                case LBNavigationBarTransparentShadowLine:
+                {
+                    if (self.navigationController.isNavigationBarHidden == YES) {
+                        [self.navigationController setNavigationBarHidden:NO animated:YES];
                     }
-                }else{
-                    self.navigationController.navigationBar.tintColor = [UIColor blackColor];
-                }
-                
-                self.navigationController.navigationBar.barStyle = UIBarStyleDefault;  //状态栏改为默认
+                    
+                    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+                    
+                    if (self.navigationBarAppearanceStyle != LBNavigationBarTransparentShadowLine) {
+                        [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+                    }
+                    
+                    if (self.navigationBarTintColor) {
+                        [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:self.navigationBarTintColor}];
 
-                break;
+                        self.navigationController.navigationBar.tintColor = self.navigationBarTintColor;
+                    }
+
+                    if ([self.navigationBarTintColor isEqual:[UIColor whiteColor]]) {
+                        self.navigationController.navigationBar.barStyle = UIBarStyleBlack; //状态栏改为白色
+                    }else{
+                        self.navigationController.navigationBar.barStyle = UIBarStyleDefault;  //状态栏改为默认
+                    }
+                }
+                    break;
+                    break;
+                case LBNavigationBarHidden:
+                    self.navigationController.navigationBar.barStyle = UIBarStyleDefault;  //状态栏改为默认
+
+                    [self.navigationController setNavigationBarHidden:YES animated:YES];
+                    break;
+                default:
+                    if (self.navigationController.isNavigationBarHidden == YES) {
+                        [self.navigationController setNavigationBarHidden:NO animated:YES];
+                    }
+
+                    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+                    [self.navigationController.navigationBar setShadowImage:nil];
+                    [self.navigationController.navigationBar setTitleTextAttributes:nil];
+                    
+                    if (@available(iOS 13.0, *)) {
+                        if ([UITraitCollection currentTraitCollection].userInterfaceStyle == UIUserInterfaceStyleLight) {
+                            self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+                        }else{
+                            self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+                        }
+                    }else{
+                        self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+                    }
+                    
+                    self.navigationController.navigationBar.barStyle = UIBarStyleDefault;  //状态栏改为默认
+
+                    break;
+            }
         }
+        
     }
     
     [self lb_navigationBarAppearance_viewWillAppear:animated];

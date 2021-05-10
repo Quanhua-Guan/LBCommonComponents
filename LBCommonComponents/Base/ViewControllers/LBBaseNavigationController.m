@@ -7,7 +7,6 @@
 //
 
 #import "LBBaseNavigationController.h"
-#import "NSObject+LBMethodSwizzling.h"
 
 @interface LBBaseNavigationController ()
 

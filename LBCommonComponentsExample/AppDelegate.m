@@ -7,8 +7,9 @@
 //
 
 #import "AppDelegate.h"
-#import "ViewController.h"
-#import "LBBaseNavigationController.h"
+#import "MainTabBarController.h"
+#import "UINavigationBar+LBAppearance.h"
+
 @interface AppDelegate ()
 
 @end
@@ -20,9 +21,15 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     
-    self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[ViewController new]];
+    self.window.rootViewController = [[MainTabBarController alloc] init];
     
     [self.window makeKeyAndVisible];
+    
+    
+    [UINavigationBar appearance].lb_backItemTitle = @"返回文字自定义";
+    [UINavigationBar appearance].lb_appearanceAvailable = YES;
+
+    
     return YES;
 }
 
