@@ -247,9 +247,9 @@
 			isa = PBXGroup;
 			children = (
 				405519AB26493F4B00BD094A /* UINavigationBar+LBAppearance.h */,
-				405519AC26493F4B00BD094A /* UIViewController+LBNavigationBarAppearance.m */,
 				405519AD26493F4B00BD094A /* UINavigationBar+LBAppearance.m */,
 				405519AE26493F4B00BD094A /* UIViewController+LBNavigationBarAppearance.h */,
+				405519AC26493F4B00BD094A /* UIViewController+LBNavigationBarAppearance.m */,
 			);
 			path = LBNavigationBarAppearance;
 			sourceTree = "<group>";
