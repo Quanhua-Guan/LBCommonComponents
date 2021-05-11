@@ -24,7 +24,6 @@
 		4046AB17233E10D600299809 /* NSString+LBToDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4046AB01233E10D600299809 /* NSString+LBToDate.m */; };
 		405519A82649383E00BD094A /* MainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 405519A72649383E00BD094A /* MainTabBarController.m */; };
 		405519AF26493F4B00BD094A /* UIViewController+LBNavigationBarAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 405519AC26493F4B00BD094A /* UIViewController+LBNavigationBarAppearance.m */; };
-		405519B026493F4B00BD094A /* UINavigationBar+LBAppearance.m in Sources */ = {isa = PBXBuildFile; fileRef = 405519AD26493F4B00BD094A /* UINavigationBar+LBAppearance.m */; };
 		40628F2A24873EC20053E7ED /* NSObject+LBTypeSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 40628F2924873EC20053E7ED /* NSObject+LBTypeSafe.m */; };
 		406B597A260DE6AA007BE1ED /* UIImage+LBDownSampling.m in Sources */ = {isa = PBXBuildFile; fileRef = 406B5979260DE6AA007BE1ED /* UIImage+LBDownSampling.m */; };
 		4071DE3F2362DD04007EF36A /* LBBaseButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4071DE3B2362DD04007EF36A /* LBBaseButton.m */; };
@@ -70,9 +69,7 @@
 		4046AB09233E10D600299809 /* LBUIMacro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBUIMacro.h; sourceTree = "<group>"; };
 		405519A62649383E00BD094A /* MainTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainTabBarController.h; sourceTree = "<group>"; };
 		405519A72649383E00BD094A /* MainTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainTabBarController.m; sourceTree = "<group>"; };
-		405519AB26493F4B00BD094A /* UINavigationBar+LBAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationBar+LBAppearance.h"; sourceTree = "<group>"; };
 		405519AC26493F4B00BD094A /* UIViewController+LBNavigationBarAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LBNavigationBarAppearance.m"; sourceTree = "<group>"; };
-		405519AD26493F4B00BD094A /* UINavigationBar+LBAppearance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationBar+LBAppearance.m"; sourceTree = "<group>"; };
 		405519AE26493F4B00BD094A /* UIViewController+LBNavigationBarAppearance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+LBNavigationBarAppearance.h"; sourceTree = "<group>"; };
 		40628F2824873EC20053E7ED /* NSObject+LBTypeSafe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+LBTypeSafe.h"; sourceTree = "<group>"; };
 		40628F2924873EC20053E7ED /* NSObject+LBTypeSafe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LBTypeSafe.m"; sourceTree = "<group>"; };
@@ -149,7 +146,6 @@
 		4046AAEB233E10D600299809 /* LBCommonComponents */ = {
 			isa = PBXGroup;
 			children = (
-				405519AA26493F4B00BD094A /* LBNavigationBarAppearance */,
 				4046AB06233E10D600299809 /* Macros */,
 				4071DE332362DB2F007EF36A /* Base */,
 				4046AAEC233E10D600299809 /* Category */,
@@ -160,6 +156,7 @@
 		4046AAEC233E10D600299809 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				405EAAD1264A19CA0083FF09 /* LBNavigationBarAppearance */,
 				406B5977260DE688007BE1ED /* UIImage+DownSampling */,
 				4087D8E825E7545300DAC735 /* UIControl+EventInterval */,
 				40721E5D24B6F58800FC7FC7 /* NSObject+MethodSwizzling */,
@@ -243,11 +240,9 @@
 			path = Example;
 			sourceTree = "<group>";
 		};
-		405519AA26493F4B00BD094A /* LBNavigationBarAppearance */ = {
+		405EAAD1264A19CA0083FF09 /* LBNavigationBarAppearance */ = {
 			isa = PBXGroup;
 			children = (
-				405519AB26493F4B00BD094A /* UINavigationBar+LBAppearance.h */,
-				405519AD26493F4B00BD094A /* UINavigationBar+LBAppearance.m */,
 				405519AE26493F4B00BD094A /* UIViewController+LBNavigationBarAppearance.h */,
 				405519AC26493F4B00BD094A /* UIViewController+LBNavigationBarAppearance.m */,
 			);
@@ -425,7 +420,6 @@
 				4087D8FA25E7979700DAC735 /* ViewControllerDefault.m in Sources */,
 				4046AB15233E10D600299809 /* UIView+LBGeometry.m in Sources */,
 				4071DE402362DD04007EF36A /* LBBaseLabel.m in Sources */,
-				405519B026493F4B00BD094A /* UINavigationBar+LBAppearance.m in Sources */,
 				4046AB16233E10D600299809 /* NSNull+LBSafe.m in Sources */,
 				4046AB13233E10D600299809 /* UIView+LBCopy.m in Sources */,
 			);

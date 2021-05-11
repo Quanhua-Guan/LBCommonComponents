@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MainTabBarController.h"
-#import "UINavigationBar+LBAppearance.h"
+#import "UIViewController+LBNavigationBarAppearance.h"
 
 @interface AppDelegate ()
 

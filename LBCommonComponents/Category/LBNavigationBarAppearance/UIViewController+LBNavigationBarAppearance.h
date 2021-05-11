@@ -18,4 +18,9 @@ typedef NS_ENUM(NSUInteger, LBNavigationBarAppearanceStyle) {
 -(void)setNavigationBarAppearanceStyle:(LBNavigationBarAppearanceStyle)style tintColor:(nullable UIColor *)color;
 @end
 
+@interface UINavigationBar (LBAppearance)
+@property (nonatomic, assign) BOOL lb_appearanceAvailable;
+@property (nonatomic, copy  ) NSString *lb_backItemTitle;
+@end
+
 NS_ASSUME_NONNULL_END

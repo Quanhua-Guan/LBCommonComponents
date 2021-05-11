@@ -80,6 +80,11 @@ Pod::Spec.new do |s|
       sss.dependency   "LBCommonComponents/Category/NSObject+MethodSwizzling"
       sss.source_files = 'LBCommonComponents/Category/NSObject+Safe/NSDictionary+LBSafe.{h,m}'
     end
+    
+    ss.subspec 'LBNavigationBarAppearance' do |sss|
+      sss.dependency   "LBCommonComponents/Category/NSObject+MethodSwizzling"
+      sss.source_files = 'LBCommonComponents/Category/LBNavigationBarAppearance/**/*.{h,m}'
+    end
   end
   
   s.subspec 'Base' do |ss|
@@ -90,11 +95,6 @@ Pod::Spec.new do |s|
     ss.subspec 'ViewControllers' do |sss|
       sss.source_files = 'LBCommonComponents/Base/ViewControllers/**/*.{h,m}'
     end
-  end
-  
-  s.subspec 'LBNavigationBarAppearance' do |ss|
-    ss.dependency   "LBCommonComponents/Category/NSObject+MethodSwizzling"
-    ss.source_files = 'LBCommonComponents/LBNavigationBarAppearance/**/*'
   end
   
 end

@@ -7,7 +7,6 @@
 
 #import "UIViewController+LBNavigationBarAppearance.h"
 #import "NSObject+LBMethodSwizzling.h"
-#import "UINavigationBar+LBAppearance.h"
 
 static NSString *LBNavigationBarAppearanceStyleKey = @"LBNavigationBarAppearanceStyleKey";
 static NSString *LBNavigationBarTintColorKey = @"LBNavigationBarTintColorKey";
@@ -177,4 +176,25 @@ static NSString *LBNavigationBarTintColorKey = @"LBNavigationBarTintColorKey";
     [self lb_navigationBarAppearance_addChildViewController:childController];
 }
 
+@end
+
+static NSString *LBNavigationBarAppearanceAvailableKey = @"LBNavigationBarAppearanceAvailableKey";
+static NSString *LBBackItemTitleKey = @"LBBackItemTitleKey";
+
+@implementation UINavigationBar (LBAppearance)
+- (void)setLb_appearanceAvailable:(BOOL)lb_appearanceAvailable{
+    objc_setAssociatedObject(self, &LBNavigationBarAppearanceAvailableKey, @(lb_appearanceAvailable), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+-(BOOL)lb_appearanceAvailable{
+    return [objc_getAssociatedObject(self, &LBNavigationBarAppearanceAvailableKey) doubleValue];
+}
+
+-(void)setLb_backItemTitle:(NSString *)lb_backItemTitle{
+    objc_setAssociatedObject(self, &LBBackItemTitleKey, lb_backItemTitle, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+-(NSString *)lb_backItemTitle{
+    return objc_getAssociatedObject(self, &LBBackItemTitleKey);
+}
 @end
