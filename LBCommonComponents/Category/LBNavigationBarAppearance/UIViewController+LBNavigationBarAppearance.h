@@ -15,11 +15,14 @@ typedef NS_ENUM(NSUInteger, LBNavigationBarAppearanceStyle) {
     LBNavigationBarHidden//隐藏
 };
 @interface UIViewController (LBNavigationBarAppearance)
+/// 只有在UINavigationBar的lb_appearanceAvailable为YES的情况下以下设置才有效
+/// @param style 透明风格
+/// @param color tintColor
 -(void)setNavigationBarAppearanceStyle:(LBNavigationBarAppearanceStyle)style tintColor:(nullable UIColor *)color;
 @end
 
 @interface UINavigationBar (LBAppearance)
-@property (nonatomic, assign) BOOL lb_appearanceAvailable;
+@property (nonatomic, assign) BOOL lb_appearanceAvailable;//default NO
 @property (nonatomic, copy  ) NSString *lb_backItemTitle;
 @end
 
