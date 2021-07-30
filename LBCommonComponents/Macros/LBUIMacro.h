@@ -64,7 +64,12 @@ if (@available(iOS 11.0, *)) {\
     safeAreaInsetsBottom = LB_KEY_WINDOW.safeAreaInsets.bottom;\
 }\
 if(ViewController.tabBarController && !ViewController.tabBarController.tabBar.hidden && !ViewController.hidesBottomBarWhenPushed){\
-    safeAreaInsetsBottom  += CGRectGetHeight(ViewController.tabBarController.tabBar.frame);\
+    CGFloat tabBarHeight = CGRectGetHeight(ViewController.tabBarController.tabBar.frame);\
+    if (tabBarHeight>44) {\
+        safeAreaInsetsBottom = tabBarHeight;\
+    }else{\
+        safeAreaInsetsBottom += tabBarHeight;\
+    }\
 }\
 safeAreaInsetsBottom;\
 })
