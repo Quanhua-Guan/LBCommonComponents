@@ -57,18 +57,24 @@ keyWindow;\
 })
 
 
-#define LB_SAFE_AREA_BOTTOM_HEIGHT(ViewController) \
+#define LB_SAFE_AREA_BOTTOM_HEIGHT(viewController) \
 ({\
 CGFloat safeAreaInsetsBottom = 0;\
 if (@available(iOS 11.0, *)) {\
     safeAreaInsetsBottom = LB_KEY_WINDOW.safeAreaInsets.bottom;\
 }\
-if(ViewController.tabBarController && !ViewController.tabBarController.tabBar.hidden && !ViewController.hidesBottomBarWhenPushed){\
-    CGFloat tabBarHeight = CGRectGetHeight(ViewController.tabBarController.tabBar.frame);\
-    if (tabBarHeight>44) {\
-        safeAreaInsetsBottom = tabBarHeight;\
-    }else{\
-        safeAreaInsetsBottom += tabBarHeight;\
+if ([viewController isKindOfClass:UIViewController.class]) {\
+    UITabBarController *tabBarController = viewController.tabBarController;\
+    if ([viewController isKindOfClass:UITabBarController.class]) {\
+        tabBarController = (UITabBarController *)viewController;\
+    }\
+    if(tabBarController && !tabBarController.tabBar.isHidden && !viewController.hidesBottomBarWhenPushed){\
+        CGFloat tabBarHeight = CGRectGetHeight(tabBarController.tabBar.frame);\
+        if (tabBarHeight>44) {\
+            safeAreaInsetsBottom = tabBarHeight;\
+        }else{\
+            safeAreaInsetsBottom += tabBarHeight;\
+        }\
     }\
 }\
 safeAreaInsetsBottom;\
