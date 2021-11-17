@@ -90,6 +90,13 @@ static NSString *LBNavigationBarTintColorKey = @"LBNavigationBarTintColorKey";
         }
         
         if ([UINavigationBar appearance].lb_appearanceAvailable == YES) {
+            
+            if (@available(iOS 15.0, *)) {
+                UINavigationBarAppearance *appearance = [[UINavigationBarAppearance alloc] init];
+                self.navigationController.navigationBar.standardAppearance = appearance;
+                self.navigationController.navigationBar.scrollEdgeAppearance = appearance;
+            }
+            
             switch (self.navigationBarAppearanceStyle) {
                 case LBNavigationBarTransparent:
                 case LBNavigationBarTransparentShadowLine:
@@ -98,14 +105,27 @@ static NSString *LBNavigationBarTintColorKey = @"LBNavigationBarTintColorKey";
                         [self.navigationController setNavigationBarHidden:NO animated:YES];
                     }
                     
-                    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+                    if (@available(iOS 15.0, *)) {
+                        self.navigationController.navigationBar.scrollEdgeAppearance.backgroundEffect = nil;
+                    }else{
+                        [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+                    }
                     
                     if (self.navigationBarAppearanceStyle != LBNavigationBarTransparentShadowLine) {
-                        [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+                        if (@available(iOS 15.0, *)) {
+                            self.navigationController.navigationBar.scrollEdgeAppearance.shadowColor = [UIColor clearColor];
+                        }else{
+                            [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+                        }
+                        
                     }
                     
                     if (self.navigationBarTintColor) {
-                        [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:self.navigationBarTintColor}];
+                        if (@available(iOS 15.0, *)) {
+                            self.navigationController.navigationBar.scrollEdgeAppearance.titleTextAttributes = @{NSForegroundColorAttributeName:self.navigationBarTintColor};
+                        }else{
+                            [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:self.navigationBarTintColor}];
+                        }
 
                         self.navigationController.navigationBar.tintColor = self.navigationBarTintColor;
                     }
