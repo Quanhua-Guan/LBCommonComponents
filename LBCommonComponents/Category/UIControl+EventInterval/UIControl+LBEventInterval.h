@@ -11,8 +11,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UIControl (LBEventInterval)
+/*
 @property (nonatomic, assign) NSTimeInterval lb_eventInterval;
 @property (nonatomic, assign) BOOL lb_eventUnavailable;
+ */
 @end
 
 NS_ASSUME_NONNULL_END

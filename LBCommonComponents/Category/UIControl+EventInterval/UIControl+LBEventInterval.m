@@ -13,7 +13,7 @@ static char * const lb_eventIntervalKey = "lb_eventIntervalKey";
 static char * const lb_eventUnavailableKey = "lb_eventUnavailableKey";
 
 @implementation UIControl (LBEventInterval)
-
+/*
 + (void)load {
     Method method = class_getInstanceMethod(self, @selector(sendAction:to:forEvent:));
     Method qi_method = class_getInstanceMethod(self, @selector(lb_eventInterval_sendAction:to:forEvent:));
@@ -55,4 +55,5 @@ static char * const lb_eventUnavailableKey = "lb_eventUnavailableKey";
     
     objc_setAssociatedObject(self, lb_eventUnavailableKey, @(eventUnavailable), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
+*/
 @end
